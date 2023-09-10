@@ -1,7 +1,7 @@
-import { Component, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 const CountDown = () => {
-    const [countdownDate, setCountdownDate] = useState(new Date('11/09/2022').getTime());
+    const [countdownDate] = useState(new Date('11/09/2022').getTime());
     const [state, setState] = useState({
         days: 0,
         hours: 0,
@@ -11,7 +11,7 @@ const CountDown = () => {
 
     useEffect(() => {
         setInterval(() => setNewTime(), 1000);
-    }, []);
+    });
 
     const setNewTime = () => {
         if (countdownDate) {
