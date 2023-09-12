@@ -1,26 +1,28 @@
 
-
+import { AiOutlineSearch } from "react-icons/ai";
 
 const subTitle = "Online education";
-const title = <h2 className="title"><span className="d-lg-block">Learn The</span> Skills You Need <span className="d-lg-block">To Succeed</span></h2>;
-const desc = "Free online courses from the world’s Leading experts. join 18+ million Learners today.";
+const title = <h2 className="title"><span className="d-lg-block">Unleash</span> Innovation<span className="d-lg-block">in Education </span></h2>;
+// const desc = "Free online courses from the world’s Leading experts. join 18+ million Learners today.";
+const desc = "Your Gateway to a World of Student Projects and Collaborative Learning";
 
+// EduConnect: Unleash Innovation in Education 
 
 const catagoryList = [
     {
-        name: 'Figma',
+        name: 'AI ML',
         link: '#',
     },
     {
-        name: 'Adobe XD',
+        name: 'Robotics',
         link: '#',
     },
     {
-        name: 'illustration',
+        name: 'Webdev',
         link: '#',
     },
     {
-        name: 'Photoshop',
+        name: 'BioTech',
         link: '#',
     },
 ]
@@ -69,8 +71,8 @@ const Banner = () => {
                                     <div className="banner-icon">
                                         <i className="icofont-search"></i>
                                     </div>
-                                    <input type="text" placeholder="Keywords of your course" />
-                                    <button type="submit">Search Course</button>
+                                    <input type="text" placeholder="Keywords of your Projects" />
+                                    <button type="submit"><AiOutlineSearch  style={{fontSize:'30px'}}/></button>
                                 </form>
                                 <div className="banner-catagory d-flex flex-wrap">
                                     <p>Most Popular : </p>
