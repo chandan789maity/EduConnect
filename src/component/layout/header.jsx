@@ -72,7 +72,7 @@ const Header = () => {
                         <div className="menu-area">
                             <div className="menu">
                                 <ul className={`lab-ul ${menuToggle ? "active" : ""}`}>
-                                    <li className="menu-item-has-children">
+                                    <li className="">
                                         <NavLink to="/" >Home</NavLink>
                                         {/* role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-bs-offset="0,0" */}
                                         {/* <ul className="lab-ul dropdown-menu">
@@ -85,7 +85,7 @@ const Header = () => {
                                             <li><NavLink to="/index-7">Home Seven</NavLink></li>
                                         </ul> */}
                                     </li>
-                                    <li className="menu-item-has-children">
+                                    <li className="">
                                         <a href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-bs-offset="0,0">Projects</a>
                                         <ul className="lab-ul dropdown-menu">
                                             <li><NavLink to="/course">Projects</NavLink></li>
@@ -102,7 +102,7 @@ const Header = () => {
                                             <li><NavLink to="/blog-single">Blog Single</NavLink></li>
                                         </ul>
                                     </li> */}
-                                    <li className="menu-item-has-children">
+                                    <li className="">
                                         <a href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-bs-offset="0,0">About</a>
                                         {/* <ul className="lab-ul dropdown-menu">
                                             <li><NavLink to="/about">About</NavLink></li>
@@ -120,8 +120,8 @@ const Header = () => {
                                 </ul>
                             </div>
                             
-                            <Link to="/login" className="login" style={{borderRadius:'20px', marginRight:'40px'}}><i className="icofont-user"></i> <span>LOG IN</span> </Link>
-                            <Link to="/signup" className="signup" style={{borderRadius:'20px', marginRight:'40px'}}><i className="icofont-users"></i> <span>SIGN UP</span> </Link>
+                            <Link to="/login" className="login" style={{borderRadius:'10px', marginRight:'20px'}}><i className="icofont-user"></i> <span>LOG IN</span> </Link>
+                            <Link to="/signup" className="signup" style={{borderRadius:'10px'}}><i className="icofont-users"></i> <span>SIGN UP</span> </Link>
 
                             <div className={`header-bar d-lg-none ${menuToggle ? "active" : "" }`} onClick={() => setMenuToggle(!menuToggle)}>
                                 <span></span>

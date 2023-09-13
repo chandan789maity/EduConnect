@@ -1,3 +1,4 @@
+
 import img1 from '../../assets/images/course/AI ML.webp';
 import img2 from '../../assets/images/course/02.jpg';
 import img3 from '../../assets/images/course/healthcare.jpg';
@@ -5,24 +6,18 @@ import img4 from '../../assets/images/course/Web3-Edu.jpg';
 import img5 from '../../assets/images/course/IOT-Edu.jpeg.jpg';
 import img6 from '../../assets/images/course/Data Science.jpg';
 
-/*
-    
-
-
-Anika Singh
-
-
-*/ 
 
 import { Link } from "react-router-dom";
 import Rating from "../sidebar/rating";
 
 const subTitle = "Project Details";
-const title = "Buil  Project For Head Start";
+const title = "Build  Projects For Head Start";
+
 
 
 const courseList = [
     {
+
         imgUrl: img1,
         imgAlt: 'course rajibraj91 rajibraj',
         price: '$30',
