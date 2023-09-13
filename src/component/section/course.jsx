@@ -1,14 +1,16 @@
+import img1 from '../../assets/images/course/Aerospace.jpg';
 
 import { Link } from "react-router-dom";
 import Rating from "../sidebar/rating";
 
 const subTitle = "Project Details";
-const title = "Buil  Project For Head Start";
+const title = "Build  Projects For Head Start";
+
 
 
 const courseList = [
     {
-        imgUrl: 'assets/images/course/04.jpg',
+        imgUrl:img1,
         imgAlt: 'course rajibraj91 rajibraj',
         price: '$30',
         cate: 'Adobe XD',
