@@ -1,42 +1,45 @@
 
 import { Link } from "react-router-dom";
 import Rating from "../sidebar/rating";
+import heritage from "../../assets/images/instructor/heritage.png"
+import kgp_iit from "../../assets/images/instructor/kgp_iit.svg"
+import durgapur_nit from "../../assets/images/instructor/durgapur_nit.png"
+import iem from "../../assets/images/instructor/iem.webp"
 
-
-const subTitle = "World-class Instructors";
-const title = "Classes Taught By Real Creators";
+const subTitle = "Our top Project Creators";
+const title = "Projects Uploaded by Visionary Educational Institutions";
 
 const instructorList = [
     {
-        imgUrl: 'assets/images/instructor/01.jpg',
+        imgUrl: heritage,
         imgAlt: 'instructor rajibraj91 rajibraj',
-        name: 'Emilee Logan',
-        degi: 'Master of Education Degree',
-        courseCount: '08 courses',
+        name: 'Heritage Institute of Technology, Kolkata',
+        degi: 'Master of Engineering Degree',
+        courseCount: '08 projects',
         studentAnroll: '30 students',
     },
     {
-        imgUrl: 'assets/images/instructor/02.jpg',
+        imgUrl: kgp_iit,
         imgAlt: 'instructor rajibraj91 rajibraj',
-        name: 'Donald Logan',
-        degi: 'Master of Education Degree',
-        courseCount: '08 courses',
+        name: 'Indian Institute of Technology,KGP',
+        degi: 'Master of Engineering Degree',
+        courseCount: '08 projects',
         studentAnroll: '30 students',
     },
     {
-        imgUrl: 'assets/images/instructor/03.jpg',
+        imgUrl: durgapur_nit,
         imgAlt: 'instructor rajibraj91 rajibraj',
-        name: 'Oliver Porter',
-        degi: 'Master of Education Degree',
-        courseCount: '08 courses',
+        name: 'National Institute of Technology, Durgapur',
+        degi: 'Master of Engineering Degree',
+        courseCount: '08 projects',
         studentAnroll: '30 students',
     },
     {
-        imgUrl: 'assets/images/instructor/04.jpg',
+        imgUrl: iem,
         imgAlt: 'instructor rajibraj91 rajibraj',
-        name: 'Nahla Jones',
-        degi: 'Master of Education Degree',
-        courseCount: '08 courses',
+        name: 'Institute of Engineering & Management, Kolkata',
+        degi: 'Master of Engineering Degree',
+        courseCount: '08 projects',
         studentAnroll: '30 students',
     },
 ]
@@ -76,7 +79,7 @@ const Instructor = () => {
                         ))}
                     </div>
                     <div className="text-center footer-btn">
-                        <p>Want to help people learn, grow and achieve more in life?<Link to="/team">Become an instructor</Link></p>
+                        <p>Want to upload projects, grow and achieve more in life?<Link to="/team">Become a creator</Link></p>
                     </div>
                 </div>
             </div>

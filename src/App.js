@@ -40,12 +40,12 @@ function App() {
 			<ScrollToTop />
 			<Routes>
 				<Route path="/" element={<Home />} />
-				<Route path="index-2" element={<HomeTwo />} />
+				{/* <Route path="index-2" element={<HomeTwo />} />
 				<Route path="index-3" element={<HomeThree />} />
 				<Route path="index-4" element={<HomeFour />} />
 				<Route path="index-5" element={<HomeFive />} />
 				<Route path="index-6" element={<HomeSix />} />
-				<Route path="index-7" element={<HomeSeven />} />
+				<Route path="index-7" element={<HomeSeven />} /> */}
 				<Route path="course" element={<CoursePage />} />
 				<Route path="course-single" element={<CourseSingle />} />
 				<Route path="blog" element={<BlogPage />} />
