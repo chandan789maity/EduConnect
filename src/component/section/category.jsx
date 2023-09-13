@@ -1,47 +1,52 @@
 
 import { Link } from "react-router-dom";
+import img1 from "../../assets/images/category/icon/01.jpg"
+import img2 from "../../assets/images/category/icon/02.png"
+import img3 from "../../assets/images/category/icon/03.png"
+import img5 from "../../assets/images/category/icon/05.png"
+import img6 from "../../assets/images/category/icon/06.png"
 
-const subTitle = "Popular Category";
-const title = "Popular Category For Learn";
-const btnText = "Browse All Categories";
+const subTitle = "Popular Projects";
+const title = "Popular Project Domains";
+const btnText = "Browse All Domains";
 
 
 const categoryList = [
     {
-        imgUrl: 'assets/images/category/icon/01.jpg',
+        imgUrl: img1,
         imgAlt: 'category rajibraj91 rajibraj',
-        title: 'Computer Science',
-        count: '24 Course',
+        title: 'Software Development',
+        count: '24 Projects',
     },
     {
-        imgUrl: 'assets/images/category/icon/02.jpg',
+        imgUrl: img2,
         imgAlt: 'category rajibraj91 rajibraj',
-        title: 'Civil Engineering',
-        count: '04 Course',
+        title: 'Healthcare and Medical Devices',
+        count: '14 Projects',
     },
     {
-        imgUrl: 'assets/images/category/icon/03.jpg',
+        imgUrl: img3,
         imgAlt: 'category rajibraj91 rajibraj',
-        title: 'Business Analysis',
-        count: '27 Course',
+        title: 'Robotics',
+        count: '27 Projects',
     },
     {
         imgUrl: 'assets/images/category/icon/04.jpg',
         imgAlt: 'category rajibraj91 rajibraj',
-        title: 'Data Science Analytics',
-        count: '28 Course',
+        title: 'Data Science And analysis',
+        count: '20 Projects',
     },
     {
-        imgUrl: 'assets/images/category/icon/05.jpg',
+        imgUrl: img5,
         imgAlt: 'category rajibraj91 rajibraj',
-        title: 'Learning Management',
-        count: '78 Course',
+        title: 'Artificial Intelligence and Machine Learning',
+        count: '23 Projects',
     },
     {
-        imgUrl: 'assets/images/category/icon/06.jpg',
+        imgUrl: img6,
         imgAlt: 'category rajibraj91 rajibraj',
-        title: 'Computer Engineering',
-        count: '38 Course',
+        title: 'Blockchain and Cryptocurrency',
+        count: '18 Projects',
     },
 ]
 
