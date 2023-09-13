@@ -8,7 +8,7 @@ const title = "Pick A Course To Get Started";
 
 const courseList = [
     {
-        imgUrl: 'assets/images/course/01.jpg',
+        imgUrl: 'assets/images/course/04.jpg',
         imgAlt: 'course rajibraj91 rajibraj',
         price: '$30',
         cate: 'Adobe XD',
