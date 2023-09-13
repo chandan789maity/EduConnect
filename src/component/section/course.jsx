@@ -2,8 +2,8 @@
 import { Link } from "react-router-dom";
 import Rating from "../sidebar/rating";
 
-const subTitle = "Featured Courses";
-const title = "Pick A Course To Get Started";
+const subTitle = "Project Details";
+const title = "Buil  Project For Head Start";
 
 
 const courseList = [
@@ -13,7 +13,7 @@ const courseList = [
         price: '$30',
         cate: 'Adobe XD',
         reviewCount: '03 reviews',
-        title: 'Fundamentals of Adobe XD Theory Learn New',
+        title: 'Artificial Intelligence and Machine Learning (AIML)',
         totalLeson: '18x Lesson',
         schdule: 'Online Class',
         authorImgUrl: 'assets/images/course/author/01.jpg',
@@ -23,11 +23,11 @@ const courseList = [
     },
     {
         imgUrl: 'assets/images/course/02.jpg',
-        imgAlt: 'course rajibraj91 rajibraj',
+        imgAlt: 'robo',
         price: '$30',
         cate: 'Adobe XD',
         reviewCount: '03 reviews',
-        title: 'Certified Graphic Design with Free Project Course',
+        title: 'Robotics',
         totalLeson: '18x Lesson',
         schdule: 'Online Class',
         authorImgUrl: 'assets/images/course/author/02.jpg',
@@ -41,7 +41,7 @@ const courseList = [
         price: '$30',
         cate: 'Adobe XD',
         reviewCount: '03 reviews',
-        title: 'Theory Learn New Student And Fundamentals',
+        title: 'Healthcare and Medical Device',
         totalLeson: '18x Lesson',
         schdule: 'Online Class',
         authorImgUrl: 'assets/images/course/author/03.jpg',
@@ -50,12 +50,12 @@ const courseList = [
         btnText: 'Read More',
     },
     {
-        imgUrl: 'assets/images/course/04.jpg',
+        imgUrl: 'assets/images/course/Web3-Edu.jpg',
         imgAlt: 'course rajibraj91 rajibraj',
         price: '$30',
         cate: 'Adobe XD',
         reviewCount: '03 reviews',
-        title: 'Computer Fundamentals Basic Startup Ultricies Vitae',
+        title: 'BlockChain And Cryptocurrency',
         totalLeson: '18x Lesson',
         schdule: 'Online Class',
         authorImgUrl: 'assets/images/course/author/04.jpg',
@@ -69,7 +69,7 @@ const courseList = [
         price: '$30',
         cate: 'Adobe XD',
         reviewCount: '03 reviews',
-        title: 'Boozy Halloween Drinks for the Grown Eleifend Kuismod',
+        title: 'Internet of Things(IoT)',
         totalLeson: '18x Lesson',
         schdule: 'Online Class',
         authorImgUrl: 'assets/images/course/author/05.jpg',
@@ -83,7 +83,7 @@ const courseList = [
         price: '$30',
         cate: 'Adobe XD',
         reviewCount: '03 reviews',
-        title: 'Student Want to Learn About Science And Arts',
+        title: 'Data Science and Analytics',
         totalLeson: '18x Lesson',
         schdule: 'Online Class',
         authorImgUrl: 'assets/images/course/author/06.jpg',
@@ -111,7 +111,7 @@ const Course = () => {
                                             <img src={`${val.imgUrl}`} alt={`${val.imgAlt}`} />
                                         </div>
                                         <div className="course-content">
-                                            <div className="course-price">{val.price}</div>
+                                            {/* <div className="course-price">{val.price}</div> */}
                                             <div className="course-category">
                                                 <div className="course-cate">
                                                     <a href="#">{val.cate}</a>
