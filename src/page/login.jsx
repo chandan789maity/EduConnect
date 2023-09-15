@@ -43,12 +43,12 @@ const LoginPage = () => {
     return (
         <Fragment>
             <Header />
-            <PageHeader title={'Login Page'} curPage={'Login'} />
-            <div className="login-section padding-tb section-bg">
+           
+            <div className="login-section padding-tb section-bg " >
                 <div className="container">
-                    <div className="account-wrapper">
+                    <div className="account-wrapper" style={{marginTop:"50px"}}>
                         <h3 className="title">{title}</h3>
-                        <form className="account-form">
+                        <form className="account-form" >
                             <div className="form-group">
                                 <input
                                     type="text"
@@ -78,15 +78,6 @@ const LoginPage = () => {
                         </form>
                         <div className="account-bottom">
                             <span className="d-block cate pt-10">Don’t Have any Account?  <Link to="/signup">Sign Up</Link></span>
-                            <span className="or"><span>or</span></span>
-                            <h5 className="subtitle">{socialTitle}</h5>
-                            <ul className="lab-ul social-icons justify-content-center">
-                                {socialList.map((val, i) => (
-                                    <li key={i}>
-                                        <a href={val.link} className={val.className}><i className={val.iconName}></i></a>
-                                    </li>
-                                ))}
-                            </ul>
                         </div>
                     </div>
                 </div>

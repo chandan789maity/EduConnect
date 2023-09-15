@@ -9,8 +9,8 @@ import SkillSelect from "./skill-select";
 const GroupSelect = () => {
     return (
         <div className="group-select-section">
-            <div className="container">
-                <div className="section-wrapper">
+            <div className="container" >
+                <div className="section-wrapper" >
                     <div className="row align-items-center g-4">
                         <div className="col-md-1">
                             <div className="group-select-left">

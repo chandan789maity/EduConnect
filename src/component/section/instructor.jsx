@@ -58,7 +58,9 @@ const Instructor = () => {
                         {instructorList.map((val, i) => (
                             <div className="col" key={i}>
                                 <div className="instructor-item">
-                                    <div className="instructor-inner">
+                                    <div className="instructor-inner"  style={{
+                                        height: "480px",
+                                      }}>
                                         <div className="instructor-thumb">
                                             <img src={`${val.imgUrl}`} alt={`${val.imgAlt}`} />
                                         </div>

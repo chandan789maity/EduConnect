@@ -11,16 +11,16 @@ const studentList = [
     {
         imgUrl: 'assets/images/feedback/student/01.jpg',
         imgAlt: 'student rajibraj91 rajibraj',
-        name: 'Oliver Beddows',
-        degi: 'UX designer',
-        desc: 'Rapidiously buildcollaboration anden deas sharing viaing and bleedng edgeing nterfaces fnergstcally plagiarize teams anbuilding paradgms whereas goingi forward process and monetze',
+        name: 'Sneha Majumdar',
+        degi: 'Heritage institute of tchnology, HITK',
+        desc: 'The phrase "Visionary Educational Institutions" sounds positive and inspiring. However, it might be beneficial to specify the types of institutions, such as colleges or universities, for clarity.',
     },
     {
         imgUrl: 'assets/images/feedback/student/02.jpg',
         imgAlt: 'student rajibraj91 rajibraj',
-        name: 'Madley Pondor',
-        degi: 'UX designer',
-        desc: 'Rapidiously buildcollaboration anden deas sharing viaing and bleedng edgeing nterfaces fnergstcally plagiarize teams anbuilding paradgms whereas goingi forward process and monetze',
+        name: 'Rahul Poddar',
+        degi: 'Netaji Subhas Engineering Cllege',
+        desc: 'Consider making the statement more specific by mentioning the actual institutions that have uploaded projects. For example, "Projects Uploaded by Leading Colleges and Universities" would provide more concrete information and credibility to potential users.',
     },
 ]
 
@@ -39,7 +39,6 @@ const Student = () => {
                             <div className="sf-left">
                                 <div className="sfl-thumb">
                                     <img src="assets/images/feedback/01.jpg" alt="student feedback" />
-                                    <a href="https://www.youtube.com/embed/MU3qrgR2Kkc" className="video-button popup" target="_blank"><i className="icofont-ui-play"></i></a>
                                 </div>
                             </div>
                         </div>
