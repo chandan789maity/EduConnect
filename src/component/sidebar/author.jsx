@@ -2,8 +2,8 @@
 
 
 const name = "Rajib Raj"
-const degi = "Assistant Teacher"
-const desc = "I'm an Afro-Latina digital artist originally from Long Island, NY. I love to paint design and photo manpulate in Adobe Photoshop while helping others learn too. Follow me on Instagram or tweet me"
+const degi = "M.tech Student AIML"
+const desc = "An AI/ML M.Tech student from IIT Kharagpur, passionate about solving complex problems using machine learning techniques. Strong programming skills, research-oriented, and dedicated to advancing AI technologies for real-world applications."
 
 
 const socialList = [

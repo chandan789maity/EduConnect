@@ -10,14 +10,14 @@ const commentList = [
         imgAlt: 'rajibraj91',
         name: 'Linsa Faith',
         date: 'Jun 5, 2022 at 12:41 pm',
-        desc: 'The inner sanctuary, I throw myself down among the tall grass bye the trckli stream and, as I lie close to the earth',
+        desc: 'This video provides an excellent introduction to AI and ML concepts. I appreciate the clear explanations and practical examples. Looking forward to more content like this!',
     },
     {
         imgUrl: 'assets/images/author/03.jpg',
         imgAlt: 'rajibraj91',
         name: 'Mahdi Mahmud',
         date: 'Jun 5, 2022 at 12:41 pm',
-        desc: 'The inner sanctuary, I throw myself down among the tall grass bye the trckli stream and, as I lie close to the earth',
+        desc: 'Great video! The step-by-step breakdown of machine learning models makes it easy to understand. It is perfect for beginners like me who want to dive into AI/ML. Keep up the good work!',
     },
 ]
 
