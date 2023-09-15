@@ -11,23 +11,23 @@ const supportTitle = "Our Support";
 const siteList = [
     {
         text: 'Documentation',
-        link: '#',
+        link: "#",
     },
     {
         text: 'Feedback',
-        link: '#',
+        link: "#",
     },
     {
         text: 'Plugins',
-        link: '#',
+        link: "#"
     },
     {
         text: 'Support Forums',
-        link: '#',
+        link: "#"
     },
     {
         text: 'Themes',
-        link: '#',
+        link: "#",
     },
 ]
 

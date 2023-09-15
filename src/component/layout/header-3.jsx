@@ -29,6 +29,7 @@ const HeaderThree = () => {
                                 <a href="mailto:contact@yourmail.com">contact@yourmail.com</a>
                             </div>
                             <div className="header-top-reglog">
+                                <Link to="/addproject" className="addproject">Project Details</Link>
                                 <Link to="/login" className="login">Login</Link>
                                 <Link to="/signup" className="signup">Register</Link>
                             </div>

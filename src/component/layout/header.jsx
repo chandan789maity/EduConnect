@@ -103,7 +103,7 @@ const Header = () => {
                                         </ul>
                                     </li> */}
                                     <li className="menu-item-has-children">
-                                        <a href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-bs-offset="0,0">About</a>
+                                        {/* <a href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-bs-offset="0,0"></a> */}
                                         {/* <ul className="lab-ul dropdown-menu">
                                             <li><NavLink to="/about">About</NavLink></li>
                                             <li><NavLink to="/team">Team</NavLink></li>
@@ -120,8 +120,10 @@ const Header = () => {
                                 </ul>
                             </div>
                             
-                            <Link to="/login" className="login" style={{borderRadius:'20px', marginRight:'40px'}}><i className="icofont-user"></i> <span>LOG IN</span> </Link>
-                            <Link to="/signup" className="signup" style={{borderRadius:'20px', marginRight:'40px'}}><i className="icofont-users"></i> <span>SIGN UP</span> </Link>
+                            <Link to="/addproject" className="addproject" style={{borderRadius:'8px', marginRight:'40px'}}><i className=""></i> <span> + ADD PROJECT</span> </Link>
+                            <Link to="/login" className="login" style={{borderRadius:'10px', marginRight:'20px', padding: '9px 9px'}}><i className="icofont-user"></i> <span>LOG IN</span> </Link>
+                            <Link to="/signup" className="signup" style={{borderRadius:'10px', marginRight:'20px', padding: '9px 9px'}}><i className="icofont-users"></i> <span>SIGN UP</span> </Link>
+
 
                             <div className={`header-bar d-lg-none ${menuToggle ? "active" : "" }`} onClick={() => setMenuToggle(!menuToggle)}>
                                 <span></span>

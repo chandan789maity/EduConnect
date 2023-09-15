@@ -2,7 +2,7 @@
 import { Link } from "react-router-dom";
 import Rating from "../sidebar/rating";
 
-const subTitle = "Featured Courses";
+const subTitle = "Popular  Courses";
 const title = "Pick A Course To Get Started";
 
 

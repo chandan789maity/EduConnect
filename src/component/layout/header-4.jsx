@@ -82,7 +82,9 @@ const HeaderFour = () => {
                                     <li><NavLink to="/contact">Contact</NavLink></li>
                                 </ul>
                             </div>
-                            <Link to="/signup" className="lab-btn me-3 d-none d-md-block"><span>Create Account</span></Link>
+
+                            <Link to="/addproject" className="lab-btn me-3 d-none d-md-block"><span></span></Link> 
+                             <Link to="/signup" className="lab-btn me-3 d-none d-md-block"><span>Create Account</span></Link>
                             <Link to="/login" className="d-none d-md-block">Log In</Link>
 
                             <div className={`header-bar d-lg-none ${menuToggle ? "active" : "" }`} onClick={() => setMenuToggle(!menuToggle)}>
