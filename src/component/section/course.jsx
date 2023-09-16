@@ -10,8 +10,10 @@ import img6 from '../../assets/images/course/Data Science.jpg';
 import { Link } from "react-router-dom";
 import Rating from "../sidebar/rating";
 
+
 const subTitle = "Project Details";
 const title = "Build  Projects For Head Start";
+
 
 
 

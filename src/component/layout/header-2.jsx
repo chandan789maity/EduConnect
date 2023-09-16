@@ -88,6 +88,7 @@ const HeaderTwo = () => {
                             </ul>
                         </div>
                         
+                        <Link to="/addproject" className="addproject" ><i className=""></i> <span>ADD PROJECT</span> </Link>
                         <Link to="/login" className="login"><i className="icofont-user"></i> <span>LOG IN</span> </Link>
                         <Link to="/signup" className="signup"><i className="icofont-users"></i> <span>SIGN UP</span> </Link>
 

@@ -75,6 +75,7 @@ const LoginPage = () => {
                             <div className="form-group text-center">
                                 <button className="d-block lab-btn"><span>{btnText}</span></button>
                             </div>
+                            
                         </form>
                         <div className="account-bottom">
                             <span className="d-block cate pt-10">Don’t Have any Account?  <Link to="/signup">Sign Up</Link></span>
