@@ -1,7 +1,7 @@
 
 import { Link } from "react-router-dom";
 
-const newsTitle = "Want Us To Email You About Special Offers And Updates?";
+const newsTitle = "Want Us To Email You About Latest Uploaded Projects?";
 const siteTitle = "Site Map";
 const useTitle = "Useful Links";
 const socialTitle = "Social Contact";
@@ -210,7 +210,7 @@ const Footer = () => {
                 <div className="footer-bottom style-2">
                     <div className="container">
                         <div className="section-wrapper">
-                            <p>&copy; 2022 <Link to="/">Edukon</Link> Designed by <a href="https://themeforest.net/user/CodexCoder" target="_blank">CodexCoder</a> </p>
+                            <p>&copy; 2023 <Link to="/">EduConnect</Link> </p>
                         </div>
                     </div>
                 </div>

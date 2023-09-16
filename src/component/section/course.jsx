@@ -1,94 +1,106 @@
 
+import img1 from '../../assets/images/course/AI ML.webp';
+import img2 from '../../assets/images/course/02.jpg';
+import img3 from '../../assets/images/course/healthcare.jpg';
+import img4 from '../../assets/images/course/Web3-Edu.jpg';
+import img5 from '../../assets/images/course/IOT-Edu.jpeg.jpg';
+import img6 from '../../assets/images/course/Data Science.jpg';
+
+
 import { Link } from "react-router-dom";
 import Rating from "../sidebar/rating";
 
-const subTitle = "Popular  Courses";
-const title = "Pick A Course To Get Started";
+
+const subTitle = "Project Details";
+const title = "Build  Projects For Head Start";
+
+
 
 
 const courseList = [
     {
-        imgUrl: 'assets/images/course/01.jpg',
+
+        imgUrl: img1,
         imgAlt: 'course rajibraj91 rajibraj',
         price: '$30',
-        cate: 'Adobe XD',
+        cate: 'Recently added',
         reviewCount: '03 reviews',
-        title: 'Fundamentals of Adobe XD Theory Learn New',
-        totalLeson: '18x Lesson',
+        title: 'Artificial Intelligence and Machine Learning (AIML)',
+        totalLeson: '40+ Projects',
         schdule: 'Online Class',
         authorImgUrl: 'assets/images/course/author/01.jpg',
         authorImgAlt: 'course author rajibraj91 rajibraj',
-        authorName: 'William Smith',
+        authorName: 'Aarav Patel',
         btnText: 'Read More',
     },
     {
-        imgUrl: 'assets/images/course/02.jpg',
-        imgAlt: 'course rajibraj91 rajibraj',
+        imgUrl: img2,
+        imgAlt: 'robo',
         price: '$30',
-        cate: 'Adobe XD',
+        cate: 'Recently added',
         reviewCount: '03 reviews',
-        title: 'Certified Graphic Design with Free Project Course',
-        totalLeson: '18x Lesson',
+        title: 'Robotics',
+        totalLeson: '30+ Projects',
         schdule: 'Online Class',
         authorImgUrl: 'assets/images/course/author/02.jpg',
         authorImgAlt: 'course author rajibraj91 rajibraj',
-        authorName: 'Lora Smith',
+        authorName: 'Priya Sharma',
         btnText: 'Read More',
     },
     {
-        imgUrl: 'assets/images/course/03.jpg',
+        imgUrl: img3,
         imgAlt: 'course rajibraj91 rajibraj',
         price: '$30',
-        cate: 'Adobe XD',
+        cate: 'Recently added',
         reviewCount: '03 reviews',
-        title: 'Theory Learn New Student And Fundamentals',
-        totalLeson: '18x Lesson',
+        title: 'Healthcare and Medical Device',
+        totalLeson: '20+ Projects',
         schdule: 'Online Class',
         authorImgUrl: 'assets/images/course/author/03.jpg',
         authorImgAlt: 'course author rajibraj91 rajibraj',
-        authorName: 'Robot Smith',
+        authorName: 'Arjun Gupta',
         btnText: 'Read More',
     },
     {
-        imgUrl: 'assets/images/course/04.jpg',
+        imgUrl: img4,
         imgAlt: 'course rajibraj91 rajibraj',
         price: '$30',
-        cate: 'Adobe XD',
+        cate: 'Recently added',
         reviewCount: '03 reviews',
-        title: 'Computer Fundamentals Basic Startup Ultricies Vitae',
-        totalLeson: '18x Lesson',
+        title: 'BlockChain And Cryptocurrency',
+        totalLeson: '15+ Projects',
         schdule: 'Online Class',
         authorImgUrl: 'assets/images/course/author/04.jpg',
         authorImgAlt: 'course author rajibraj91 rajibraj',
-        authorName: 'Zinat Zaara',
+        authorName: 'Anika Singh',
         btnText: 'Read More',
     },
     {
-        imgUrl: 'assets/images/course/05.jpg',
+        imgUrl: img5,
         imgAlt: 'course rajibraj91 rajibraj',
         price: '$30',
-        cate: 'Adobe XD',
+        cate: 'Recently added',
         reviewCount: '03 reviews',
-        title: 'Boozy Halloween Drinks for the Grown Eleifend Kuismod',
-        totalLeson: '18x Lesson',
+        title: 'Internet of Things(IoT)',
+        totalLeson: '50+ Projects',
         schdule: 'Online Class',
         authorImgUrl: 'assets/images/course/author/05.jpg',
         authorImgAlt: 'course author rajibraj91 rajibraj',
-        authorName: 'Rajib Raj',
+        authorName: 'Rohan Mehta',
         btnText: 'Read More',
     },
     {
-        imgUrl: 'assets/images/course/06.jpg',
+        imgUrl: img6,
         imgAlt: 'course rajibraj91 rajibraj',
         price: '$30',
-        cate: 'Adobe XD',
+        cate: 'Recently added',
         reviewCount: '03 reviews',
-        title: 'Student Want to Learn About Science And Arts',
-        totalLeson: '18x Lesson',
+        title: 'Data Science and Analytics',
+        totalLeson: '45+ Projects',
         schdule: 'Online Class',
         authorImgUrl: 'assets/images/course/author/06.jpg',
         authorImgAlt: 'course author rajibraj91 rajibraj',
-        authorName: 'Angel Mili',
+        authorName: 'Nisha Desai',
         btnText: 'Read More',
     },
 ]
@@ -106,12 +118,12 @@ const Course = () => {
                         {courseList.map((val, i) => (
                             <div className="col" key={i}>
                                 <div className="course-item">
-                                    <div className="course-inner">
-                                        <div className="course-thumb">
+                                    <div className="course-inner" style={{height:'520px'}}>
+                                        <div className="course-thumb" >
                                             <img src={`${val.imgUrl}`} alt={`${val.imgAlt}`} />
                                         </div>
                                         <div className="course-content">
-                                            <div className="course-price">{val.price}</div>
+                                            {/* <div className="course-price">{val.price}</div> */}
                                             <div className="course-category">
                                                 <div className="course-cate">
                                                     <a href="#">{val.cate}</a>
@@ -124,7 +136,7 @@ const Course = () => {
                                             <Link to="/course-single"><h4>{val.title}</h4></Link>
                                             <div className="course-details">
                                                 <div className="couse-count"><i className="icofont-video-alt"></i> {val.totalLeson}</div>
-                                                <div className="couse-topic"><i className="icofont-signal"></i> {val.schdule}</div>
+                                                {/* <div className="couse-topic"><i className="icofont-signal"></i> {val.schdule}</div> */}
                                             </div>
                                             <div className="course-footer">
                                                 <div className="course-author">

@@ -23,17 +23,19 @@ const CourseSingle = () => {
                                     <div className="course-inner">
                                         <div className="course-content">
                                             <h3>Course Overview</h3>
-                                            <p>In this course take you from the fundamentals and concepts of data modeling all the way through anumber of best practices and techniques that you’ll need to build data models in your organization. You’ll find many By the end of the course, you’ll be all set to not only put these principles to works but also to maike the key data modeling and design decisions required by the info data modeling that transcend the nuts-and-bolts that clearly the key covered the course and design patterns.</p>
-                                            <h4>What You'll Learn in This Course:</h4>
+                                            <p>Our AI and ML website project is a dynamic platform that harnesses artificial intelligence and machine learning to deliver personalized user experiences. Through cutting-edge algorithms, it offers tailored content recommendations, predictive analytics, and efficient data handling, making it a vital resource for AI and ML enthusiasts seeking the latest insights and knowledge in this rapidly evolving field.</p>
+                                            <h4>What You'll Learn in This Project: </h4>
                                             <ul className="lab-ul">
-                                                <li><i className="icofont-tick-mark"></i>Ready to begin working on real-world data modeling projects</li>
-                                                <li><i className="icofont-tick-mark"></i>Expanded responsibilities as part of an existing role</li>
-                                                <li><i className="icofont-tick-mark"></i>Be able to create Flyers, Brochures, Advertisements</li>
-                                                <li><i className="icofont-tick-mark"></i>Find a new position involving data modeling.</li>
-                                                <li><i className="icofont-tick-mark"></i>Work with color and Gradients and Grids</li>
+                                                <li><i className="icofont-tick-mark"></i>Technical Skills</li>
+                                                <li><i className="icofont-tick-mark"></i>Problem Solving</li>
+                                                <li><i className="icofont-tick-mark"></i>Data Handling</li>
+                                                <li><i className="icofont-tick-mark"></i>Model Building</li>
+                                                <li><i className="icofont-tick-mark"></i>Domain Knowledge</li>
+                                                <li><i className="icofont-tick-mark"></i>Collaboration</li>
+                                                <li><i className="icofont-tick-mark"></i>Presentation Skills</li>
                                             </ul>
-                                            <p>In this course take you from the fundamentals and concepts of data modeling all the way through anumber  of best practices and techniques that you’ll need to build data models in your organization. You’ll find many examples that clearly the key covered the course</p>
-                                            <p>By the end of the course, you’ll be all set to not only put these principles to works but also to maike the key data modeling and design decisions required by the info data modeling that transcend the nuts-and-bolts that clearly the key covered the course and design patterns.</p>
+                                            {/* <p>In this course take you from the fundamentals and concepts of data modeling all the way through anumber  of best practices and techniques that you’ll need to build data models in your organization. You’ll find many examples that clearly the key covered the course</p> */}
+                                            <p>AI/ML projects provide valuable learning experiences encompassing technical skills, problem-solving abilities, data handling, model development, evaluation, domain expertise, collaboration, ethical awareness, presentation aptitude, and a commitment to continuous learning. These projects equip individuals with the expertise to tackle real-world challenges, apply AI/ML algorithms effectively, and navigate ethical considerations while fostering effective communication and adaptability in this ever-evolving field.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -51,23 +53,23 @@ const CourseSingle = () => {
                                                 <div id="videolist1" className="accordion-collapse collapse show" aria-labelledby="accordion01" data-bs-parent="#accordionExample">
                                                     <ul className="lab-ul video-item-list">
                                                         <li className=" d-flex flex-wrap justify-content-between">
-                                                            <div className="video-item-title">1.1 Welcome to the course 02:30 minutes</div>
+                                                            <div className="video-item-title">1.1 Introduction to Artificial Intelligence and Machine Learning 02:30 minutes</div>
                                                             <div className="video-item-icon"><a href="https://www.youtube-nocookie.com/embed/jP649ZHA8Tg" className="popup" target="_blank"><i className="icofont-play-alt-2"></i></a></div>
                                                         </li>
                                                         <li className=" d-flex flex-wrap justify-content-between">
-                                                            <div className="video-item-title">1.2 How to set up your photoshop workspace  08:33 minutes</div>
+                                                            <div className="video-item-title">1.2 Data Preprocessing and Exploration  08:33 minutes</div>
                                                             <div className="video-item-icon"><a href="https://www.youtube-nocookie.com/embed/jP649ZHA8Tg" className="popup" target="_blank"><i className="icofont-play-alt-2"></i></a></div>
                                                         </li>
                                                         <li className=" d-flex flex-wrap justify-content-between">
-                                                            <div className="video-item-title">1.3 Essential Photoshop Tools 03:38 minutes</div>
+                                                            <div className="video-item-title">1.3 Linear Regression and Gradient Descent 03:38 minutes</div>
                                                             <div className="video-item-icon"><a href="https://www.youtube-nocookie.com/embed/jP649ZHA8Tg" className="popup" target="_blank"><i className="icofont-play-alt-2"></i></a></div>
                                                         </li>
                                                         <li className=" d-flex flex-wrap justify-content-between">
-                                                            <div className="video-item-title">1.4 Finding inspiration 02:30 minutes</div>
+                                                            <div className="video-item-title">1.4 Logistic Regression and Classification 02:30 minutes</div>
                                                             <div className="video-item-icon"><a href="https://www.youtube-nocookie.com/embed/jP649ZHA8Tg" className="popup" target="_blank"><i className="icofont-play-alt-2"></i></a></div>
                                                         </li>
                                                         <li className=" d-flex flex-wrap justify-content-between">
-                                                            <div className="video-item-title">1.5 Choosing Your Format 03:48 minutes</div>
+                                                            <div className="video-item-title">1.5 Model Evaluation and Metrics 03:48 minutes</div>
                                                             <div className="video-item-icon"><a href="https://www.youtube-nocookie.com/embed/jP649ZHA8Tg" className="popup" target="_blank"><i className="icofont-play-alt-2"></i></a></div>
                                                         </li>
                                                     </ul>
@@ -75,28 +77,28 @@ const CourseSingle = () => {
                                             </div>
                                             <div className="accordion-item">
                                                 <div className="accordion-header" id="accordion02">
-                                                    <button className="d-flex flex-wrap justify-content-between" data-bs-toggle="collapse" data-bs-target="#videolist2" aria-expanded="true" aria-controls="videolist2"> <span>2.How to Create Mixed Media Art in Adobe Photoshop</span> <span>5 lessons, 52:15</span> </button>
+                                                    <button className="d-flex flex-wrap justify-content-between" data-bs-toggle="collapse" data-bs-target="#videolist2" aria-expanded="true" aria-controls="videolist2"> <span>2.How to Create data model.</span> <span>5 lessons, 52:15</span> </button>
                                                 </div>
                                                 <div id="videolist2" className="accordion-collapse collapse" aria-labelledby="accordion02" data-bs-parent="#accordionExample">
                                                     <ul className="lab-ul video-item-list">
                                                         <li className=" d-flex flex-wrap justify-content-between">
-                                                            <div className="video-item-title">2.1 Using Adjustment Layers 06:20 minutes</div>
+                                                            <div className="video-item-title">2.1 Overfitting and Regularization 06:20 minutes</div>
                                                             <div className="video-item-icon"><a href="https://www.youtube-nocookie.com/embed/jP649ZHA8Tg" className="popup" target="_blank"><i className="icofont-play-alt-2"></i></a></div>
                                                         </li>
                                                         <li className=" d-flex flex-wrap justify-content-between">
-                                                            <div className="video-item-title">2.2 Building the composition 07:33 minutes</div>
+                                                            <div className="video-item-title">2.2 Decision Trees and Random Forests 07:33 minutes</div>
                                                             <div className="video-item-icon"><a href="https://www.youtube-nocookie.com/embed/jP649ZHA8Tg" className="popup" target="_blank"><i className="icofont-play-alt-2"></i></a></div>
                                                         </li>
                                                         <li className=" d-flex flex-wrap justify-content-between">
-                                                            <div className="video-item-title">2.3 Photoshop Lighting effects 06:30 minutes</div>
+                                                            <div className="video-item-title">2.3 Support Vector Machines (SVM) 06:30 minutes</div>
                                                             <div className="video-item-icon"><a href="https://www.youtube-nocookie.com/embed/jP649ZHA8Tg" className="popup" target="_blank"><i className="icofont-play-alt-2"></i></a></div>
                                                         </li>
                                                         <li className=" d-flex flex-wrap justify-content-between">
-                                                            <div className="video-item-title">2.4 Digital Painting using photoshop brushes 08:34 minutes</div>
+                                                            <div className="video-item-title">2.4 Unsupervised Learning: Clustering and Dimensionality Reduction 08:34 minutes</div>
                                                             <div className="video-item-icon"><a href="https://www.youtube-nocookie.com/embed/jP649ZHA8Tg" className="popup" target="_blank"><i className="icofont-play-alt-2"></i></a></div>
                                                         </li>
                                                         <li className=" d-flex flex-wrap justify-content-between">
-                                                            <div className="video-item-title">2.5 Finalizing the details 10:30 minutes</div>
+                                                            <div className="video-item-title">2.5 Neural Networks and Deep Learning Basics 10:30 minutes</div>
                                                             <div className="video-item-icon"><a href="https://www.youtube-nocookie.com/embed/jP649ZHA8Tg" className="popup" target="_blank"><i className="icofont-play-alt-2"></i></a></div>
                                                         </li>
                                                     </ul>

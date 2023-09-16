@@ -6,27 +6,27 @@ const SelectCatagory = ({select}) => {
         <select defaultValue={select}>
             <option value="all">All Categories</option>
             <option value="uncategorized">Uncategorized</option>
-            <option value="academy">Academy</option>
-            <option value="agency">Agency</option>
-            <option value="app">App</option>
-            <option value="bar">Bar</option>
-            <option value="blog">Blog</option>
-            <option value="business">Business</option>
-            <option value="butcher-shop">Butcher Shop</option>
-            <option value="cafe">Cafe</option>
-            <option value="charity-2">Charity</option>
-            <option value="church">Church</option>
-            <option value="clinic">clinic</option>
-            <option value="college">College</option>
-            <option value="conference">Conference</option>
-            <option value="construction">Construction</option>
-            <option value="corona-virus">Corona Virus</option>
-            <option value="corporate">Corporate</option>
-            <option value="covid19">Covid19</option>
-            <option value="digital-products">Digital Products</option>
-            <option value="doctors">doctors</option>
-            <option value="ecological">Ecological</option>
-            <option value="education">Education</option>
+            <option value="Software Development">Software Development</option>
+            <option value="Artificial Intelligence and Machine Learning (AIML)">Artificial Intelligence and Machine Learning (AIML)</option>
+            <option value="Data science and analysis">Data science and analysis"</option>
+            <option value="Electrical Engineering">Electrical Engineering</option>
+            <option value="Mechanical Engineering">Mechanical Engineering</option>
+            <option value="Civil Engineering">Civil Engineering</option>
+            <option value="Biotechnology and life-science"> Biotechnology and life-science</option>
+            <option value="Environmental science">Environmental science</option>
+            <option value="Aerospace and Aeronautical engineering">Aerospace and Aeronautical engineering</option>
+            <option value="Robotics">Robotics</option>
+            <option value="Renewable energy">Renewable energy</option>
+            <option value="Telecommunication">Telecommunication</option>
+            <option value="Healthcare and medical devices">Healthcare and medical devices</option>
+            <option value="Automotive engineering">Automotive engineering</option>
+            <option value="Chemical engineering">Chemical engineering</option>
+            <option value="Nanotechnology">anotechnology</option>
+            <option value="Internet of Things(IoT)">Internet of Things(IoT)</option>
+            <option value="Blockchain and Cryptocurrency">Blockchain and Cryptocurrency</option>
+            <option value="Cybersecurity">Cybersecurity</option>
+            <option value="Space exploration">Space exploration</option>
+{/*             <option value="education">Education</option>
             <option value="entertainment">Entertainment</option>
             <option value="environment">Environment</option>
             <option value="environmental">Environmental</option>
@@ -65,7 +65,7 @@ const SelectCatagory = ({select}) => {
             <option value="woocommerce">WooCommerce</option>
             <option value="yoga">Yoga</option>
             <option value="magazine">Magazine</option>
-            <option value="event-wordpress">Event</option>                        
+            <option value="event-wordpress">Event</option>   */}                      
         </select>
     );
 }

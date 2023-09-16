@@ -1,8 +1,9 @@
 
 import Rating from "../sidebar/rating";
+import img1 from '../../assets/images/course/AI ML.webp';
 
-const title = "Advanced Adobe Photoshop For Everyone";
-const desc = "The most impressive is collection of share me online college courses";
+const title = "Artificial Intelligence and Machine Learning (AIML)";
+const desc = "The most impressive collection of AI and ML projects online.";
 const author = "Rajib Raj";
 const reviewCount = "03 reviews";
 const videoLink = "https://www.youtube-nocookie.com/embed/jP649ZHA8Tg";
@@ -11,12 +12,12 @@ const videoLink = "https://www.youtube-nocookie.com/embed/jP649ZHA8Tg";
 const categoryList = [
     {
         link: '#',
-        text: 'Adobe XD',
+        text: 'IIT KGP',
         className: 'course-cate',
     },
     {
         link: '#',
-        text: '30% Off',
+        text: '30+ Projects',
         className: 'course-offer',
     },
 ]
@@ -29,7 +30,7 @@ const PageHeaderTwo = () => {
                 <div className="row justify-content-center justify-content-lg-between align-items-center flex-row-reverse">
                     <div className="col-lg-7 col-12">
                         <div className="pageheader-thumb">
-                            <img src="assets/images/pageheader/02.jpg" alt="rajibraj91" className="w-100" />
+                            <img src={img1} alt="rajibraj91" className="w-100" />
                             <a href={videoLink} className="video-button popup" target="_blank"><i className="icofont-ui-play"></i></a>
                         </div>
                     </div>

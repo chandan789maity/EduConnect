@@ -2,7 +2,7 @@
 import CountUp from 'react-countup';
 
 const subTitle = "START TO SUCCESS";
-const title = "Achieve Your Goals With Edukon";
+const title = "Achieve Your Goals With EduConnect";
 
 
 const achievementList = [
@@ -12,15 +12,15 @@ const achievementList = [
     },
     {
         count: '3084',
-        desc: 'Learners Enrolled in Edukon Courses',
+        desc: 'Latest Uploaded in EduConnects Projcts',
     },
     {
         count: '330',
-        desc: 'Qualified Teachers And Language Experts',
+        desc: 'Qualified Colleges and Students with us',
     },
     {
         count: '2300',
-        desc: 'Innovative Foreign Language Courses',
+        desc: 'Innovative unique Catagory Projects',
     },
 ]
 
@@ -28,15 +28,15 @@ const achieveList = [
     {
         imgUrl: 'assets/images/achive/01.png',
         imgAlt: 'achive thumb rajibraj91 rajibraj',
-        title: 'Start Teaching Today',
+        title: 'Start Uploading Today',
         desc: 'Seamlessly engage technically sound coaborative reintermed goal oriented content rather than ethica',
-        btnText: 'Become A Instructor',
+        btnText: 'Become A Creator',
         siteLink: '#',
     },
     {
         imgUrl: 'assets/images/achive/02.png',
         imgAlt: 'achive thumb rajibraj91 rajibraj',
-        title: 'If You Join Our Course',
+        title: 'If You Join Our Platform',
         desc: 'Seamlessly engage technically sound coaborative reintermed goal oriented content rather than ethica',
         btnText: 'Register For Free',
         siteLink: '#',

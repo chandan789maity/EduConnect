@@ -1,9 +1,9 @@
 
 
 
-const subTitle = "About Our Edukon";
-const title = "Good Qualification Services And Better Skills";
-const desc = "Distinctively provide acces mutfuncto users whereas transparent proceses somes ncentivize eficient functionalities rather than extensible archtectur communicate leveraged services and cross-platform.";
+const subTitle = "About Our EduConnect";
+const title = "Discover the Story Behind EduConnect's Mission.";
+const desc = "Edu Connect is a dynamic online platform dedicated to fostering collaboration and inspiration among educational institutions. Founded with a passion for advancing learning, Edu Connect provides colleges with a space to proudly showcase their students' projects, offering a vast repository of knowledge and creativity. Students from diverse colleges can explore these projects for inspiration and learn from the experiences of their peers, transcending institutional boundaries.";
 
 
 
@@ -11,20 +11,20 @@ const aboutList = [
     {
         imgUrl: 'assets/images/about/icon/01.jpg',
         imgAlt: 'about icon rajibraj91 rajibraj',
-        title: 'Skilled Instructors',
-        desc: 'Distinctively provide acces mutfuncto users whereas communicate leveraged services',
-    },
-    {
-        imgUrl: 'assets/images/about/icon/02.jpg',
-        imgAlt: 'about icon rajibraj91 rajibraj',
-        title: 'Get Certificate',
-        desc: 'Distinctively provide acces mutfuncto users whereas communicate leveraged services',
+        title: 'Cross-Collaboration',
+        desc: 'Edu Connect breaks down the silos between colleges, enabling students to explore and draw inspiration from a wide range of projects from different institutions.',
     },
     {
         imgUrl: 'assets/images/about/icon/03.jpg',
         imgAlt: 'about icon rajibraj91 rajibraj',
-        title: 'Online Classes',
-        desc: 'Distinctively provide acces mutfuncto users whereas communicate leveraged services',
+        title: 'Knowledge Sharing',
+        desc: `Colleges can proudly display their student's projects, creating a valuable repository of educational content that fosters learning and innovation.`,
+    },
+    {
+        imgUrl: 'assets/images/about/icon/02.jpg',
+        imgAlt: 'about icon rajibraj91 rajibraj',
+        title: 'Inspiration Hub',
+        desc: 'Edu Connect serves as a hub for students seeking inspiration, providing a platform to ignite creativity and drive academic excellence across the educational landscape.',
     },
 ]
 
