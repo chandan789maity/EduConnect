@@ -3,12 +3,49 @@ import { Link } from "react-router-dom";
 import Footer from "../component/layout/footer";
 import Header from "../component/layout/header";
 import PageHeader from "../component/layout/pageheader";
+import './style.css'
+import Form from 'react-bootstrap/Form';
+
+
+
 
 const title = "Project  Details";
 const btnText = "Submit";
 const btnText2 = "Upload PDF";
 
 const AddProject = () => {
+
+    const statesOfIndia = [
+        "Andhra Pradesh",
+        "Arunachal Pradesh",
+        "Assam",
+        "Bihar",
+        "Chhattisgarh",
+        "Goa",
+        "Gujarat",
+        "Haryana",
+        "Himachal Pradesh",
+        "Jharkhand",
+        "Karnataka",
+        "Kerala",
+        "Madhya Pradesh",
+        "Maharashtra",
+        "Manipur",
+        "Meghalaya",
+        "Mizoram",
+        "Nagaland",
+        "Odisha",
+        "Punjab",
+        "Rajasthan",
+        "Sikkim",
+        "Tamil Nadu",
+        "Telangana",
+        "Tripura",
+        "Uttar Pradesh",
+        "Uttarakhand",
+        "West Bengal"
+      ];
+
     return (
         <Fragment>
             <Header />
@@ -22,40 +59,92 @@ const AddProject = () => {
                                 <input
                                     type="text"
                                     name="name"
-                                    placeholder="Project Title *"
+                                    placeholder="Project Title"
+                                    required
+                                    style={{borderBottom: '1px solid orange'}}
                                 />
+                            </div>
+
+                            <div className="form-group">
+                                <textarea
+                                    type="text"
+                                    name="name"
+                                    placeholder="Project Desc"
+                                    rows="4"
+                                    style={{borderBottom: '1px solid orange'}}
+                                />
+                            </div>
+                            <div className="form-group">
+                                    {/* <div style={{textAlign:'start'}}>Domain: </div> */}
+                                    <div className="domain">
+                                        <div style={{display:'flex'}}>
+                                            <input type="radio" 
+                                            id="Software" 
+                                            name="domain" 
+                                            value="Software" 
+                                            required
+                                            />
+                                            <label for="Software">Software</label>
+                                        </div>
+                                        <div style={{display:'flex'}}>
+                                            <input type="radio"
+                                             id="Hardware" 
+                                             name="domain" 
+                                             value="Hardware" 
+                                             required
+                                             />
+                                            <label for="Hardware">Hardware</label>
+                                        </div>
+                                        <div style={{display:'flex'}}>
+                                            <input type="radio" 
+                                            id="Hardware" 
+                                            name="domain" 
+                                            value="Software&Hardware" 
+                                            required/>
+                                            <label for="Hardware">Software&Hardware</label>
+                                        </div>
+
+                                    </div>
+                                        
                             </div>
                             <div className="form-group">
                                 <input
                                     type="text"
-                                    name="name"
-                                    placeholder="Project Desc *"
+                                    name="collegeName"
+                                    placeholder="College Name"
+                                    required
+                                    style={{borderBottom: '1px solid orange'}}
                                 />
                             </div>
                             <div className="form-group">
                                 <input
-                                    type="password"
-                                    name="password"
-                                    placeholder="Domain *"
+                                    type="email"
+                                    name="clgEmail"
+                                    placeholder="College Email Id"
+                                    required
+                                    style={{borderBottom: '1px solid orange'}}
                                 />
+
                             </div>
                             <div className="form-group">
-                                <input
-                                    type="password"
-                                    name="password"
-                                    placeholder="College Name *"
-                                />
+                                 <Form.Select aria-label="Select a state in India">
+                                        <option>State</option>
+                                        {statesOfIndia.map((state, index) => (
+                                            <option key={index} value={state}>
+                                            {state}
+                                            </option>
+                                        ))}
+                                </Form.Select>
                             </div>
-                            <div className="form-group">
-                                <input
-                                    type="password"
-                                    name="password"
-                                    placeholder="College Email Id *"
-                                />
-                            </div>
-                            <div className="form-group text-center">
+
+                            
+                            {/* <div className="form-group text-center">
                                 <button className="d-block lab-btn" style={{backgroundColor:'greenyellow', marginRight:'10px'}}><span>{btnText2}</span></button>
-                            </div>
+                            </div> */}
+
+                            <input className="uploadInput"  type="file" id="file"/>
+                            <label for="file"  className="upploadLabel">{btnText2}</label>
+
                             <div className="course-enroll">
                                <Link to="/signup" className="d-block lab-btn"><span>{btnText}</span></Link>
                            </div>
