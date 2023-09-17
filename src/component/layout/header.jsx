@@ -104,7 +104,7 @@ const Header = () => {
                                     </li> */}
 
                                     <li className="">
-                                        <a href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-bs-offset="0,0">About</a>
+                                        {/* <a href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-bs-offset="0,0">About</a> */}
                                         {/* <ul className="lab-ul dropdown-menu">
                                             <li><NavLink to="/about">About</NavLink></li>
                                             <li><NavLink to="/team">Team</NavLink></li>
@@ -118,6 +118,7 @@ const Header = () => {
                                         </ul> */}
                                     </li>
                                     <li><NavLink to="/contact">Contact</NavLink></li>
+                                    
                                 </ul>
                             </div>
                             
