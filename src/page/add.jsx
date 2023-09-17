@@ -50,7 +50,7 @@ const AddProject = () => {
                                 <input
                                     type="password"
                                     name="password"
-                                    placeholder="College Email Id *"
+                                    placeholder=" *"
                                 />
                             </div>
                             <div className="form-group text-center">
