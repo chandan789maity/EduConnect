@@ -47,7 +47,7 @@ function App() {
 				<Route path="blog-2" element={<BlogPageTwo />} />
 				<Route path="blog-3" element={<BlogPageThree />} />
 				<Route path="blog-single" element={<BlogSingle />} />
-				<Route path="about" element={<AboutPage />} />
+				{/* <Route path="about" element={<AboutPage />} /> */}
 				<Route path="team" element={<TeamPage />} />
 				<Route path="team-single" element={<TeamSingle />} />
 				<Route path="instructor" element={<InstructorPage />} />

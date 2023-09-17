@@ -6,7 +6,7 @@ import PageHeader from "../component/layout/pageheader";
 
 const title = "Project  Details";
 const btnText = "Submit";
-
+const btnText2 = "Upload PDF";
 
 const AddProject = () => {
     return (
@@ -36,17 +36,29 @@ const AddProject = () => {
                                 <input
                                     type="password"
                                     name="password"
-                                    placeholder="Password *"
+                                    placeholder="Domain *"
                                 />
                             </div>
                             <div className="form-group">
                                 <input
                                     type="password"
                                     name="password"
-                                    placeholder="Password *"
+                                    placeholder="College Name *"
                                 />
-                                
                             </div>
+                            <div className="form-group">
+                                <input
+                                    type="password"
+                                    name="password"
+                                    placeholder="College Email Id *"
+                                />
+                            </div>
+                            <div className="form-group text-center">
+                                <button className="d-block lab-btn" style={{backgroundColor:'greenyellow', marginRight:'10px'}}><span>{btnText2}</span></button>
+                            </div>
+                            <div className="course-enroll">
+                               <Link to="/signup" className="d-block lab-btn"><span>{btnText}</span></Link>
+                           </div>
                             {/* <div className="form-group">
                                 <div className="d-flex justify-content-between flex-wrap pt-sm-2">
                                     <div className="checkgroup">
@@ -56,9 +68,7 @@ const AddProject = () => {
                                     <Link to="/forgetpass">Forget Password?</Link>
                                 </div>
                             </div> */}
-                            <div className="form-group text-center">
-                                <button className="d-block lab-btn"><span>{btnText}</span></button>
-                            </div>
+                           
                             
                         </form>
                         {/* <div className="account-bottom">
