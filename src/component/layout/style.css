@@ -1,14 +1,24 @@
-.login:hover{
-    background-color: #f16126 !important;
-    color: white !important;
+.login:hover {
+  background-color: #f16126 !important;
+  color: white !important;
 }
 
-.addproject{
-    background-color: #f16126;
-    padding: 15px 15px;
-font-size: 1rem;
-font-weight: 600;
-color: white;
-
+.addproject {
+  background-color: #f16126;
+  padding: 15px 15px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: white !important;
 }
-
+.logout-btn{
+    padding: .6rem .7rem;
+    background-color: #fff;
+    color: #f16126;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.logout-btn svg{
+    margin-right: .4rem;
+}

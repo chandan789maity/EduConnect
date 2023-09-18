@@ -123,6 +123,7 @@ const AddProject = () => {
                                     placeholder="College Email Id"
                                     required
                                     style={{borderBottom: '1px solid orange'}}
+
                                 />
 
                             </div>
