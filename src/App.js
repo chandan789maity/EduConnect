@@ -13,6 +13,7 @@ import BlogSingle from "./page/blog-single";
 import CartPage from "./page/cart-page";
 import ContactPage from "./page/contact";
 import CoursePage from "./page/course";
+
 import CourseSingle from "./page/course-single";
 import ForgetPass from "./page/forgetpass";
 import Home from "./page/home";
@@ -26,6 +27,7 @@ import SignupPage from "./page/signup";
 import AddProject from "./page/add";
 import TeamPage from "./page/team";
 import TeamSingle from "./page/team-single";
+import College from "./page/college";
 
 
 
@@ -42,6 +44,7 @@ function App() {
 				<Route path="index-6" element={<HomeSix />} />
 				<Route path="index-7" element={<HomeSeven />} /> */}
 				<Route path="course" element={<CoursePage />} />
+				
 				<Route path="course-single" element={<CourseSingle />} />
 				<Route path="blog" element={<BlogPage />} />
 				<Route path="blog-2" element={<BlogPageTwo />} />
@@ -57,6 +60,7 @@ function App() {
 				<Route path="search-page" element={<SearchPage />} />
 				<Route path="search-none" element={<SearchNone />} />
 				<Route path="contact" element={<ContactPage />} />
+				<Route path="college" element={<College />} />
 				<Route path="login" element={<LoginPage />} />
 				<Route path="signup" element={<SignupPage />} />
 				<Route path="addproject" element={<AddProject />} />

@@ -36,7 +36,9 @@ const socialList = [
 
 const Author = () => {
     return (
-        <div className="authors">
+        
+        <div className="authors" >
+             <h2>Top Creator</h2>
             <div className="author-thumb">
                 <img src="assets/images/author/01.jpg" alt="rajibraj91" />
             </div>
