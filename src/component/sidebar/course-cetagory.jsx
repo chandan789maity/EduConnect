@@ -1,7 +1,7 @@
 
 
 
-const title = "Course Categories";
+const title = "Project Categories";
 
 
 const cscContentList = [
@@ -25,46 +25,7 @@ const cscContentList = [
         left: 'Art and Design',
         right: '54',
     },
-    {
-        link: '#',
-        left: 'Business',
-        right: '28',
-    },
-    {
-        link: '#',
-        left: 'Data Science',
-        right: '30',
-    },
-    {
-        link: '#',
-        left: 'Development',
-        right: '38',
-    },
-    {
-        link: '#',
-        left: 'Finance',
-        right: '75',
-    },
-    {
-        link: '#',
-        left: 'Health & Fitness',
-        right: '89',
-    },
-    {
-        link: '#',
-        left: 'Lifestyle',
-        right: '37',
-    },
-    {
-        link: '#',
-        left: 'Marketing',
-        right: '18',
-    },
-    {
-        link: '#',
-        left: 'Music',
-        right: '20',
-    },
+   
 ]
 
 

@@ -1,3 +1,4 @@
+import logo from '../../assets/images/logo/logo.png'
 import { useContext, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { MdLogout } from "react-icons/md";
@@ -101,7 +102,9 @@ const Header = () => {
           <div className="header-wrapper">
             <div className="logo">
               <Link to="/">
-                <img src="assets/images/logo/01.png" alt="logo" />
+                <img src={logo} alt="logo"  style={{
+                    width:"300px"
+                }}/>
               </Link>
             </div>
             <div className="menu-area">

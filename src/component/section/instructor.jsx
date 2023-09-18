@@ -59,10 +59,10 @@ const Instructor = () => {
                             <div className="col" key={i}>
                                 <div className="instructor-item">
                                     <div className="instructor-inner"  style={{
-                                        height: "480px",
+                                        height: "530px",
                                       }}>
                                         <div className="instructor-thumb">
-                                            <img src={`${val.imgUrl}`} alt={`${val.imgAlt}`} />
+                                            <img src={`${val.imgUrl}`} alt={`${val.imgAlt}`} style={{height:"260px"}}/>
                                         </div>
                                         <div className="instructor-content">
                                             <Link to="/team-single"><h4>{val.name}</h4></Link>

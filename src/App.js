@@ -1,9 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "swiper/css";
-
 import ScrollToTop from "./component/layout/ScrollToTop";
 import ErrorPage from "./page/404";
-import AboutPage from "./page/about";
 import BlogPage from "./page/blog";
 import BlogPageTwo from "./page/blog-2";
 import BlogPageThree from "./page/blog-3";
@@ -11,7 +9,7 @@ import BlogSingle from "./page/blog-single";
 import CartPage from "./page/cart-page";
 import ContactPage from "./page/contact";
 import CoursePage from "./page/course";
-import CourseSingle from "./page/course-single";
+import ProjectSingle from "./page/project-single";
 import ForgetPass from "./page/forgetpass";
 import Home from "./page/home";
 import InstructorPage from "./page/instructor";
@@ -47,7 +45,7 @@ function App() {
 		<Route path="index-6" element={<HomeSix />} />
 		<Route path="index-7" element={<HomeSeven />} /> */}
             <Route path="course" element={<CoursePage />} />
-            <Route path="course-single" element={<CourseSingle />} />
+            <Route path="project-single" element={<ProjectSingle />} />
             <Route path="blog" element={<BlogPage />} />
             <Route path="blog-2" element={<BlogPageTwo />} />
             <Route path="blog-3" element={<BlogPageThree />} />

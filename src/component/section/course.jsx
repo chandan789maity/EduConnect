@@ -118,9 +118,9 @@ const Course = () => {
                         {courseList.map((val, i) => (
                             <div className="col" key={i}>
                                 <div className="course-item">
-                                    <div className="course-inner" style={{height:'520px'}}>
+                                    <div className="course-inner" style={{height:'550px'}}>
                                         <div className="course-thumb" >
-                                            <img src={`${val.imgUrl}`} alt={`${val.imgAlt}`} />
+                                            <img src={`${val.imgUrl}`} alt={`${val.imgAlt}`} style={{height:'250px'}}/>
                                         </div>
                                         <div className="course-content">
                                             {/* <div className="course-price">{val.price}</div> */}
@@ -133,7 +133,7 @@ const Course = () => {
                                                     <span className="ratting-count"> {val.reviewCount}</span>
                                                 </div>
                                             </div>
-                                            <Link to="/course-single"><h4>{val.title}</h4></Link>
+                                            <Link to="/project-single"><h4>{val.title}</h4></Link>
                                             <div className="course-details">
                                                 <div className="couse-count"><i className="icofont-video-alt"></i> {val.totalLeson}</div>
                                                 {/* <div className="couse-topic"><i className="icofont-signal"></i> {val.schdule}</div> */}
@@ -144,7 +144,7 @@ const Course = () => {
                                                     <Link to="/team-single" className="ca-name">{val.authorName}</Link>
                                                 </div>
                                                 <div className="course-btn">
-                                                    <Link to="/course-single" className="lab-btn-text">{val.btnText} <i className="icofont-external-link"></i></Link>
+                                                    <Link to="/project-single" className="lab-btn-text">{val.btnText} <i className="icofont-external-link"></i></Link>
                                                 </div>
                                             </div>
                                         </div>
