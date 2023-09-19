@@ -30,7 +30,7 @@ const memInfoLisst = [
     },
     {
         leftText: 'website',
-        rightText: 'www.adminedukon.com',
+        rightText: 'www.admineduconnect.com',
     },
 ]
 

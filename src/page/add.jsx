@@ -45,6 +45,29 @@ const AddProject = () => {
         "Uttarakhand",
         "West Bengal"
       ];
+      const catagories = [
+        "Software Develpment",
+        "Artificial Intelligence(AI)",
+        "Machine Learning(ML)",
+        "Aerospace and Aeronautical Engineering",
+        "Electrical Engineering",
+        "Mechanical Engineering",
+        "Civil Engineernig",
+        "Biotechnology",
+        "Chemistry",
+        "Mathamatics",
+        "Botany",
+        "Zoology",
+        "Physiology",
+        "Psycology",
+        "E-book",
+        "Physics",
+        "Environental Science",
+        "Telecommunication",
+        "Cybersecurity",
+        "CryptoCurrency",
+        "Others"
+      ];
 
     return (
         <Fragment>
@@ -75,37 +98,14 @@ const AddProject = () => {
                                 />
                             </div>
                             <div className="form-group">
-                                    {/* <div style={{textAlign:'start'}}>Domain: </div> */}
-                                    <div className="domain">
-                                        <div style={{display:'flex'}}>
-                                            <input type="radio" 
-                                            id="Software" 
-                                            name="domain" 
-                                            value="Software" 
-                                            required
-                                            />
-                                            <label for="Software">Software</label>
-                                        </div>
-                                        <div style={{display:'flex'}}>
-                                            <input type="radio"
-                                             id="Hardware" 
-                                             name="domain" 
-                                             value="Hardware" 
-                                             required
-                                             />
-                                            <label for="Hardware">Hardware</label>
-                                        </div>
-                                        <div style={{display:'flex'}}>
-                                            <input type="radio" 
-                                            id="Hardware" 
-                                            name="domain" 
-                                            value="Software&Hardware" 
-                                            required/>
-                                            <label for="Hardware">Software&Hardware</label>
-                                        </div>
-
-                                    </div>
-                                        
+                                 <Form.Select aria-label="Select a catagory">
+                                        <option>Choose Catagory</option>
+                                        {catagories.map((catagory, index) => (
+                                            <option key={index} value={catagory}>
+                                            {catagory}
+                                            </option>
+                                        ))}
+                                </Form.Select>
                             </div>
                             <div className="form-group">
                                 <input
