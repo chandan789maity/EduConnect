@@ -11,6 +11,7 @@ const btnText = "Get Started Now";
 const SignupPage = () => {
 const navigate=useNavigate()
   const [userData, setUserData] = useState({
+    Name: "",
     UserName: "",
     Email: "",
     Password: "",
@@ -30,8 +31,8 @@ const navigate=useNavigate()
 
   async function handleSignUp(e) {
     e.preventDefault();
-    let { UserName, Email, Password } = userData;
-    if (!UserName || !Email || !Password) {
+    let { Name, UserName, Email, Password } = userData;
+    if (!Name ||!UserName || !Email || !Password) {
       alert("Please fill out your details");
       return;
     }
@@ -46,7 +47,8 @@ const navigate=useNavigate()
       });
       console.log(res);
       if (res.status === 201) {
-        alert("Welcome ",res.data.user.UserName);
+       // alert("Welcome ",res.data.user.UserName);
+        alert("Welcome ",res.data.user.Name);
         setIsLoading(false);
         navigate('/')
       }
@@ -65,6 +67,14 @@ const navigate=useNavigate()
           <div className="account-wrapper" style={{ marginTop: "100px" }}>
             <h3 className="title">{title}</h3>
             <form className="account-form" onSubmit={handleSignUp}>
+            <div className="form-group">
+                <input
+                  type="text"
+                  name="Name"
+                  placeholder="Full Name"
+                  onChange={handleChange}
+                />
+              </div>
               <div className="form-group">
                 <input
                   type="text"
