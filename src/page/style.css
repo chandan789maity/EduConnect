@@ -1,0 +1,44 @@
+.domain{
+    display: flex;
+    flex-flow: wrap;
+    justify-content: space-around;    
+}
+.uploadInput{
+    display: none;
+}
+
+.upploadLabel{
+    margin: 40px 0 40px 0;
+    padding: 50px 0 50px 0;
+    /* height: 150px; */
+    font-size: 30px;
+    width: 250px;
+    border-radius: 6px;
+    border: 3px dashed orangered;
+    text-align: center;
+    justify-content: center;
+    
+}
+
+
+.upploadLabel:hover{
+    padding: 75px 0 75px 0;
+    width: 300px;
+    font-size: 40px;
+    border: 4px dashed orangered;
+    transition: 0.5s;
+}
+
+input{
+    border-color: orangered;
+}
+
+
+
+
+
+
+
+
+
+
