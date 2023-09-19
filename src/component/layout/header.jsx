@@ -166,7 +166,9 @@ const Header = () => {
                                             <li><NavLink to="/search-none">Search None</NavLink></li>
                                             <li><NavLink to="/404">404</NavLink></li>
                                         </ul> */}
+
                   </li>
+                  <li><NavLink to="/college">College</NavLink></li>
                   <li>
                     <NavLink to="/contact">Contact</NavLink>
                   </li>
@@ -213,6 +215,7 @@ const Header = () => {
                   </Link>
                 </>
               )}
+
 
               <div
                 className={`header-bar d-lg-none ${menuToggle ? "active" : ""}`}

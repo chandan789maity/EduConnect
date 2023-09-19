@@ -9,7 +9,7 @@ import BlogSingle from "./page/blog-single";
 import CartPage from "./page/cart-page";
 import ContactPage from "./page/contact";
 import CoursePage from "./page/course";
-import ProjectSingle from "./page/project-single";
+import ProjectSingle from "./page/project-single"
 import ForgetPass from "./page/forgetpass";
 import Home from "./page/home";
 import InstructorPage from "./page/instructor";
@@ -22,10 +22,9 @@ import SignupPage from "./page/signup";
 import AddProject from "./page/add";
 import TeamPage from "./page/team";
 import TeamSingle from "./page/team-single";
+import College from "./page/college";
 import { AuthProvider } from "./context/authContext";
-
 import { QueryClient, QueryClientProvider } from "react-query";
-
 const queryClient = new QueryClient();
 
 export const server = "http://localhost:4000/api/v1/";
@@ -60,10 +59,10 @@ function App() {
             <Route path="search-page" element={<SearchPage />} />
             <Route path="search-none" element={<SearchNone />} />
             <Route path="contact" element={<ContactPage />} />
+            <Route path="college" element={<College />} />
             <Route path="login" element={<LoginPage />} />
             <Route path="signup" element={<SignupPage />} />
             <Route path="addproject" element={<AddProject />} />
-
             <Route path="forgetpass" element={<ForgetPass />} />
             <Route path="*" element={<ErrorPage />} />
           </Routes>
