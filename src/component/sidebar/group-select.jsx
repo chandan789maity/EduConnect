@@ -21,7 +21,7 @@ const GroupSelect = () => {
                         </div>
                         <div className="col-md-11">
                             <div className="group-select-right">
-                                <div className="row g-2 row-cols-lg-4 row-cols-sm-2 row-cols-1">
+                                <div className="row g-2 row-cols-lg-3 row-cols-sm-2 row-cols-1">
                                     <div className="col">
                                         <div className="select-item">
                                             <SelectCatagory select={'all'} />
