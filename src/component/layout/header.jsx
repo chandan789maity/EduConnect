@@ -203,7 +203,7 @@ const Header = () => {
                     <i className="icofont-user"></i> <span>LOG IN</span>{" "}
                   </Link>
                   <Link
-                    to="/signup"
+                    to="/signUpas"
                     className="signup"
                     style={{
                       borderRadius: "10px",
