@@ -1,5 +1,5 @@
 import { Fragment, useState } from "react";
-import { Link,useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import Footer from "../component/layout/footer";
 import Header from "../component/layout/header";
 import axios from "axios";
@@ -9,7 +9,9 @@ const title = "Register Now";
 const btnText = "Get Started Now";
 
 const SignupPage = () => {
-const navigate=useNavigate()
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { type } = location.state;
   const [userData, setUserData] = useState({
     Name: "",
     UserName: "",
@@ -31,8 +33,11 @@ const navigate=useNavigate()
 
   async function handleSignUp(e) {
     e.preventDefault();
+    if (!type) {
+      navigate("/signUpas");
+    }
     let { Name, UserName, Email, Password } = userData;
-    if (!Name ||!UserName || !Email || !Password) {
+    if (!Name || !UserName || !Email || !Password) {
       alert("Please fill out your details");
       return;
     }
@@ -42,15 +47,19 @@ const navigate=useNavigate()
     }
     try {
       setIsLoading(true);
-      const res = await axios.post(`${server}auth/signup`, userData, {
-        withCredentials: true,
-      });
+      const res = await axios.post(
+        `${server}auth/signup`,
+        { ...userData, Type: type || "student" },
+        {
+          withCredentials: true,
+        }
+      );
       console.log(res);
       if (res.status === 201) {
-       // alert("Welcome ",res.data.user.UserName);
-        alert("Welcome ",res.data.user.Name);
+        // alert("Welcome ",res.data.user.UserName);
+        alert("Welcome ", res.data.user.Name);
         setIsLoading(false);
-        navigate('/')
+        navigate("/");
       }
     } catch (err) {
       console.log(err);
@@ -67,11 +76,13 @@ const navigate=useNavigate()
           <div className="account-wrapper" style={{ marginTop: "100px" }}>
             <h3 className="title">{title}</h3>
             <form className="account-form" onSubmit={handleSignUp}>
-            <div className="form-group">
+              <div className="form-group">
                 <input
                   type="text"
                   name="Name"
-                  placeholder="Full Name"
+                  placeholder={
+                    type === "student" ? "Full Name" : "College Name"
+                  }
                   onChange={handleChange}
                 />
               </div>
@@ -109,7 +120,7 @@ const navigate=useNavigate()
               </div>
               <div className="form-group">
                 <button className="lab-btn">
-                  <span>{isLoading ? "Signing up...":btnText}</span>
+                  <span>{isLoading ? "Signing up..." : btnText}</span>
                 </button>
               </div>
             </form>

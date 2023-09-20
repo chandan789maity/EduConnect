@@ -1,68 +1,46 @@
-.domain{
-    display: flex;
-    flex-flow: wrap;
-    justify-content: space-around;    
+.domain {
+  display: flex;
+  flex-flow: wrap;
+  justify-content: space-around;
 }
-.uploadInput{
-    display: none;
-}
-
-.upploadLabel{
-    margin: 40px 0 40px 0;
-    padding: 50px 0 50px 0;
-    /* height: 150px; */
-    font-size: 30px;
-    width: 250px;
-    border-radius: 6px;
-    border: 3px dashed orangered;
-    text-align: center;
-    justify-content: center;
-    
+.uploadInput {
+  display: none;
 }
 
-
-.upploadLabel:hover{
-    padding: 75px 0 75px 0;
-    width: 300px;
-    font-size: 40px;
-    border: 4px dashed orangered;
-    transition: 0.5s;
+.upploadLabel {
+  margin: 10px 0 10px 0;
+  width: 100%;
+  padding: 0.7rem 0.8rem;
+  border-radius: 4px;
+  border: 1px dashed rgb(198, 198, 198);
+  text-align: left;
+  cursor: pointer;
+  justify-content: center;
+}
+.upploadLabel svg{
+    margin-right: .5rem;
 }
 
-input{
-    border-color: orangered;
+.studentImage:hover {
+  color: #404040 !important;
+  font-weight: 700 !important;
+  letter-spacing: 3px;
+  background: none;
+  box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
+  box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
+  transition: all 0.3s ease 0s;
+  transform: scale(1.1);
+  z-index: 2;
 }
 
-.studentImage:hover{
-    color: #404040 !important;
-font-weight: 700 !important;
-letter-spacing: 3px;
-background: none;
-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
-transition: all 0.3s ease 0s;
-transform: scale(1.1);
-z-index: 2;
+.collegeImage:hover {
+  color: #404040 !important;
+  font-weight: 700 !important;
+  letter-spacing: 3px;
+  background: none;
+  box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
+  box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
+  transition: all 0.3s ease 0s;
+  transform: scale(1.1);
+  z-index: 2;
 }
-
-.collegeImage:hover{
-    color: #404040 !important;
-font-weight: 700 !important;
-letter-spacing: 3px;
-background: none;
-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
-transition: all 0.3s ease 0s;
-transform: scale(1.1);
-z-index: 2;
-}
-
-
-
-
-
-
-
-
-
-

@@ -24,6 +24,8 @@ import AddProject from "./page/add";
 import TeamPage from "./page/team";
 import TeamSingle from "./page/team-single";
 import College from "./page/college";
+import Uploaded from "./page/uploaded";
+
 import { AuthProvider } from "./context/authContext";
 import { QueryClient, QueryClientProvider } from "react-query";
 const queryClient = new QueryClient();
@@ -50,6 +52,7 @@ function App() {
             <Route path="blog-2" element={<BlogPageTwo />} />
             <Route path="blog-3" element={<BlogPageThree />} />
             <Route path="blog-single" element={<BlogSingle />} />
+            <Route path="/uploaded" element={<Uploaded />} />
             {/* <Route path="about" element={<AboutPage />} /> */}
             <Route path="team" element={<TeamPage />} />
             <Route path="team-single" element={<TeamSingle />} />

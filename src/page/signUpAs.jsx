@@ -19,23 +19,48 @@ const SignUpAs = () => {
         <div className="container">
           <div className="account-wrapper" style={{ marginTop: "100px" }}>
             <h3 className="title">{title}</h3>
-            <form className="account-form">
-              <Link to="/signup">
-                <div className="form-group" style={{ marginBottom: "60px" }}>
+            <form
+              className="account-form"
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <Link
+                to="/signup"
+                state={{
+                  type: "student",
+                }}
+              >
+                <div className="form-group" style={{ marginRight: "60px" }}>
                   <img
                     className="studentImage"
                     src={studentLogo}
-                    style={{ border: "1px solid orange", borderRadius: "50%" }}
+                    style={{
+                      border: "1px solid orange",
+                      borderRadius: "50%",
+                      width: "140px",
+                    }}
                   />
                   <div style={{ fontSize: "25px" }}>Student</div>
                 </div>
               </Link>
-              <Link to="/signup">
+              <Link
+                to="/signup"
+                state={{
+                  type: "college",
+                }}
+              >
                 <div className="form-group" style={{ marginBottom: "30px" }}>
                   <img
                     className="collegeImage"
                     src={collegeLogo}
-                    style={{ border: "1px solid orange", borderRadius: "50%" }}
+                    style={{
+                      border: "1px solid orange",
+                      borderRadius: "50%",
+                      width: "140px",
+                    }}
                   />
                   <div style={{ fontSize: "25px" }}>Colllege</div>
                 </div>
