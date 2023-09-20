@@ -46,7 +46,7 @@ const AboutPage = () => {
     return ( 
         <Fragment>
             <Header />
-            <PageHeader title={'About Our Edukon'} curPage={'About'} />
+            <PageHeader title={'About Our Educonnect'} curPage={'About'} />
             <div className="about-section style-3 padding-tb section-bg">
                 <div className="container">
                     <div className="row justify-content-center row-cols-xl-2 row-cols-1 align-items-center">

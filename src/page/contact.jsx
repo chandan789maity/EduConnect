@@ -23,19 +23,19 @@ const contactList = [
         imgUrl: 'assets/images/icon/02.png',
         imgAlt: 'contact icon',
         title: 'Phone number',
-        desc: '+22698 745 632,02 982 745',
+        desc: '+91 9657455689',
     },
     {
         imgUrl: 'assets/images/icon/03.png',
         imgAlt: 'contact icon',
         title: 'Send email',
-        desc: 'adminedukon@gmil.com',
+        desc: 'admineduconnect@gmil.com',
     },
     {
         imgUrl: 'assets/images/icon/04.png',
         imgAlt: 'contact icon',
         title: 'Our website',
-        desc: 'www.edukon.com',
+        desc: 'www.educonnect.com',
     },
 ]
 
