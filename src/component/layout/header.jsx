@@ -67,6 +67,7 @@ const Header = () => {
   return (
     <header
       className={`header-section ${headerFiexd ? "header-fixed fadeInUp" : ""}`}
+      style={{ marginTop: "-60px" }}
     >
       <div
         className={`header-top ${socialToggle ? "open" : ""}`}
@@ -170,9 +171,10 @@ const Header = () => {
                                             <li><NavLink to="/search-none">Search None</NavLink></li>
                                             <li><NavLink to="/404">404</NavLink></li>
                                         </ul> */}
-
                   </li>
-                  <li><NavLink to="/college">College</NavLink></li>
+                  <li>
+                    <NavLink to="/college">College</NavLink>
+                  </li>
                   <li>
                     <NavLink to="/contact">Contact</NavLink>
                   </li>
@@ -219,7 +221,6 @@ const Header = () => {
                   </Link>
                 </>
               )}
-
 
               <div
                 className={`header-bar d-lg-none ${menuToggle ? "active" : ""}`}
