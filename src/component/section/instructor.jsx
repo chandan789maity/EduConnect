@@ -76,10 +76,11 @@ const Instructor = () => {
                         opacity: 0,
                       }}
                       whileInView={{
+                        transition: { duration: 1.5 },
                         x: 0,
                         opacity: 1,
                       }}
-                      transition={{ delay: 0.05 * i }}
+                      transition={{ delay: 0.0 * i }}
                       viewport={{ once: true }}
                       className="instructor-content"
                     >

@@ -30,7 +30,8 @@ import { AuthProvider } from "./context/authContext";
 import { QueryClient, QueryClientProvider } from "react-query";
 const queryClient = new QueryClient();
 
-export const server = "http://localhost:4000/api/v1/";
+export const server = "https://educonnect-server.onrender.com/api/v1/";  //Hosted server
+// export const server = "http://localhost:4000/api/v1/";
 
 function App() {
   return (
