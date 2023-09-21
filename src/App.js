@@ -20,6 +20,7 @@ import ShopPage from "./page/shop";
 import ShopDetails from "./page/shop-single";
 import SignupPage from "./page/signup";
 import AddProject from "./page/add";
+import Edit from "./page/editProfile";
 import TeamPage from "./page/team";
 import TeamSingle from "./page/team-single";
 import College from "./page/college";
@@ -63,6 +64,7 @@ function App() {
             <Route path="login" element={<LoginPage />} />
             <Route path="signup" element={<SignupPage />} />
             <Route path="addproject" element={<AddProject />} />
+            <Route path="editProfile" element={<Edit />} />
             <Route path="forgetpass" element={<ForgetPass />} />
             <Route path="*" element={<ErrorPage />} />
           </Routes>
