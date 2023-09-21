@@ -25,12 +25,12 @@ export const AuthProvider = ({ children }) => {
   });
   if (isLoading) {
     return (
-      <AuthContext.Provider value={[{ authenticated: false, user: null},refetch ]}>
+      <AuthContext.Provider value={[{ authenticated: false, user: null},refetch,isLoading ]}>
         {children}
       </AuthContext.Provider>
     );
   }
-  return <AuthContext.Provider value={[auth,refetch]}>{children}</AuthContext.Provider>;
+  return <AuthContext.Provider value={[auth,refetch,isLoading]}>{children}</AuthContext.Provider>;
 };
 
 export default AuthContext;

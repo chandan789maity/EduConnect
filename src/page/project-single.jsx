@@ -6,58 +6,118 @@ import Author from "../component/sidebar/author";
 import Comment from "../component/sidebar/comment";
 import CourseSideCetagory from "../component/sidebar/course-cetagory";
 import CourseSideDetail from "../component/sidebar/course-detail";
+import { BsDownload } from "react-icons/bs";
 import Respond from "../component/sidebar/respond";
-
+import { useParams } from "react-router-dom";
+import { useQuery } from "react-query";
+import { server } from "../App";
+import axios from "axios";
+import Rating from "../component/sidebar/rating";
 
 const CourseSingle = () => {
-    return (
-        <Fragment>
-            <Header />
-            <PageHeaderTwo />
-            <div className="course-single-section padding-tb section-bg">
-                <div className="container">
-                    <div className="row justify-content-center">
-                        <div className="col-lg-8">
-                            <div className="main-part">
-                                <div className="course-item">
-                                    <div className="course-inner">
-                                        <div className="course-content">
-                                            <h3>Project Overview</h3>
-                                            <p>Our AI and ML website project is a dynamic platform that harnesses artificial intelligence and machine learning to deliver personalized user experiences. Through cutting-edge algorithms, it offers tailored content recommendations, predictive analytics, and efficient data handling, making it a vital resource for AI and ML enthusiasts seeking the latest insights and knowledge in this rapidly evolving field.</p>
-                                            <h4>What You'll Learn in This Project: </h4>
-                                            <ul className="lab-ul">
-                                                <li><i className="icofont-tick-mark"></i>Technical Skills</li>
-                                                <li><i className="icofont-tick-mark"></i>Problem Solving</li>
-                                                <li><i className="icofont-tick-mark"></i>Data Handling</li>
-                                                <li><i className="icofont-tick-mark"></i>Model Building</li>
-                                                <li><i className="icofont-tick-mark"></i>Domain Knowledge</li>
-                                                <li><i className="icofont-tick-mark"></i>Collaboration</li>
-                                                <li><i className="icofont-tick-mark"></i>Presentation Skills</li>
-                                            </ul>
-                                            {/* <p>In this course take you from the fundamentals and concepts of data modeling all the way through anumber  of best practices and techniques that you’ll need to build data models in your organization. You’ll find many examples that clearly the key covered the course</p> */}
-                                            <p>AI/ML projects provide valuable learning experiences encompassing technical skills, problem-solving abilities, data handling, model development, evaluation, domain expertise, collaboration, ethical awareness, presentation aptitude, and a commitment to continuous learning. These projects equip individuals with the expertise to tackle real-world challenges, apply AI/ML algorithms effectively, and navigate ethical considerations while fostering effective communication and adaptability in this ever-evolving field.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <Author />
-                                <Comment />
-                                <Respond />
-                            </div>
-                        </div>
-                        <div className="col-lg-4">
-                            <div className="sidebar-part">
-                              {
-                                //<CourseSideDetail />
-                             }  
-                                <CourseSideCetagory />
-                            </div>
-                        </div>
-                    </div>
-                </div>
+  const { id } = useParams();
+  async function getProjectById() {
+    try {
+      const res = await axios.get(`${server}project/${id}`, {
+        withCredentials: true,
+      });
+      console.log(res);
+      if (res.status === 200) {
+        return res.data.data;
+      }
+    } catch (err) {
+      console.log(err);
+      return null;
+    }
+  }
+  const { data: project, isLoading } = useQuery(
+    ["project", id],
+    getProjectById,
+    {
+      enabled: id !== undefined,
+    }
+  );
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
+  return (
+    <Fragment>
+      <Header />
+      <div className="pageheader-section style-2">
+        <div className="container" style={{height:"480px"}}>
+          <div className="row justify-content-center justify-content-lg-between align-items-center flex-row-reverse">
+            <div className="col-lg-6 col-12">
+              <div className="pageheader-thumb" style={{width:"100%"}}>
+                <img src={project?.CoverPic} alt={project?.Title} className="w-100" />
+                <a
+                  href={project?.DownloadLink}
+                  className="video-button popup"
+                >
+                  <BsDownload />
+                </a>
+              </div>
             </div>
-            <Footer />
-        </Fragment>
-    );
-}
+            <div className="col-lg-5 col-12">
+              <div className="pageheader-content">
+                <div className="course-category" style={{display:"flex"}}>
+                 <p className="course-cate">{project?.Category}</p>
+                 <p className="course-offer">{project?.Status}</p>
+                </div>
+                <h2 className="phs-title">{project?.Title}</h2>
+                <p className="phs-desc">{project?.Description}</p>
+                <div className="phs-thumb">
+                {
+                  project?.AuthorImage ?  <img src={project?.AuthorImage} alt="rajibraj91" />:null
+                }
+                 
+                  <span>{project?.AuthorName}</span>
+                  <div className="course-reiew">
+                  <Rating />
+                  <span className="ratting-count">{project?.ReviewCount}</span>
+                  </div>
+                  </div>
+                  <span style={{fontSize:".8rem"}}>{project?.CollegeName}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="course-single-section padding-tb section-bg">
+        <div className="container">
+          <div className="row justify-content-center">
+            <div className="col-lg-8">
+              <div className="main-part">
+                <div className="course-item">
+                  <div className="course-inner">
+                    <div className="course-content"  dangerouslySetInnerHTML={{__html: project?.Info}}/>
+                     
+                   
+                  </div>
+                </div>
+                <Author profile={{
+                  name:project?.AuthorName,
+                  image:project?.AuthorImage,
+                  college:project?.CollegeName,
+                  state:project?.State
+                }}/>
+                <Comment />
+                <Respond />
+              </div>
+            </div>
+            <div className="col-lg-4">
+              <div className="sidebar-part">
+                {
+                  //<CourseSideDetail />
+                }
+                <CourseSideCetagory  />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <Footer />
+    </Fragment>
+  );
+};
 
 export default CourseSingle;

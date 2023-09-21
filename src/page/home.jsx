@@ -16,7 +16,7 @@ const Home = () => {
         <Fragment>
             <Header />
             <Banner />
-            <Sponsor />
+           
             <Category />
             <Course />
             <About />
