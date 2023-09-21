@@ -1,5 +1,5 @@
 import "react-quill/dist/quill.snow.css";
-import { Component, Fragment, useState, lazy,useEffect } from "react";
+import { Component, Fragment, useState, lazy, useEffect } from "react";
 import { BsUpload } from "react-icons/bs";
 import Footer from "../component/layout/footer";
 import Header from "../component/layout/header";
@@ -11,6 +11,7 @@ import { server } from "../App";
 import { useNavigate } from "react-router-dom";
 import { Suspense } from "react";
 import { useQuery } from "react-query";
+import { toast } from "react-toastify";
 const QuillNoSSRWrapper = lazy(() => import("react-quill"));
 const title = "Project  Details";
 const btnText = "Submit";
@@ -138,17 +139,17 @@ const AddProject = () => {
       });
 
       if (response.status === 201) {
-        alert("Project uploaded successfully.");
+        toast("Project uploaded successfully.", { type: "success" });
         setIsLoading(false);
         navigate("/uploaded");
       } else {
         setIsLoading(false);
-        alert("Error uploading project.");
+        toast("Error uploading project.", { type: "error" });
       }
     } catch (error) {
       setIsLoading(false);
       console.error("Error:", error);
-      alert("Error uploading project.");
+      toast("Error uploading project.", { type: "error" });
     }
   };
 
@@ -168,7 +169,6 @@ const AddProject = () => {
       console.log(err);
     }
   };
-
 
   return (
     <Suspense fallback={<p>Loading...</p>}>
