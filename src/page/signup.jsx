@@ -4,7 +4,8 @@ import Footer from "../component/layout/footer";
 import Header from "../component/layout/header";
 import axios from "axios";
 import { server } from "../App";
-
+import { toast } from "react-toastify";
+import {Spin} from 'antd'
 const title = "Register Now";
 const btnText = "Get Started Now";
 
@@ -38,11 +39,11 @@ const SignupPage = () => {
     }
     let { Name, UserName, Email, Password } = userData;
     if (!Name || !UserName || !Email || !Password) {
-      alert("Please fill out your details");
+      toast("Please fill out your details", { type: "warning" });
       return;
     }
     if (Password !== cPassword) {
-      alert("Password does't match!");
+      toast("Password does't match!", { type: "warning" });
       return;
     }
     try {
@@ -57,13 +58,13 @@ const SignupPage = () => {
       console.log(res);
       if (res.status === 201) {
         // alert("Welcome ",res.data.user.UserName);
-        alert("Welcome ", res.data.user.Name);
+        toast(`Welcome ${res.data.user.Name}`, { type: "success" });
         setIsLoading(false);
         navigate("/");
       }
     } catch (err) {
       console.log(err);
-      alert(err.response.data.Messege);
+      toast(err.response.data.Messege);
       setIsLoading(false);
     }
   }
@@ -118,9 +119,12 @@ const SignupPage = () => {
                   onChange={(e) => setCPassword(e.target.value)}
                 />
               </div>
+              
               <div className="form-group">
                 <button className="lab-btn">
-                  <span>{isLoading ? "Signing up..." : btnText}</span>
+                {
+                  isLoading ? <span><Spin/> Signing up...</span>:<span>Sign up</span>
+                }
                 </button>
               </div>
             </form>

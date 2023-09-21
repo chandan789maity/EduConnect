@@ -27,6 +27,8 @@ import College from "./page/college";
 import Uploaded from "./page/uploaded";
 import { AuthProvider } from "./context/authContext";
 import { QueryClient, QueryClientProvider } from "react-query";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import ProtectedRoute from "./page/protected";
 const queryClient = new QueryClient();
 
@@ -72,6 +74,7 @@ function App() {
             <Route path="forgetpass" element={<ForgetPass />} />
             <Route path="*" element={<ErrorPage />} />
           </Routes>
+          <ToastContainer/>
         </BrowserRouter>
       </AuthProvider>
     </QueryClientProvider>

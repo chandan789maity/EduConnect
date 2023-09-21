@@ -17,6 +17,9 @@
   cursor: pointer;
   justify-content: center;
 }
+.ant-spin-dot-item {
+  background-color: #fff !important;
+}
 .upploadLabel svg{
     margin-right: .5rem;
 }
