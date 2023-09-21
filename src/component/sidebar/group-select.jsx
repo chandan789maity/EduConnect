@@ -7,9 +7,9 @@ import SkillSelect from "./skill-select";
 
 
 
-const GroupSelect = () => {
+const GroupSelect = ({setCategory}) => {
     return (
-        <div className="group-select-section">
+        <div className="group-select-section" >
             <div className="container" >
                 <div className="section-wrapper" >
                     <div className=" row align-items-center g-4">
@@ -24,7 +24,7 @@ const GroupSelect = () => {
                                 <div className="row g-2 row-cols-lg-3 row-cols-sm-2 row-cols-1">
                                     <div className="col">
                                         <div className="select-item">
-                                            <SelectCatagory select={'all'} />
+                                            <SelectCatagory setCategory={setCategory} select={'all'} />
                                             <div className="select-icon">
                                                 <i className="icofont-rounded-down"></i>
                                             </div>

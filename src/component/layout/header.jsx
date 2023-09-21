@@ -2,6 +2,7 @@ import logo from "../../assets/images/logo/logo.png";
 import { useContext, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { MdLogout } from "react-icons/md";
+import { AiOutlinePlus } from "react-icons/ai";
 import "./style.css";
 import AuthContext from "../../context/authContext";
 import { useQueryClient } from "react-query";
@@ -58,7 +59,7 @@ const Header = () => {
       console.log(res);
       if (res.status === 204) {
         refetch();
-        //    navigate('/login')
+           navigate('/')
       }
     } catch (err) {
       console.log(err);
@@ -127,26 +128,11 @@ const Header = () => {
                                             <li><NavLink to="/index-7">Home Seven</NavLink></li>
                                         </ul> */}
                   </li>
-                  <li className="">
-                    <a
-                      href="#"
-                      role="button"
-                      data-bs-toggle="dropdown"
-                      aria-haspopup="true"
-                      aria-expanded="false"
-                      data-bs-offset="0,0"
-                    >
-                      Projects
-                    </a>
-                    <ul className="lab-ul dropdown-menu">
-                      <li>
-                        <NavLink to="/course">Projects</NavLink>
-                      </li>
-                      <li>
-                        <NavLink to="/course-single">Projects Details</NavLink>
-                      </li>
-                    </ul>
+
+                  <li>
+                    <NavLink to="/course">Projects</NavLink>
                   </li>
+
                   {/* <li className="menu-item-has-children">
                                         <a href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-bs-offset="0,0">Blog</a>
                                         <ul className="lab-ul dropdown-menu">
@@ -170,56 +156,75 @@ const Header = () => {
                                             <li><NavLink to="/search-none">Search None</NavLink></li>
                                             <li><NavLink to="/404">404</NavLink></li>
                                         </ul> */}
-
                   </li>
-                  <li><NavLink to="/college">College</NavLink></li>
+                  <li>
+                    <NavLink to="/college">College</NavLink>
+                  </li>
                   <li>
                     <NavLink to="/contact">Contact</NavLink>
                   </li>
+                  {authenticated ? (
+                    <>
+                      <li>
+                        <Link
+                          to="/addproject"
+                          className="addproject"
+                          style={{
+                            borderRadius: "8px",
+                            marginRight: "40px",
+                            display: "flex",
+                            alignItems: "center",
+                          }}
+                        >
+                          <i className=""></i>{" "}
+                          <span>
+                            {" "}
+                            <AiOutlinePlus
+                              style={{
+                                fontSize: "1.2rem",
+                                marginBottom: "4px",
+                              }}
+                            />{" "}
+                            ADD PROJECT
+                          </span>{" "}
+                        </Link>
+                      </li>
+                      <li>
+                        <button className="logout-btn" onClick={logout}>
+                          <MdLogout />
+                          Logout
+                        </button>
+                      </li>
+                    </>
+                  ) : (
+                    <li>
+                      {" "}
+                      <Link
+                        to="/login"
+                        className="login"
+                        style={{
+                          borderRadius: "10px",
+                          marginRight: "20px",
+                          padding: "9px 9px",
+                        }}
+                      >
+                        <i className="icofont-user"></i> <span>LOG IN</span>{" "}
+                      </Link>
+                      <Link
+                        to="/signUpas"
+                        className="signup"
+                        style={{
+                          borderRadius: "10px",
+                          marginRight: "20px",
+                          padding: "9px 9px",
+                        }}
+                      >
+                        <i className="icofont-users"></i> <span>SIGN UP</span>{" "}
+                      </Link>
+                    </li>
+                  )}
                 </ul>
               </div>
-              {authenticated ? (
-                <>
-                  <Link
-                    to="/addproject"
-                    className="addproject"
-                    style={{ borderRadius: "8px", marginRight: "40px" }}
-                  >
-                    <i className=""></i> <span> + ADD PROJECT</span>{" "}
-                  </Link>
-                  <button className="logout-btn" onClick={logout}>
-                    <MdLogout />
-                    Logout
-                  </button>
-                </>
-              ) : (
-                <>
-                  {" "}
-                  <Link
-                    to="/login"
-                    className="login"
-                    style={{
-                      borderRadius: "10px",
-                      marginRight: "20px",
-                      padding: "9px 9px",
-                    }}
-                  >
-                    <i className="icofont-user"></i> <span>LOG IN</span>{" "}
-                  </Link>
-                  <Link
-                    to="/signUpas"
-                    className="signup"
-                    style={{
-                      borderRadius: "10px",
-                      marginRight: "20px",
-                      padding: "9px 9px",
-                    }}
-                  >
-                    <i className="icofont-users"></i> <span>SIGN UP</span>{" "}
-                  </Link>
-                </>
-              )}
-
 
               <div
                 className={`header-bar d-lg-none ${menuToggle ? "active" : ""}`}

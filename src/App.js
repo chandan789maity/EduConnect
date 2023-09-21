@@ -47,7 +47,7 @@ function App() {
 		<Route path="index-6" element={<HomeSix />} />
 		<Route path="index-7" element={<HomeSeven />} /> */}
             <Route path="course" element={<CoursePage />} />
-            <Route path="project-single" element={<ProjectSingle />} />
+            <Route path="project-single/:id" element={<ProjectSingle />} />
             <Route path="blog" element={<BlogPage />} />
             <Route path="blog-2" element={<BlogPageTwo />} />
             <Route path="blog-3" element={<BlogPageThree />} />

@@ -5,20 +5,33 @@
 
 .addproject {
   background-color: #f16126;
-  padding: 15px 15px;
-  font-size: 1rem;
+  padding: .6rem .5rem;
+  /* font-size: 1rem; */
   font-weight: 600;
   color: white !important;
 }
 .logout-btn{
     padding: .6rem .7rem;
-    background-color: #fff;
+    background-color: transparent;
     color: #f16126;
     border-radius: 8px;
     display: flex;
     justify-content: center;
     align-items: center;
+
+
 }
 .logout-btn svg{
     margin-right: .4rem;
+}
+@media only screen and (max-width: 600px) {
+.addproject {
+  margin: 0 !important;
+  padding: 7px 10px;
+  font-size: .7rem;
+
+}
+.logout-btn{
+  color: #fff !important;
+}
 }
