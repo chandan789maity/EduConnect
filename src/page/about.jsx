@@ -11,7 +11,7 @@ import Student from "../component/section/student";
 
 
 
-const subTitle = "About Our Edukon";
+const subTitle = "About Our EduConnect";
 const title = "Good Qualification Services And Better Skills";
 const desc = "Distinctively provide acces mutfuncto users whereas transparent proceses somes ncentivize eficient functionalities rather than extensible archtectur communicate leveraged services and cross-platform.";
 
@@ -46,7 +46,7 @@ const AboutPage = () => {
     return ( 
         <Fragment>
             <Header />
-            <PageHeader title={'About Our Educonnect'} curPage={'About'} />
+            <PageHeader title={'About Our EduConnect'} curPage={'About'} />
             <div className="about-section style-3 padding-tb section-bg">
                 <div className="container">
                     <div className="row justify-content-center row-cols-xl-2 row-cols-1 align-items-center">
@@ -102,4 +102,3 @@ const AboutPage = () => {
 }
 
 export default AboutPage;
- 

@@ -1,4 +1,4 @@
-import logo from '../../assets/images/logo/logo.png'
+import logo from "../../assets/images/logo/logo.png";
 import { useContext, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { MdLogout } from "react-icons/md";
@@ -57,8 +57,8 @@ const Header = () => {
       });
       console.log(res);
       if (res.status === 204) {
-        refetch()
-    //    navigate('/login')
+        refetch();
+        //    navigate('/login')
       }
     } catch (err) {
       console.log(err);
@@ -102,9 +102,13 @@ const Header = () => {
           <div className="header-wrapper">
             <div className="logo">
               <Link to="/">
-                <img src={logo} alt="logo"  style={{
-                    width:"300px"
-                }}/>
+                <img
+                  src={logo}
+                  alt="logo"
+                  style={{
+                    width: "300px",
+                  }}
+                />
               </Link>
             </div>
             <div className="menu-area">
@@ -166,7 +170,9 @@ const Header = () => {
                                             <li><NavLink to="/search-none">Search None</NavLink></li>
                                             <li><NavLink to="/404">404</NavLink></li>
                                         </ul> */}
+
                   </li>
+                  <li><NavLink to="/college">College</NavLink></li>
                   <li>
                     <NavLink to="/contact">Contact</NavLink>
                   </li>
@@ -201,7 +207,7 @@ const Header = () => {
                     <i className="icofont-user"></i> <span>LOG IN</span>{" "}
                   </Link>
                   <Link
-                    to="/signup"
+                    to="/signUpas"
                     className="signup"
                     style={{
                       borderRadius: "10px",
@@ -213,6 +219,7 @@ const Header = () => {
                   </Link>
                 </>
               )}
+
 
               <div
                 className={`header-bar d-lg-none ${menuToggle ? "active" : ""}`}
