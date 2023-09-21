@@ -1,4 +1,5 @@
-import { Component, Fragment, useState } from "react";
+import "react-quill/dist/quill.snow.css";
+import { Component, Fragment, useState, lazy } from "react";
 import { BsUpload } from "react-icons/bs";
 import Footer from "../component/layout/footer";
 import Header from "../component/layout/header";
@@ -8,16 +9,32 @@ import Form from "react-bootstrap/Form";
 import axios from "axios";
 import { server } from "../App";
 import { useNavigate } from "react-router-dom";
+import { Suspense } from "react";
+const QuillNoSSRWrapper = lazy(() => import("react-quill"));
 const title = "Project  Details";
 const btnText = "Submit";
 const btnText2 = "Upload PDF";
 const btnText3 = "Upload Cover";
 
+const modules = {
+  toolbar: [
+    [{ header: "1" }, { header: "2" }, { font: [] }],
+    [{ size: [] }],
+    ["bold", "italic", "underline", "strike", "blockquote"],
+    [{ list: "ordered" }, { list: "bullet" }],
+    ["clean"],
+  ],
+  clipboard: {
+    // toggle to add extra line breaks when pasting HTML:
+    matchVisual: false,
+  },
+};
 const AddProject = () => {
   const navigate = useNavigate();
   const [CoverPic, setCoverPic] = useState(null);
   const [file, setFile] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [info, setInfo] = useState(null);
   const [projectData, setProjectData] = useState({
     Title: "",
     Description: "",
@@ -94,9 +111,6 @@ const AddProject = () => {
   function handleFileChange(e) {
     setFile(e.target.files[0]);
   }
-  function handleCoverChange(e) {
-    setCoverPic(e.target.files[0]);
-  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -112,8 +126,9 @@ const AddProject = () => {
 
     const formData = new FormData();
     formData.append("pdf", file);
-    formData.append("image", CoverPic);
     formData.append("data", JSON.stringify(projectData));
+    formData.append("cover", JSON.stringify(CoverPic));
+    formData.append("info", JSON.stringify(info));
 
     try {
       setIsLoading(true);
@@ -136,151 +151,182 @@ const AddProject = () => {
     }
   };
 
+  const handleCoverPic = async (e) => {
+    const data = new FormData();
+    data.append("file", e.target.files[0]);
+    data.append("upload_preset", "educonnect");
+    data.append("cloud_name", "basustudent");
+    try {
+      const res = await axios.post(
+        "https://api.cloudinary.com/v1_1/basustudent/image/upload",
+        data
+      );
+      const dat = res.data;
+      setCoverPic(dat.secure_url);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
-    <Fragment>
-      <Header />
-      <PageHeader title={"Project Submission Form"} curPage={"Add Project"} />
-      <div className="login-section padding-tb section-bg">
-        <div className="container">
-          <div className="account-wrapper">
-            <h3 className="title">{title}</h3>
-            <form className="account-form" onSubmit={handleSubmit}>
-              <div className="form-group">
+    <Suspense fallback={<p>Loading...</p>}>
+      <Fragment>
+        <Header />
+        <PageHeader title={"Project Submission Form"} curPage={"Add Project"} />
+        <div className="login-section padding-tb section-bg">
+          <div className="container">
+            <div className="account-wrapper">
+              <h3 className="title">{title}</h3>
+              <form className="account-form" onSubmit={handleSubmit}>
+                <div className="form-group">
+                  <input
+                    type="text"
+                    name="Title"
+                    placeholder="Project Title"
+                    required
+                    onChange={handleChange}
+                  />
+                </div>
+
+                <div className="form-group">
+                  <textarea
+                    type="text"
+                    name="Description"
+                    placeholder="Project Desc"
+                    rows="4"
+                    onChange={handleChange}
+                  />
+                </div>
+                <div className="form-group">
+                  <Form.Select
+                    name="Category"
+                    aria-label="Select a catagory"
+                    onChange={handleChange}
+                  >
+                    <option>Choose Catagory</option>
+                    {catagories.map((catagory, index) => (
+                      <option key={index} value={catagory}>
+                        {catagory}
+                      </option>
+                    ))}
+                  </Form.Select>
+                </div>
+                <div className="form-group">
+                  <input
+                    type="text"
+                    name="CollegeName"
+                    placeholder="College Name"
+                    required
+                    onChange={handleChange}
+                  />
+                </div>
+                <div className="form-group">
+                  <input
+                    type="email"
+                    name="CollegeEmail"
+                    placeholder="College Email Id"
+                    required
+                    onChange={handleChange}
+                  />
+                </div>
+                <div className="form-group">
+                  <Form.Select
+                    name="State"
+                    onChange={handleChange}
+                    aria-label="Select a state in India"
+                  >
+                    <option>State</option>
+                    {statesOfIndia.map((state, index) => (
+                      <option key={index} value={state}>
+                        {state}
+                      </option>
+                    ))}
+                  </Form.Select>
+                </div>
+
+                {/* <div className="form-group text-center">
+                              <button className="d-block lab-btn" style={{backgroundColor:'greenyellow', marginRight:'10px'}}><span>{btnText2}</span></button>
+                          </div> */}
+
                 <input
-                  type="text"
-                  name="Title"
-                  placeholder="Project Title"
-                  required
-                  onChange={handleChange}
+                  className="uploadInput"
+                  type="file"
+                  id="cover"
+                  accept="image/*"
+                  onChange={handleCoverPic}
                 />
-              </div>
+                <label for="cover" className="upploadLabel">
+                  <BsUpload /> {CoverPic ? "Uploaded" : btnText3}
+                </label>
 
-              <div className="form-group">
-                <textarea
-                  type="text"
-                  name="Description"
-                  placeholder="Project Desc"
-                  rows="4"
-                  onChange={handleChange}
-                />
-              </div>
-              <div className="form-group">
-                <Form.Select
-                  name="Category"
-                  aria-label="Select a catagory"
-                  onChange={handleChange}
-                >
-                  <option>Choose Catagory</option>
-                  {catagories.map((catagory, index) => (
-                    <option key={index} value={catagory}>
-                      {catagory}
-                    </option>
-                  ))}
-                </Form.Select>
-              </div>
-              <div className="form-group">
                 <input
-                  type="text"
-                  name="CollegeName"
-                  placeholder="College Name"
-                  required
-                  onChange={handleChange}
+                  className="uploadInput"
+                  type="file"
+                  id="file"
+                  accept=".pdf"
+                  onChange={handleFileChange}
                 />
-              </div>
-              <div className="form-group">
-                <input
-                  type="email"
-                  name="CollegeEmail"
-                  placeholder="College Email Id"
-                  required
-                  onChange={handleChange}
+                <label for="file" className="upploadLabel">
+                  <BsUpload /> {file ? "Uploaded" : btnText2}
+                </label>
+                <QuillNoSSRWrapper
+                  placeholder="Write brief about your project..."
+                  style={{
+                    color: "#C3C3C3",
+                    background: "#fff",
+                    marginTop: "1rem",
+    
+                  }}
+                  modules={modules}
+                  theme="snow"
+                  value={info}
+                  onChange={setInfo}
                 />
-              </div>
-              <div className="form-group">
-                <Form.Select
-                  name="State"
-                  onChange={handleChange}
-                  aria-label="Select a state in India"
+                <div
+                  className="course-enroll"
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    marginTop: "1rem",
+                  }}
                 >
-                  <option>State</option>
-                  {statesOfIndia.map((state, index) => (
-                    <option key={index} value={state}>
-                      {state}
-                    </option>
-                  ))}
-                </Form.Select>
-              </div>
-
-              {/* <div className="form-group text-center">
-                                <button className="d-block lab-btn" style={{backgroundColor:'greenyellow', marginRight:'10px'}}><span>{btnText2}</span></button>
-                            </div> */}
-
-              <input
-                className="uploadInput"
-                type="file"
-                id="cover"
-                accept="image/*"
-                onChange={handleCoverChange}
-              />
-              <label for="cover" className="upploadLabel">
-                <BsUpload /> {CoverPic ? "Uploaded" : btnText3}
-              </label>
-
-              <input
-                className="uploadInput"
-                type="file"
-                id="file"
-                accept=".pdf"
-                onChange={handleFileChange}
-              />
-              <label for="file" className="upploadLabel">
-                <BsUpload /> {file ? "Uploaded" : btnText2}
-              </label>
-
-              <div
-                className="course-enroll"
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  marginTop: "1rem",
-                }}
-              >
-                <button
-                  type="submit"
-                  className="d-block lab-btn"
-                  style={{ width: "100%" }}
-                  disabled={isLoading}
-                >
-                  <span>{isLoading ? "Uploading..." : btnText}</span>
-                </button>
-              </div>
-              {/* <div className="form-group">
-                                <div className="d-flex justify-content-between flex-wrap pt-sm-2">
-                                    <div className="checkgroup">
-                                        <input type="checkbox" name="remember" id="remember" />
-                                        <label htmlFor="remember">Remember Me</label>
-                                    </div>
-                                    <Link to="/forgetpass">Forget Password?</Link>
-                                </div>
-                            </div> */}
-            </form>
-            {/* <div className="account-bottom">
-                            <span className="d-block cate pt-10"> Have any Account?  <Link to="/">Sign Up</Link></span>
-                             <span className="or"><span>or</span></span>  }
-                            <h5 className="subtitle">{socialTitle}</h5>
-                             <ul className="lab-ul social-icons justify-content-center">
-                                {socialList.map((val, i) => (
-                                    <li key={i}>
-                                        <a href={val.link} className={val.className}><i className={val.iconName}></i></a>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div> */}
+                  <button
+                    type="submit"
+                    className="d-block lab-btn"
+                    style={{ width: "100%" }}
+                    disabled={isLoading}
+                  >
+                    <span>{isLoading ? "Uploading..." : btnText}</span>
+                  </button>
+                </div>
+                {/* <div className="form-group">
+                              <div className="d-flex justify-content-between flex-wrap pt-sm-2">
+                                  <div className="checkgroup">
+                                      <input type="checkbox" name="remember" id="remember" />
+                                      <label htmlFor="remember">Remember Me</label>
+                                  </div>
+                                  <Link to="/forgetpass">Forget Password?</Link>
+                              </div>
+                          </div> */}
+              </form>
+              {/* <div className="account-bottom">
+                          <span className="d-block cate pt-10"> Have any Account?  <Link to="/">Sign Up</Link></span>
+                           <span className="or"><span>or</span></span>  }
+                          <h5 className="subtitle">{socialTitle}</h5>
+                           <ul className="lab-ul social-icons justify-content-center">
+                              {socialList.map((val, i) => (
+                                  <li key={i}>
+                                      <a href={val.link} className={val.className}><i className={val.iconName}></i></a>
+                                  </li>
+                              ))}
+                          </ul>
+                      </div> */}
+            </div>
           </div>
         </div>
-      </div>
-      <Footer />
-    </Fragment>
+        <Footer />
+      </Fragment>
+    </Suspense>
   );
 };
 

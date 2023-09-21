@@ -11,7 +11,7 @@ const btnText = "Get Started Now";
 const SignupPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const { type } = location.state;
+  const { type } = location?.state;
   const [userData, setUserData] = useState({
     Name: "",
     UserName: "",

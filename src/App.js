@@ -30,7 +30,8 @@ import { AuthProvider } from "./context/authContext";
 import { QueryClient, QueryClientProvider } from "react-query";
 const queryClient = new QueryClient();
 
-export const server = "http://localhost:4000/api/v1/";
+export const server = "https://educonnect-server.onrender.com/api/v1/";  //Hosted server
+// export const server = "http://localhost:4000/api/v1/";
 
 function App() {
   return (
@@ -47,7 +48,7 @@ function App() {
 		<Route path="index-6" element={<HomeSix />} />
 		<Route path="index-7" element={<HomeSeven />} /> */}
             <Route path="course" element={<CoursePage />} />
-            <Route path="project-single" element={<ProjectSingle />} />
+            <Route path="project-single/:id" element={<ProjectSingle />} />
             <Route path="blog" element={<BlogPage />} />
             <Route path="blog-2" element={<BlogPageTwo />} />
             <Route path="blog-3" element={<BlogPageThree />} />

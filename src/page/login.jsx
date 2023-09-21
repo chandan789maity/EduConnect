@@ -81,7 +81,7 @@ const LoginPage = () => {
             </form>
             <div className="account-bottom">
               <span className="d-block cate pt-10">
-                Don’t Have any Account? <Link to="/signup">Sign Up</Link>
+                Don’t Have any Account? <Link to="/signUpas">Sign Up</Link>
               </span>
             </div>
           </div>

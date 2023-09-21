@@ -1,31 +1,24 @@
 
 
-
-const SelectCatagory = ({select}) => {
+const SelectCatagory = ({select,setCategory}) => {
     return (
-        <select defaultValue={select}>
+        <select defaultValue={select} onChange={(e)=>setCategory(e.target.value)}>
             <option value="all">All Categories</option>
-            <option value="uncategorized">Uncategorized</option>
-            <option value="Software Development">Software Development</option>
-            <option value="Artificial Intelligence and Machine Learning (AIML)">Artificial Intelligence and Machine Learning (AIML)</option>
-            <option value="Data science and analysis">Data science and analysis"</option>
+            <option value="all">Uncategorized</option>
+            <option value="Software Develpment">Software Development</option>
+            <option value="Artificial Intelligence(AI)">Artificial Intelligence</option>
+            <option value="Machine Learning(ML)">Machine Learning</option>
             <option value="Electrical Engineering">Electrical Engineering</option>
             <option value="Mechanical Engineering">Mechanical Engineering</option>
             <option value="Civil Engineering">Civil Engineering</option>
-            <option value="Biotechnology and life-science"> Biotechnology and life-science</option>
-            <option value="Environmental science">Environmental science</option>
-            <option value="Aerospace and Aeronautical engineering">Aerospace and Aeronautical engineering</option>
-            <option value="Robotics">Robotics</option>
-            <option value="Renewable energy">Renewable energy</option>
+            <option value="Biotechnology"> Biotechnology and life-science</option>
+            <option value="Environmental Science">Environmental science</option>
+            <option value="Aerospace and Aeronautical Engineering">Aerospace and Aeronautical engineering</option>
             <option value="Telecommunication">Telecommunication</option>
-            <option value="Healthcare and medical devices">Healthcare and medical devices</option>
-            <option value="Automotive engineering">Automotive engineering</option>
-            <option value="Chemical engineering">Chemical engineering</option>
-            <option value="Nanotechnology">anotechnology</option>
-            <option value="Internet of Things(IoT)">Internet of Things(IoT)</option>
-            <option value="Blockchain and Cryptocurrency">Blockchain and Cryptocurrency</option>
+            <option value="Chemistry">Chemistry</option>
             <option value="Cybersecurity">Cybersecurity</option>
-            <option value="Space exploration">Space exploration</option>
+            <option value="Others">Others</option>
+ 
 {/*             <option value="education">Education</option>
             <option value="entertainment">Entertainment</option>
             <option value="environment">Environment</option>

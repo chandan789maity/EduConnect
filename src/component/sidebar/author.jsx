@@ -34,18 +34,34 @@ const socialList = [
     },
 ]
 
-const Author = () => {
+const Author = ({profile}) => {
+    let name,image,college,state;
+    if(profile) {
+        name=profile?.name;
+        image=profile?.image;
+        college=profile?.college;
+        state=profile?.state;
+    }else{
+        name=name;
+        image=null;
+        college=degi;
+        state=desc;
+    }
+
     return (
         
         <div className="authors" >
              <h2>Top Creator</h2>
             <div className="author-thumb">
-                <img src="assets/images/author/01.jpg" alt="rajibraj91" />
+            {
+                image ?<img src={image} alt={name} /> :null
+            }
+                
             </div>
             <div className="author-content">
                 <h5>{name}</h5>
-                <span>{degi}</span>
-                <p>{desc}</p>
+                <span>{college}</span>
+                <p>{state}</p>
                 <ul className="lab-ul social-icons">
                     {socialList.map((val, i) => (
                         <li key={i}>

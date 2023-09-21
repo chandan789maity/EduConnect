@@ -4,7 +4,7 @@ import img2 from "../../assets/images/category/icon/02.png";
 import img3 from "../../assets/images/category/icon/03.png";
 import img5 from "../../assets/images/category/icon/05.png";
 import img6 from "../../assets/images/category/icon/06.png";
-
+import { motion } from "framer-motion";
 const subTitle = "Popular Projects";
 const title = "Popular Project Domains";
 const btnText = "Browse All Domains";
@@ -59,7 +59,20 @@ const Category = () => {
         <div className="section-wrapper">
           <div className="row g-2 justify-content-center row-cols-xl-6 row-cols-md-3 row-cols-sm-2 row-cols-1">
             {categoryList.map((val, i) => (
-              <div className="col" key={i}>
+              <motion.div
+                initial={{
+                  y: 100,
+                  opacity: 0,
+                }}
+                whileInView={{
+                  y: 0,
+                  opacity: 1,
+                }}
+                transition={{ delay: 0.05 * i }}
+                viewport={{ once: true }}
+                className="col"
+                key={i}
+              >
                 <div className="category-item text-center">
                   <div
                     className="category-inner"
@@ -78,7 +91,7 @@ const Category = () => {
                     </div>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
           <div className="text-center mt-5">
