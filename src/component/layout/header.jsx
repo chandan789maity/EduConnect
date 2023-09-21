@@ -68,6 +68,7 @@ const Header = () => {
   return (
     <header
       className={`header-section ${headerFiexd ? "header-fixed fadeInUp" : ""}`}
+      style={{ marginTop: "-60px" }}
     >
       <div
         className={`header-top ${socialToggle ? "open" : ""}`}
@@ -237,6 +238,48 @@ const Header = () => {
                   )}
                 </ul>
               </div>
+              {authenticated ? (
+                <>
+                  <Link
+                    to="/addproject"
+                    className="addproject"
+                    style={{ borderRadius: "8px", marginRight: "40px" }}
+                  >
+                    <i className=""></i> <span> + ADD PROJECT</span>{" "}
+                  </Link>
+                  <button className="logout-btn" onClick={logout}>
+                    <MdLogout />
+                    Logout
+                  </button>
+                </>
+              ) : (
+                <>
+                  {" "}
+                  <Link
+                    to="/login"
+                    className="login"
+                    style={{
+                      borderRadius: "10px",
+                      marginRight: "20px",
+                      padding: "9px 9px",
+                    }}
+                  >
+                    <i className="icofont-user"></i> <span>LOG IN</span>{" "}
+                  </Link>
+                  <Link
+                    to="/signUpas"
+                    className="signup"
+                    style={{
+                      borderRadius: "10px",
+                      marginRight: "20px",
+                      padding: "9px 9px",
+                    }}
+                  >
+                    <i className="icofont-users"></i> <span>SIGN UP</span>{" "}
+                  </Link>
+                </>
+              )}
+
 
               <div
                 className={`header-bar d-lg-none ${menuToggle ? "active" : ""}`}
