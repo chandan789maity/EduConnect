@@ -25,9 +25,9 @@ import TeamPage from "./page/team";
 import TeamSingle from "./page/team-single";
 import College from "./page/college";
 import Uploaded from "./page/uploaded";
-
 import { AuthProvider } from "./context/authContext";
 import { QueryClient, QueryClientProvider } from "react-query";
+import ProtectedRoute from "./page/protected";
 const queryClient = new QueryClient();
 
 export const server = "https://educonnect-server.onrender.com/api/v1/";  //Hosted server
@@ -43,7 +43,7 @@ function App() {
             <Route path="/" element={<Home />} />
             {/* <Route path="index-2" element={<HomeTwo />} />
 		<Route path="index-3" element={<HomeThree />} />
-		<Route path="index-4" element={<HomeFour />} />
+		<Route path="index-4" element={<HomeFour  />} />
 		<Route path="index-5" element={<HomeFive />} />
 		<Route path="index-6" element={<HomeSix />} />
 		<Route path="index-7" element={<HomeSeven />} /> */}

@@ -40,7 +40,7 @@ const Header = () => {
   const [menuToggle, setMenuToggle] = useState(false);
   const [socialToggle, setSocialToggle] = useState(false);
   const [headerFiexd, setHeaderFiexd] = useState(false);
-  const [auth, refetch] = useContext(AuthContext);
+  const [auth, refetch,isLoading] = useContext(AuthContext);
   const { authenticated, user } = auth;
 
   window.addEventListener("scroll", () => {

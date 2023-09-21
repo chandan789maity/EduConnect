@@ -1,5 +1,5 @@
 import "react-quill/dist/quill.snow.css";
-import { Component, Fragment, useState, lazy } from "react";
+import { Component, Fragment, useState, lazy,useEffect } from "react";
 import { BsUpload } from "react-icons/bs";
 import Footer from "../component/layout/footer";
 import Header from "../component/layout/header";
@@ -10,6 +10,7 @@ import axios from "axios";
 import { server } from "../App";
 import { useNavigate } from "react-router-dom";
 import { Suspense } from "react";
+import { useQuery } from "react-query";
 const QuillNoSSRWrapper = lazy(() => import("react-quill"));
 const title = "Project  Details";
 const btnText = "Submit";
@@ -168,6 +169,7 @@ const AddProject = () => {
     }
   };
 
+
   return (
     <Suspense fallback={<p>Loading...</p>}>
       <Fragment>
@@ -275,7 +277,6 @@ const AddProject = () => {
                     color: "#C3C3C3",
                     background: "#fff",
                     marginTop: "1rem",
-    
                   }}
                   modules={modules}
                   theme="snow"
