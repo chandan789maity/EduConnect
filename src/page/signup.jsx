@@ -42,6 +42,14 @@ const SignupPage = () => {
       toast("Please fill out your details", { type: "warning" });
       return;
     }
+    if (UserName.length <3) {
+      alert("Please enter atleast 3 characters");
+      return;
+    }
+    if (Password.length<6) {
+      alert("Password must be atleast 6 characters");
+      return;
+    }
     if (Password !== cPassword) {
       toast("Password does't match!", { type: "warning" });
       return;
