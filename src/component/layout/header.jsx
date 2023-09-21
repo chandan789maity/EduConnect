@@ -59,7 +59,7 @@ const Header = () => {
       console.log(res);
       if (res.status === 204) {
         refetch();
-           navigate('/')
+        navigate("/");
       }
     } catch (err) {
       console.log(err);
@@ -174,6 +174,7 @@ const Header = () => {
                             marginRight: "40px",
                             display: "flex",
                             alignItems: "center",
+                            marginLeft:"240px"
                           }}
                         >
                           <i className=""></i>{" "}
@@ -197,31 +198,42 @@ const Header = () => {
                       </li>
                     </>
                   ) : (
-                    <li>
-                      {" "}
-                      <Link
-                        to="/login"
-                        className="login"
-                        style={{
-                          borderRadius: "10px",
-                          marginRight: "20px",
-                          padding: "9px 9px",
-                        }}
-                      >
-                        <i className="icofont-user"></i> <span>LOG IN</span>{" "}
-                      </Link>
-                      <Link
-                        to="/signUpas"
-                        className="signup"
-                        style={{
-                          borderRadius: "10px",
-                          marginRight: "20px",
-                          padding: "9px 9px",
-                        }}
-                      >
-                        <i className="icofont-users"></i> <span>SIGN UP</span>{" "}
-                      </Link>
-                    </li>
+                    < >
+                      <li>
+                        {" "}
+                        <Link
+                          to="/login"
+                          className="login"
+                          style={{
+                            borderRadius: "10px",
+                            marginRight: "20px",
+                            padding: "12px 22px",
+                            background: "#dc2f02",
+                            color:"#fff",
+                            marginTop:"4px",
+                            marginLeft:"300px"
+                          }}
+                        >
+                          <i className="icofont-user"></i> <span>LOG IN</span>{" "}
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="/signUpas"
+                          className="signup"
+                          style={{
+                            borderRadius: "10px",
+                            padding: "12px 18px",
+                            background: "transparent",
+                            color: "#000",
+                            border:'1px solid #000',
+                            marginTop:"4px"
+                          }}
+                        >
+                          <i className="icofont-users"></i> <span>SIGN UP</span>{" "}
+                        </Link>
+                      </li>
+                    </>
                   )}
                 </ul>
               </div>

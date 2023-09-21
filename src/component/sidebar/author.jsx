@@ -35,7 +35,19 @@ const socialList = [
 ]
 
 const Author = ({profile}) => {
-    let {name,image,college,state}=profile;;
+    let name,image,college,state;
+    if(profile) {
+        name=profile?.name;
+        image=profile?.image;
+        college=profile?.college;
+        state=profile?.state;
+    }else{
+        name=name;
+        image=null;
+        college=degi;
+        state=desc;
+    }
+
     return (
         
         <div className="authors" >
