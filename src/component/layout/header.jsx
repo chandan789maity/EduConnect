@@ -181,7 +181,7 @@ const Header = () => {
                             marginRight: "40px",
                             display: "flex",
                             alignItems: "center",
-                            marginLeft: "80px",
+                            marginLeft: "20px",
                             backgroundColor:"#f16126"
 
                           }}
@@ -220,7 +220,7 @@ const Header = () => {
                             background: "#dc2f02",
                             color: "#fff",
                             marginTop: "4px",
-                            marginLeft: "200px",
+                            marginLeft: "100px",
                           }}
                         >
                           <i className="icofont-user"></i> <span>LOG IN</span>{" "}
