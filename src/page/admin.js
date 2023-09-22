@@ -1,27 +1,56 @@
 import React from "react";
-import logo from '../assets/images/logo/logo.png'
-import {AiFillHome,AiOutlinePlus} from 'react-icons/ai'
-import {CiSettings} from 'react-icons/ci'
-import {PiStudentDuotone} from 'react-icons/pi'
+import logo from "../assets/images/logo/logo.png";
+import { AiFillHome, AiOutlinePlus } from "react-icons/ai";
+import { CiSettings } from "react-icons/ci";
+import { PiStudentDuotone } from "react-icons/pi";
+import { useContext } from "react";
+import AuthContext from "../context/authContext";
+import axios from "axios";
+import { useQuery } from "react-query";
+import { server } from "../App";
+
 const Admin = () => {
+  const [auth, refetch, isLoading] = useContext(AuthContext);
+  const { authenticated, user:college } = auth;
+  const { data: projects, isLoading: isLoading2 } = useQuery(
+    ["projects", college?.CollegeEmail],
+    async () => {
+      try {
+        const res = await axios.get(`${server}project/college/${college.CollegeEmail}`, {
+          withCredentials: true,
+        });
+        if (res.status === 200) {
+          return res?.data?.projects;
+        } else {
+          return [];
+        }
+      } catch (err) {
+        return [];
+      }
+    },
+    {
+      enabled: college?.CollegeEmail !== undefined,
+    }
+  );
+  if (isLoading || isLoading2) {
+    return <p>Loading...</p>;
+  }
   return (
     <>
       <div>
         <header className="fixed right-0 top-0 left-60 bg-white py-3 px-4 h-16">
           <div className="max-w-4xl mx-auto">
             <div className="flex items-center justify-between">
-             
               <div className="text-lg">HERITAGE INSTITUTE OF TECHNOLOGY</div>
               <div>
                 <button
                   type="button"
                   className="flex items-center focus:outline-none rounded-lg text-gray-600 hover:text-yellow-600 focus:text-yellow-600 font-semibold p-2 border border-transparent hover:border-yellow-300 focus:border-yellow-300 transition"
                 >
-                <span className="inline-flex items-center justify-center  text-gray-600  rounded transition ml-2">
-                    <AiOutlinePlus className="text-lg mr-1"/>
+                  <span className="inline-flex items-center justify-center  text-gray-600  rounded transition ml-2">
+                    <AiOutlinePlus className="text-lg mr-1" />
                   </span>
-                <span className="text-sm">Add Student</span>
-                  
+                  <span className="text-sm">Add Student</span>
                 </button>
               </div>
             </div>
@@ -32,7 +61,7 @@ const Admin = () => {
             <div className="flex-grow">
               <div className="px-4 py-6 text-center border-b">
                 <div className="logo">
-                  <div >
+                  <div>
                     <img
                       src={logo}
                       alt="logo"
@@ -50,7 +79,7 @@ const Admin = () => {
                       href="javascript:void(0)"
                       className="flex items-center bg-orange-200 rounded-xl font-bold text-sm text-yellow-900 py-3 px-4"
                     >
-                     <AiFillHome className="text-xl mr-4"/>
+                      <AiFillHome className="text-xl mr-4" />
                       Home
                     </a>
                   </li>
@@ -59,7 +88,7 @@ const Admin = () => {
                       href="javascript:void(0)"
                       className="flex bg-white hover:bg-yellow-50 rounded-xl font-bold text-sm text-gray-900 py-3 px-4"
                     >
-                      <PiStudentDuotone className="text-xl mr-4"/>
+                      <PiStudentDuotone className="text-xl mr-4" />
                       Students
                     </a>
                   </li>
@@ -86,7 +115,7 @@ const Admin = () => {
                       href="javascript:void(0)"
                       className="flex bg-white hover:bg-yellow-50 rounded-xl font-bold text-sm text-gray-900 py-3 px-4"
                     >
-                      <CiSettings className="text-xl mr-4"/>
+                      <CiSettings className="text-xl mr-4" />
                       Settings
                     </a>
                   </li>
@@ -118,8 +147,8 @@ const Admin = () => {
             <div className="max-w-4xl mx-auto">
               <div className="bg-white rounded-3xl p-8 mb-5">
                 <h1 className="text-3xl font-bold mb-10">
-               
-                Utilize and Manage Your Students and Their Projects by Clicking Manage 
+                  Utilize and Manage Your Students and Their Projects by
+                  Clicking Manage
                 </h1>
                 <div className="flex items-center justify-between">
                   <div className="flex items-stretch">
@@ -145,7 +174,6 @@ const Admin = () => {
                     </div>
                   </div>
                   <div className="flex items-center gap-x-2">
-                
                     <button
                       type="button"
                       className="inline-flex items-center justify-center h-9 px-5 rounded-xl bg-gray-900 text-gray-300 hover:text-white text-sm font-semibold transition"
