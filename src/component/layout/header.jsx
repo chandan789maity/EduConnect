@@ -181,8 +181,9 @@ const Header = () => {
             <div className="menu-area">
               <div className="menu">
                 <ul className={`lab-ul ${menuToggle ? "active" : ""}`}>
-                  <li className="">
+                  <li className="home">
                     <NavLink to="/">Home</NavLink>
+                    
                     {/* role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-bs-offset="0,0" */}
                     {/* <ul className="lab-ul dropdown-menu">
                                             <li><NavLink to="/">Home One</NavLink></li>
@@ -195,7 +196,7 @@ const Header = () => {
                                         </ul> */}
                   </li>
 
-                  <li>
+                  <li className="home">
                     <NavLink to="/course">Projects</NavLink>
                   </li>
                   {authenticated ? (
@@ -214,7 +215,7 @@ const Header = () => {
                                         </ul>
                                     </li> */}
 
-                  <li className="">
+                  <li className="home">
                     {/* <a href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-bs-offset="0,0">About</a> */}
                     {/* <ul className="lab-ul dropdown-menu">
                                             <li><NavLink to="/about">About</NavLink></li>
@@ -228,11 +229,13 @@ const Header = () => {
                                             <li><NavLink to="/404">404</NavLink></li>
                                         </ul> */}
                   </li>
-                  <li>
+                  <li className="home">
                     <NavLink to="/college">College</NavLink>
                   </li>
 
-                  <li>
+                  <li className="home">
+
+
                     <NavLink to="/contact">Contact</NavLink>
                   </li>
 
