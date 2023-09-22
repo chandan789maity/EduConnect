@@ -18,6 +18,17 @@
 .logout-btn svg {
   margin-right: 0.4rem;
 }
+
+.signup{
+  background-color: transparent;
+}
+
+.modal_popUP{
+  position: relative;
+  display: flex;
+  flex-flow: wrap;
+}
+
 @media only screen and (max-width: 600px) {
   .addproject {
     margin: 0 !important;
@@ -27,4 +38,21 @@
   .logout-btn {
     color: #fff !important;
   }
+}
+.ant-btn-primary{
+  background-color:rgb(241, 97, 38);
+}
+
+.logout-btn{
+  background-color:white;
+  border:solid 1px #f16126;
+  height:3.5rem;
+  width: 10rem; 
+}
+.logout-btn:hover{
+  background-color: white !important;
+  color: rgb(16, 1, 1) !important;
+}
+.ant-modal{
+  align-content: space-around;
 }

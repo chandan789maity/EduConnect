@@ -8,8 +8,19 @@ import AuthContext from "../../context/authContext";
 import { useQueryClient } from "react-query";
 import axios from "axios";
 import { server } from "../../App";
+import { PiStudentDuotone } from "react-icons/pi";
+
+// import React, { useState } from "react";
+import { Button, Modal } from "antd";
+
+import studentImage from "./student.png";
+import universityImage from "./university.png";
+
+
 const phoneNumber = "+800-123-4567 6587";
 const address = "Beverley, New York 224 USA";
+
+
 
 let socialList = [
   {
@@ -43,6 +54,17 @@ const Header = () => {
   const [auth, refetch, isLoading] = useContext(AuthContext);
   const { authenticated, user } = auth;
 
+  const [isModalOpen, setIsModalOpen] = useState(false);
+const showModal = () => {
+  setIsModalOpen(true);
+};
+const handleOk = () => {
+  setIsModalOpen(false);
+};
+const handleCancel = () => {
+  setIsModalOpen(false);
+};
+
   window.addEventListener("scroll", () => {
     if (window.scrollY > 200) {
       setHeaderFiexd(true);
@@ -65,6 +87,44 @@ const Header = () => {
       console.log(err);
     }
   }
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleOk = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
+
+  // const buttonStyle = {
+  //   // backgroundColor: 'red', // Customize the background color
+  //   // color: 'white', // Customize the text color
+  //   // border: '2px solid black', // Customize the border
+  //   // // Add any other styles you want here
+  //   //   borderRadius: "10px",
+  //   // padding: "20px 18px",
+  //   // background: "transparent",
+  //   // color: "#000",
+  //   // border: "1px solid #000",
+  //   // marginTop: "4px",
+  //   // borderRadius: "10px",
+  //   // // marginRight: "20px",
+  //   // padding: "12px 22px",
+  //   // paddingBottom: "12px 22px",
+  //   // height: "30px",
+  //   // background: "#dc2f02",
+  //   // color: "#fff",
+  //   // marginTop: "4px",
+  //   // marginLeft: "300px",
+
+  // };
+
   return (
     <header
       className={`header-section ${headerFiexd ? "header-fixed fadeInUp" : ""}`}
@@ -200,10 +260,19 @@ const Header = () => {
                         </Link>
                       </li>
                       <li>
-                        <button className="logout-btn" onClick={logout}>
+                       {/*  <button className="logout-btn" onClick={logout}>
                           <MdLogout />
                           Logout
-                        </button>
+                        </button> */}
+                        <Button className="logout-btn" type="primary" onClick={showModal}>
+                        <MdLogout />
+                          Log Out
+                        </Button>
+                        <Modal style={{ top: 300 }} title="Confirm Logout" open={isModalOpen} onOk={logout} onCancel={handleCancel}>
+                          <p>Are you sure, you want to log out?</p>
+                          
+                        </Modal>
+
                       </li>
                     </>
                   ) : (
@@ -220,17 +289,21 @@ const Header = () => {
                             background: "#dc2f02",
                             color: "#fff",
                             marginTop: "4px",
-                            marginLeft: "100px",
+                            marginLeft: "300px",
                           }}
                         >
                           <i className="icofont-user"></i> <span>LOG IN</span>{" "}
                         </Link>
                       </li>
                       <li>
-                        <Link
+                        <Button
                           to="/signUpas"
                           className="signup"
+                          onClick={showModal}
                           style={{
+                            backgroundColor: "transparent",
+                            color: "black",
+                            border: "1px solid black",
                             borderRadius: "10px",
                             padding: "12px 18px",
                             background: "transparent",
@@ -240,13 +313,85 @@ const Header = () => {
                           }}
                         >
                           <i className="icofont-users"></i> <span>SIGN UP</span>{" "}
-                        </Link>
+                        </Button>
+                        <Modal
+                          title="Sign Up"
+                          open={isModalOpen}
+                          onOk={handleOk}
+                          onCancel={handleCancel}
+                        >
+                          <div>
+                            <div
+                              className="modal_popUP"
+                              style={{
+                                // paddingTop: "20px",
+                                border: "1px solid grey",
+                                borderRadius: "5px",
+                                paddingTop: "10px",
+                                paddingBottom: "10px",
+                                paddingLeft: "10px",
+                              }}
+                            >
+                              {/* PiStudentDuotone */}
+                              <PiStudentDuotone
+                                // src={studentImage}
+                                style={{
+                                  width: "50px",
+                                  height: "50px",
+                                  borderRadius: "50%",
+                                  color: "orangered",
+                                  // borderRadius: "50%",
+                                  border: "1px solid orange",
+                                }}
+                              ></PiStudentDuotone>
+                              <div
+                                style={{
+                                  fontSize: "20px",
+                                  paddingLeft: "30px",
+                                  paddingTop: "10px",
+                                }}
+                              >
+                                Student
+                              </div>
+                            </div>
+
+                            <div
+                              className="modal_popUP"
+                              style={{
+                                paddingTop: "10px",
+                                paddingBottom: "10px",
+                                paddingLeft: "10px",
+                                marginTop: "10px",
+                                border: "1px solid grey",
+                                borderRadius: "5px",
+                              }}
+                            >
+                              <img
+                                src={universityImage}
+                                style={{
+                                  width: "50px",
+                                  height: "50px",
+                                  borderRadius: "50%",
+                                  border: "1px solid orange",
+                                }}
+                              ></img>
+                              <div
+                                style={{
+                                  fontSize: "20px",
+                                  paddingLeft: "30px",
+                                  paddingTop: "10px",
+                                }}
+                              >
+                                College
+                              </div>
+                            </div>
+                          </div>
+                        </Modal>
                       </li>
                     </>
                   )}
                 </ul>
               </div>
-
               <div
                 className={`header-bar d-lg-none ${menuToggle ? "active" : ""}`}
                 onClick={() => setMenuToggle(!menuToggle)}
