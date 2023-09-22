@@ -15,7 +15,9 @@ const name = "Emilee Logan";
 const degi = "Master of Education Degree";
 const desc =
   "Infrastruct ntrinsicl grow optimal talers rather than efectve nformaon Collabora optimize partnersh and frictionles deliverables";
+
 const subTitle = "Bio";
+
 const infoDetails =
   "Enthusa expedte clent focused growth strateg wherea clent centered infrastruct ntrinsicl grow optimal talers rather than efectve nformaon Collabora optimize partnersh and frictionles deliverables infrastructs ntrinsicl grow optimal talers rather efectve";
 const skillTitle = "Personal Language Skill";
@@ -111,6 +113,7 @@ const awardList = [
 ];
 
 const TeamSingle = () => {
+
   const navigate=useNavigate()
   const { data: profile, isLoading } = useQuery(["profile"], async () => {
     try {
@@ -138,11 +141,14 @@ const TeamSingle = () => {
               <div className="instructor-single-item d-flex flex-wrap justify-content-between">
                 <div className="instructor-single-thumb">
                   <img
+
                     src={profile?.Pic}
+
                     alt="instructor"
                   />
                 </div>
                 <div className="instructor-single-content">
+
                   <div style={{
                     display:"flex"
                   }}>
@@ -174,7 +180,6 @@ const TeamSingle = () => {
                         <span className="list-name">{"Email"}</span>
                         <span className="list-attr">{profile?.Email}</span>
                       </li>
-                    
                     <li className="d-flex flex-wrap justify-content-start">
                       <span className="list-name">Follow Us</span>
                       <ul className="lab-ul list-attr d-flex flex-wrap justify-content-start">
