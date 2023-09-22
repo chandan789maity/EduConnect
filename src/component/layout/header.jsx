@@ -10,6 +10,10 @@ import axios from "axios";
 import { server } from "../../App";
 import { PiStudentDuotone } from "react-icons/pi";
 
+import { UserOutlined } from '@ant-design/icons';
+import React from 'react';
+import { Avatar, Drawer } from 'antd';
+
 // import React, { useState } from "react";
 import { Button, Modal } from "antd";
 
@@ -55,12 +59,20 @@ const Header = () => {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModalOpen2, setIsModalOpen2] = useState(false);
+  const [open, setOpen] = useState(false);
+  const showDrawer = () => {
+    setOpen(true);
+  };
+  const onClose = () => {
+    setOpen(false);
+  };
+
   const showModal = () => {
     setIsModalOpen(true);
   };
   const handleOk = () => {
-   
-    navigate(option,  {
+
+    navigate(option, {
       state: {
         type,
       }
@@ -139,7 +151,7 @@ const Header = () => {
         className={`header-top ${socialToggle ? "open" : ""}`}
         style={{ visibility: "hidden" }}
       >
-        <div className="container">
+        <div className="container" >
           <div className="header-top-area">
             <ul className="lab-ul left">
               <li>
@@ -164,22 +176,37 @@ const Header = () => {
           </div>
         </div>
       </div>
-      <div className="header-bottom">
-        <div className="container">
-          <div className="header-wrapper">
-            <div className="logo">
+      <div className="header-bottom" >
+        <div className="container" style={{
+          maxWidth: '100%',
+          width: "100%",
+          margin: '0',
+          display: 'flex',
+
+        }}>
+          <div className="header-wrapper" style={{
+            width: "100%",
+            display: 'flex',
+            justifyContent: "space-between",
+            alignItems: 'center',
+
+          }}>
+            <div className="logo" style={{
+              marginLeft: "4rem"
+            }} >
               <Link to="/">
                 <img
                   src={logo}
                   alt="logo"
                   style={{
                     width: "300px",
+
                   }}
                 />
               </Link>
             </div>
-            <div className="menu-area">
-              <div className="menu">
+            <div className="menu-area" >
+              <div className="menu" >
                 <ul className={`lab-ul ${menuToggle ? "active" : ""}`}>
                   <li className="">
                     <NavLink to="/">Home</NavLink>
@@ -198,11 +225,7 @@ const Header = () => {
                   <li>
                     <NavLink to="/course">Projects</NavLink>
                   </li>
-                  {authenticated ? (
-                    <li>
-                      <NavLink to="/team-single">Profile</NavLink>
-                    </li>
-                  ) : null}
+
 
                   {/* <li className="menu-item-has-children">
                                         <a href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-bs-offset="0,0">Blog</a>
@@ -235,9 +258,13 @@ const Header = () => {
                   <li>
                     <NavLink to="/contact">Contact</NavLink>
                   </li>
+                  <li>
+                  <NavLink to="/team-single">Profile</NavLink><br/>
+                  </li>
+                 
 
                   {authenticated ? (
-                    <>
+                    <div style={{ display: 'flex', alignItems: "center" }}>
                       <li>
                         <Link
                           to="/addproject"
@@ -248,7 +275,8 @@ const Header = () => {
                             display: "flex",
                             alignItems: "center",
                             marginLeft: "20px",
-                           
+                            padding: '17px 16px'
+
                           }}
                         >
                           <span className="flex items-center ">
@@ -269,21 +297,27 @@ const Header = () => {
                           <MdLogout />
                           Logout
                         </button> */}
-                        <Button className="logout-btn" onClick={()=>setIsModalOpen2(true)}>
+                        <Button className="logout-btn" onClick={() => setIsModalOpen2(true)}>
                           <MdLogout />
                           Log Out
                         </Button>
                         <Modal
-                          style={{ top: 300 }}
+                          style={{ top: 500 }}
                           title="Confirm Logout"
                           open={isModalOpen2}
                           onOk={logout}
-                          onCancel={()=>setIsModalOpen2(false)}
+                          onCancel={() => setIsModalOpen2(false)}
                         >
                           <p>Are you sure, you want to log out?</p>
                         </Modal>
                       </li>
-                    </>
+                      <li onClick={showDrawer}>
+
+
+                        <Avatar style={{ marginLeft: "1.2rem" }} icon={<UserOutlined />} />
+
+                      </li>
+                    </div>
                   ) : (
                     <>
                       <li>
@@ -317,16 +351,16 @@ const Header = () => {
                             color: "black",
                             border: "1px solid black",
                             borderRadius: "10px",
-                            padding:"12px 18px",
+                            padding: "12px 18px",
                             marginTop: "4px",
-                            height:"47px",
+                            height: "47px",
                           }}
                         >
                           <i
                             className="icofont-users"
                             style={{ fontSize: "1rem", margin: "0 10px" }}
                           ></i>
-                          <span>SIGN UP</span>        
+                          <span>SIGN UP</span>
                         </button>
                       </li>
                     </>
@@ -340,18 +374,18 @@ const Header = () => {
                 >
                   <div>
                     <div
-                      onClick={() =>{
+                      onClick={() => {
                         setType("student")
-                      } }
+                      }}
                       className="modal_popUP bg-lime-500"
                       style={{
                         // paddingTop: "20px",
-                        border: `${type==='student'? "1px solid grey":""}`,
+                        border: `${type === 'student' ? "1px solid grey" : ""}`,
                         borderRadius: "5px",
                         paddingTop: "10px",
                         paddingBottom: "10px",
                         paddingLeft: "10px",
-                        cursor:"pointer"
+                        cursor: "pointer"
                       }}
                     >
                       {/* PiStudentDuotone */}
@@ -378,14 +412,14 @@ const Header = () => {
                     </div>
 
                     <div
-                    className={`modal_popUP `}
+                      className={`modal_popUP `}
                       onClick={() => setType("college")}
                       style={{
                         paddingTop: "10px",
                         paddingBottom: "10px",
                         paddingLeft: "10px",
                         marginTop: "10px",
-                        border: `${type==='college'? "1px solid grey":""}`,
+                        border: `${type === 'college' ? "1px solid grey" : ""}`,
                         borderRadius: "5px",
                       }}
                     >
@@ -410,6 +444,13 @@ const Header = () => {
                     </div>
                   </div>
                 </Modal>
+                <Drawer title="" placement="right" onClose={onClose} open={open}>
+                <NavLink to="/team-single">Profile</NavLink><br/>
+                <NavLink to="/editProfile">Edit Profile</NavLink><br/>
+                <NavLink to="/">Home</NavLink>
+                  <p>Some contents...</p>
+                  <p>Some contents...</p>
+                </Drawer>
               </div>
               <div
                 className={`header-bar d-lg-none ${menuToggle ? "active" : ""}`}
@@ -423,7 +464,7 @@ const Header = () => {
                 className="ellepsis-bar d-lg-none"
                 onClick={() => setSocialToggle(!socialToggle)}
               >
-                <i className="icofont-info-square"></i>
+
               </div>
             </div>
           </div>
