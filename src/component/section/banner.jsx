@@ -114,30 +114,43 @@ const Banner = () => {
                 </h6>
                 {title}
                 <p className="desc">{desc}</p>
-                <form
-                  action="/"
-                  onSubmit={(e) => {
-                    e.preventDefault();
-                  }}
-                >
-                  <div className="banner-icon">
-                    <i className="icofont-search"></i>
-                  </div>
-                  <input
-                    type="text"
-                    placeholder="Keywords of your Projects"
-                    onChange={(e) => setFilter(e.target.value)}
-                  />
-                  <button type="submit">
-                    <AiOutlineSearch style={{ fontSize: "30px" }} />
-                  </button>
-                </form>
+                <div style={{
+                  borderRadius:"12px",
+                  overflow:"hidden"
+                }}>
+
+                  <form
+                    style={{
+                      borderRadius: "12px !important",
+                      zIndex: "1000",
+                      width:'100%'
+                    }}
+                    action="/"
+                    onSubmit={(e) => {
+                      e.preventDefault();
+                    }}
+                  >
+
+                    <div className="banner-icon">
+                      <i className="icofont-search"></i>
+                    </div>
+                    <input
+                      type="text"
+                      placeholder="Keywords of your Projects"
+                      onChange={(e) => setFilter(e.target.value)}
+                    />
+                    <button type="submit">
+                      <AiOutlineSearch style={{ fontSize: "30px" }} />
+                    </button>
+                  </form>
+
+                </div>
+
                 <div
                   className="suggest"
                   style={{
-                    display: `${
-                      filter === "" || projects?.length === 0 ? "none" : "block"
-                    }`,
+                    display: `${filter === "" || projects?.length === 0 ? "none" : "block"
+                      }`,
                   }}
                 >
                   {projects?.map((project, i) => {

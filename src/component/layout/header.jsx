@@ -16,11 +16,8 @@ import { Button, Modal } from "antd";
 import studentImage from "./student.png";
 import universityImage from "./university.png";
 
-
 const phoneNumber = "+800-123-4567 6587";
 const address = "Beverley, New York 224 USA";
-
-
 
 let socialList = [
   {
@@ -53,17 +50,25 @@ const Header = () => {
   const [headerFiexd, setHeaderFiexd] = useState(false);
   const [auth, refetch, isLoading] = useContext(AuthContext);
   const { authenticated, user } = auth;
+  const [type, setType] = useState("student");
+  const [option, setOption] = useState("/login");
 
   const [isModalOpen, setIsModalOpen] = useState(false);
-const showModal = () => {
-  setIsModalOpen(true);
-};
-const handleOk = () => {
-  setIsModalOpen(false);
-};
-const handleCancel = () => {
-  setIsModalOpen(false);
-};
+  const [isModalOpen2, setIsModalOpen2] = useState(false);
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+  const handleOk = () => {
+   
+    navigate(option,  {
+      state: {
+        type,
+      }
+    });
+  };
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
 
   window.addEventListener("scroll", () => {
     if (window.scrollY > 200) {
@@ -230,20 +235,20 @@ const handleCancel = () => {
                   <li>
                     <NavLink to="/contact">Contact</NavLink>
                   </li>
+
                   {authenticated ? (
                     <>
                       <li>
                         <Link
                           to="/addproject"
-                          className="addproject"
+                          className="addproject md:mr sm:mr-0"
                           style={{
                             borderRadius: "8px",
                             marginRight: "40px",
                             display: "flex",
                             alignItems: "center",
                             marginLeft: "20px",
-                            backgroundColor:"#f16126"
-
+                            backgroundColor: "#f16126",
                           }}
                         >
                           <span className="flex items-center ">
@@ -252,7 +257,7 @@ const handleCancel = () => {
                               style={{
                                 fontSize: "1.2rem",
                                 marginTop: "2px",
-                                marginRight:"4px"
+                                marginRight: "4px",
                               }}
                             />{" "}
                             ADD PROJECT
@@ -260,28 +265,34 @@ const handleCancel = () => {
                         </Link>
                       </li>
                       <li>
-                       {/*  <button className="logout-btn" onClick={logout}>
+                        {/*  <button className="logout-btn" onClick={logout}>
                           <MdLogout />
                           Logout
                         </button> */}
-                        <Button className="logout-btn" type="primary" onClick={showModal}>
-                        <MdLogout />
+                        <Button className="logout-btn" onClick={()=>setIsModalOpen2(true)}>
+                          <MdLogout />
                           Log Out
                         </Button>
-                        <Modal style={{ top: 300 }} title="Confirm Logout" open={isModalOpen} onOk={logout} onCancel={handleCancel}>
+                        <Modal
+                          style={{ top: 300 }}
+                          title="Confirm Logout"
+                          open={isModalOpen2}
+                          onOk={logout}
+                          onCancel={()=>setIsModalOpen2(false)}
+                        >
                           <p>Are you sure, you want to log out?</p>
-                          
                         </Modal>
-
                       </li>
                     </>
                   ) : (
                     <>
                       <li>
                         {" "}
-                        <Link
-                          to="/loginas"
-                          className="login"
+                        <button
+                          onClick={() => {
+                            setOption("/login");
+                            showModal();
+                          }}
                           style={{
                             borderRadius: "10px",
                             marginRight: "20px",
@@ -289,29 +300,40 @@ const handleCancel = () => {
                             background: "#dc2f02",
                             color: "#fff",
                             marginTop: "4px",
-                            marginLeft: "300px",
                           }}
                         >
                           <i className="icofont-user"></i> <span>LOG IN</span>{" "}
-                        </Link>
+                        </button>
                       </li>
                       <li>
                         <button
+<<<<<<< HEAD
                           to="/signUpas"
+=======
+>>>>>>> e64e53df0771f5c5d07c78765682e1a1691a3db0
                           className="signup"
-                          onClick={showModal}
+                          onClick={() => {
+                            setOption("/signup");
+                            showModal();
+                          }}
                           style={{
                             backgroundColor: "transparent",
                             color: "black",
                             border: "1px solid black",
                             borderRadius: "10px",
+<<<<<<< HEAD
                             padding: "12px 18px",
                             background: "#dc2f02",
                             color: "#fff",
                             border: "1px solid #000",
+=======
+                            padding:"12px 18px",
+>>>>>>> e64e53df0771f5c5d07c78765682e1a1691a3db0
                             marginTop: "4px",
+                            height:"47px",
                           }}
                         >
+<<<<<<< HEAD
                           <i className="icofont-users"></i> <span>SIGN UP</span>{" "}
                         </button>
                         <Modal
@@ -387,10 +409,96 @@ const handleCancel = () => {
                             </div>
                           </div>
                         </Modal>
+=======
+                          <i
+                            className="icofont-users"
+                            style={{ fontSize: "1rem", margin: "0 10px" }}
+                          ></i>
+                          <span>SIGN UP</span>        
+                        </button>
+>>>>>>> e64e53df0771f5c5d07c78765682e1a1691a3db0
                       </li>
                     </>
                   )}
                 </ul>
+                <Modal
+                  title="Select type"
+                  open={isModalOpen}
+                  onOk={handleOk}
+                  onCancel={handleCancel}
+                >
+                  <div>
+                    <div
+                      onClick={() =>{
+                        setType("student")
+                      } }
+                      className="modal_popUP bg-lime-500"
+                      style={{
+                        // paddingTop: "20px",
+                        border: `${type==='student'? "1px solid grey":""}`,
+                        borderRadius: "5px",
+                        paddingTop: "10px",
+                        paddingBottom: "10px",
+                        paddingLeft: "10px",
+                        cursor:"pointer"
+                      }}
+                    >
+                      {/* PiStudentDuotone */}
+                      <PiStudentDuotone
+                        // src={studentImage}
+                        style={{
+                          width: "50px",
+                          height: "50px",
+                          borderRadius: "50%",
+                          color: "orangered",
+                          // borderRadius: "50%",
+                          border: "1px solid orange",
+                        }}
+                      ></PiStudentDuotone>
+                      <div
+                        style={{
+                          fontSize: "20px",
+                          paddingLeft: "30px",
+                          paddingTop: "10px",
+                        }}
+                      >
+                        Student
+                      </div>
+                    </div>
+
+                    <div
+                    className={`modal_popUP `}
+                      onClick={() => setType("college")}
+                      style={{
+                        paddingTop: "10px",
+                        paddingBottom: "10px",
+                        paddingLeft: "10px",
+                        marginTop: "10px",
+                        border: `${type==='college'? "1px solid grey":""}`,
+                        borderRadius: "5px",
+                      }}
+                    >
+                      <img
+                        src={universityImage}
+                        style={{
+                          width: "50px",
+                          height: "50px",
+                          borderRadius: "50%",
+                          border: "1px solid orange",
+                        }}
+                      ></img>
+                      <div
+                        style={{
+                          fontSize: "20px",
+                          paddingLeft: "30px",
+                          paddingTop: "10px",
+                        }}
+                      >
+                        College
+                      </div>
+                    </div>
+                  </div>
+                </Modal>
               </div>
               <div
                 className={`header-bar d-lg-none ${menuToggle ? "active" : ""}`}
