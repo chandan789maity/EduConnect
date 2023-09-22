@@ -15,7 +15,7 @@ const name = "Emilee Logan";
 const degi = "Master of Education Degree";
 const desc =
   "Infrastruct ntrinsicl grow optimal talers rather than efectve nformaon Collabora optimize partnersh and frictionles deliverables";
-const subTitle = "Personal Statement";
+const subTitle = "Bio";
 const infoDetails =
   "Enthusa expedte clent focused growth strateg wherea clent centered infrastruct ntrinsicl grow optimal talers rather than efectve nformaon Collabora optimize partnersh and frictionles deliverables infrastructs ntrinsicl grow optimal talers rather efectve";
 const skillTitle = "Personal Language Skill";
@@ -130,7 +130,7 @@ const TeamSingle = () => {
   return (
     <Fragment>
       <Header />
-      <PageHeader title={"Sir Emilee Logan"} curPage={"Emilee Logan"} />
+      <PageHeader title={profile?.Name} curPage={""} />
       <section className="instructor-single-section padding-tb section-bg">
         <div className="container">
           <div className="instructor-wrapper">
@@ -154,21 +154,27 @@ const TeamSingle = () => {
                     </span>
                   </div>
 
-                  <p className="ins-dege">{degi}</p>
+                  <p className="ins-dege">{profile?.CollegeName}</p>
                   <Rating />
-                  <p className="ins-desc">{desc}</p>
                   <h6 className="subtitle">{subTitle}</h6>
-                  <p className="ins-desc">{infoDetails}</p>
+                  <p className="ins-desc">{profile?.Bio}</p>
                   <ul className="lab-ul">
-                    {memInfoLisst.map((val, i) => (
+                   
                       <li
                         className="d-flex flex-wrap justify-content-start"
-                        key={i}
+                      
                       >
-                        <span className="list-name">{val.leftText}</span>
-                        <span className="list-attr">{val.rightText}</span>
+                        <span className="list-name">{"Address"}</span>
+                        <span className="list-attr">{profile?.Address}</span>
                       </li>
-                    ))}
+                      <li
+                        className="d-flex flex-wrap justify-content-start"
+                      
+                      >
+                        <span className="list-name">{"Email"}</span>
+                        <span className="list-attr">{profile?.Email}</span>
+                      </li>
+                    
                     <li className="d-flex flex-wrap justify-content-start">
                       <span className="list-name">Follow Us</span>
                       <ul className="lab-ul list-attr d-flex flex-wrap justify-content-start">
