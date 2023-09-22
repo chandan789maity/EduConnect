@@ -21,13 +21,16 @@ import ShopDetails from "./page/shop-single";
 import SignupPage from "./page/signup";
 import SignUpAs from "./page/signUpAs";
 import AddProject from "./page/add";
+import Edit from "./page/editProfile";
 import TeamPage from "./page/team";
 import TeamSingle from "./page/team-single";
 import College from "./page/college";
 import Uploaded from "./page/uploaded";
-
 import { AuthProvider } from "./context/authContext";
 import { QueryClient, QueryClientProvider } from "react-query";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import ProtectedRoute from "./page/protected";
 const queryClient = new QueryClient();
 
 export const server = "https://educonnect-server.onrender.com/api/v1/";  //Hosted server
@@ -43,7 +46,7 @@ function App() {
             <Route path="/" element={<Home />} />
             {/* <Route path="index-2" element={<HomeTwo />} />
 		<Route path="index-3" element={<HomeThree />} />
-		<Route path="index-4" element={<HomeFour />} />
+		<Route path="index-4" element={<HomeFour  />} />
 		<Route path="index-5" element={<HomeFive />} />
 		<Route path="index-6" element={<HomeSix />} />
 		<Route path="index-7" element={<HomeSeven />} /> */}
@@ -69,9 +72,11 @@ function App() {
             <Route path="signup" element={<SignupPage />} />
             <Route path="signUpas" element={<SignUpAs />} />
             <Route path="addproject" element={<AddProject />} />
+            <Route path="editProfile" element={<Edit />} />
             <Route path="forgetpass" element={<ForgetPass />} />
             <Route path="*" element={<ErrorPage />} />
           </Routes>
+          <ToastContainer/>
         </BrowserRouter>
       </AuthProvider>
     </QueryClientProvider>

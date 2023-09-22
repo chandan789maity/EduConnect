@@ -40,7 +40,7 @@ const Header = () => {
   const [menuToggle, setMenuToggle] = useState(false);
   const [socialToggle, setSocialToggle] = useState(false);
   const [headerFiexd, setHeaderFiexd] = useState(false);
-  const [auth, refetch] = useContext(AuthContext);
+  const [auth, refetch, isLoading] = useContext(AuthContext);
   const { authenticated, user } = auth;
 
   window.addEventListener("scroll", () => {
@@ -68,6 +68,7 @@ const Header = () => {
   return (
     <header
       className={`header-section ${headerFiexd ? "header-fixed fadeInUp" : ""}`}
+      style={{ marginTop: "-10px" }}
     >
       <div
         className={`header-top ${socialToggle ? "open" : ""}`}
@@ -132,6 +133,11 @@ const Header = () => {
                   <li>
                     <NavLink to="/course">Projects</NavLink>
                   </li>
+                  {authenticated ? (
+                    <li>
+                      <NavLink to="/team-single">Profile</NavLink>
+                    </li>
+                  ) : null}
 
                   {/* <li className="menu-item-has-children">
                                         <a href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-bs-offset="0,0">Blog</a>
@@ -160,6 +166,7 @@ const Header = () => {
                   <li>
                     <NavLink to="/college">College</NavLink>
                   </li>
+
                   <li>
                     <NavLink to="/contact">Contact</NavLink>
                   </li>
@@ -174,7 +181,9 @@ const Header = () => {
                             marginRight: "40px",
                             display: "flex",
                             alignItems: "center",
-                            marginLeft:"240px"
+                            marginLeft: "20px",
+                            backgroundColor:"#f16126"
+
                           }}
                         >
                           <i className=""></i>{" "}
@@ -198,7 +207,7 @@ const Header = () => {
                       </li>
                     </>
                   ) : (
-                    < >
+                    <>
                       <li>
                         {" "}
                         <Link
@@ -209,9 +218,9 @@ const Header = () => {
                             marginRight: "20px",
                             padding: "12px 22px",
                             background: "#dc2f02",
-                            color:"#fff",
-                            marginTop:"4px",
-                            marginLeft:"300px"
+                            color: "#fff",
+                            marginTop: "4px",
+                            marginLeft: "100px",
                           }}
                         >
                           <i className="icofont-user"></i> <span>LOG IN</span>{" "}
@@ -226,8 +235,8 @@ const Header = () => {
                             padding: "12px 18px",
                             background: "transparent",
                             color: "#000",
-                            border:'1px solid #000',
-                            marginTop:"4px"
+                            border: "1px solid #000",
+                            marginTop: "4px",
                           }}
                         >
                           <i className="icofont-users"></i> <span>SIGN UP</span>{" "}

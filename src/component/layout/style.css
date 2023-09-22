@@ -1,32 +1,29 @@
 .addproject {
-  background-color: #f16126;
-  padding: .6rem .5rem;
+  background-color: #f16126 !important;
+  padding: 0.6rem 0.5rem;
   /* font-size: 1rem; */
   font-weight: 600;
   color: white !important;
 }
-.logout-btn{
-    padding: .6rem .7rem;
-    background-color: transparent;
-    color: #f16126;
-    border-radius: 8px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-
+.logout-btn {
+  padding: 0.6rem 0.7rem;
+  background-color: transparent;
+  color: #000;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.logout-btn svg{
-    margin-right: .4rem;
+.logout-btn svg {
+  margin-right: 0.4rem;
 }
 @media only screen and (max-width: 600px) {
-.addproject {
-  margin: 0 !important;
-  padding: 7px 10px;
-  font-size: .7rem;
-
-}
-.logout-btn{
-  color: #fff !important;
-}
+  .addproject {
+    margin: 0 !important;
+    padding: 7px 10px;
+    font-size: 0.7rem;
+  }
+  .logout-btn {
+    color: #fff !important;
+  }
 }
