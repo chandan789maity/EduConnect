@@ -248,7 +248,7 @@ const Header = () => {
                             display: "flex",
                             alignItems: "center",
                             marginLeft: "20px",
-                            backgroundColor: "#f16126",
+                           
                           }}
                         >
                           <span className="flex items-center ">
