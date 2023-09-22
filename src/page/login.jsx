@@ -1,14 +1,18 @@
 import { Component, Fragment, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Footer from "../component/layout/footer";
 import Header from "../component/layout/header";
+import { Spin } from "antd";
 import axios from "axios";
 import { server } from "../App";
+import { toast } from "react-toastify";
 const title = "Login";
 const btnText = "Submit Now";
 
 const LoginPage = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const { type } = location?.state;
   const [userData, setUserData] = useState({
     UserName: "",
     Password: "",
@@ -29,22 +33,31 @@ const LoginPage = () => {
     e.preventDefault();
     let { UserName, Password } = userData;
     if (!UserName || !Password) {
-      alert("Please fill out your details");
+      toast("Please fill out your details", { type: "warning" });
       return;
     }
     try {
       setIsLoading(true);
-      const res = await axios.post(`${server}auth/login`, userData, {
+      const res = await axios.post(`${server}auth/login`, {
+        ...userData,
+        Type:type,
+      }, {
         withCredentials: true,
       });
-      console.log(res);
+      // console.log(res);
       if (res.status === 202) {
-        alert("Welcome ", res.data.user.UserName);
-        setIsLoading(false);
-        navigate("/");
+        if (type === "college") {
+          toast(`Welcome ${res?.data?.user?.CollegeName}`, { type: "success" });
+          setIsLoading(false);
+          navigate("/admin");
+        } else {
+          toast(`Welcome ${res?.data?.user?.Name}`, { type: "success" });
+          setIsLoading(false);
+          navigate("/");
+        }
       }
     } catch (err) {
-      alert(err.response.data.Messege);
+      toast(err.response.data.Messege, { type: "error" });
       setIsLoading(false);
     }
   }
@@ -61,7 +74,7 @@ const LoginPage = () => {
                 <input
                   type="text"
                   name="UserName"
-                  placeholder="User Name *"
+                  placeholder={`${type ==='student'?"User Name":"College Email"}`}
                   onChange={handleChange}
                 />
               </div>
@@ -75,7 +88,13 @@ const LoginPage = () => {
               </div>
               <div className="form-group text-center">
                 <button className="d-block lab-btn" type="submit">
-                  <span>{isLoading ? "Signing in..." : btnText}</span>
+                  {isLoading ? (
+                    <span>
+                      <Spin /> Logging in...
+                    </span>
+                  ) : (
+                    <span>Login</span>
+                  )}
                 </button>
               </div>
             </form>

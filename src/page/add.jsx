@@ -1,5 +1,5 @@
 import "react-quill/dist/quill.snow.css";
-import { Component, Fragment, useState, lazy } from "react";
+import { Component, Fragment, useState, lazy, useEffect } from "react";
 import { BsUpload } from "react-icons/bs";
 import Footer from "../component/layout/footer";
 import Header from "../component/layout/header";
@@ -10,6 +10,8 @@ import axios from "axios";
 import { server } from "../App";
 import { useNavigate } from "react-router-dom";
 import { Suspense } from "react";
+import { useQuery } from "react-query";
+import { toast } from "react-toastify";
 const QuillNoSSRWrapper = lazy(() => import("react-quill"));
 const title = "Project  Details";
 const btnText = "Submit";
@@ -137,17 +139,17 @@ const AddProject = () => {
       });
 
       if (response.status === 201) {
-        alert("Project uploaded successfully.");
+        toast("Project uploaded successfully.", { type: "success" });
         setIsLoading(false);
         navigate("/uploaded");
       } else {
         setIsLoading(false);
-        alert("Error uploading project.");
+        toast("Error uploading project.", { type: "error" });
       }
     } catch (error) {
       setIsLoading(false);
       console.error("Error:", error);
-      alert("Error uploading project.");
+      toast("Error uploading project.", { type: "error" });
     }
   };
 
@@ -255,7 +257,7 @@ const AddProject = () => {
                   accept="image/*"
                   onChange={handleCoverPic}
                 />
-                <label for="cover" className="upploadLabel">
+                <label htmlFor="cover" className="upploadLabel">
                   <BsUpload /> {CoverPic ? "Uploaded" : btnText3}
                 </label>
 
@@ -275,7 +277,6 @@ const AddProject = () => {
                     color: "#C3C3C3",
                     background: "#fff",
                     marginTop: "1rem",
-    
                   }}
                   modules={modules}
                   theme="snow"
