@@ -81,3 +81,6 @@
   align-content: space-around;
   
 }
+.xyz:hover{
+  cursor: pointer;
+}

@@ -13,6 +13,8 @@ import { AntDesignOutlined } from '@ant-design/icons';
 import React from 'react';
 import { Avatar } from 'antd';
 import { Popover } from 'antd';
+import { AiFillEdit } from "react-icons/ai";
+import { CgProfile } from "react-icons/cg";
 
 
 // import React, { useState } from "react";
@@ -100,8 +102,15 @@ const Header = () => {
 
   const content = (
     <div>
+    <p>
+      <button className="logout-btn" style={{display:"flex"}}>
+      <CgProfile/>
+      <NavLink to="/team-single">View Profile</NavLink>
+      </button>
+    </p>
       <p>
-        <button>
+        <button className="logout-btn" style={{display:"flex",aligText:"center"}}>
+          <AiFillEdit />
           <NavLink to="/editProfile">Edit Profile</NavLink>
         </button>
 
@@ -163,7 +172,7 @@ const Header = () => {
   //   setIsModalOpen(false);
   // };
 
-  // const handleCancel = () => {
+  // const handleCancel = () => 
   //   setIsModalOpen(false);
   // };
 
@@ -340,15 +349,15 @@ const Header = () => {
                       </li>
 
                       <li >
-                      <Popover content={content}>
-                        <NavLink to="/team-single">
+                      <Popover className="xyz" content={content} trigger="hover">
+                        
                           
                             {
                               profile?.Pic ? <Avatar style={{ marginLeft: "1.2rem", width: "3.5rem", height: "3.5rem" }} src={profile?.Pic} /> : <Avatar style={{ marginLeft: "1.2rem" }} icon={<AntDesignOutlined />} />
                             }
                          
 
-                        </NavLink>
+                        
                         </Popover>
 
 
