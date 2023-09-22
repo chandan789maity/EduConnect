@@ -296,7 +296,7 @@ const handleCancel = () => {
                         </Link>
                       </li>
                       <li>
-                        <Button
+                        <button
                           to="/signUpas"
                           className="signup"
                           onClick={showModal}
@@ -306,14 +306,14 @@ const handleCancel = () => {
                             border: "1px solid black",
                             borderRadius: "10px",
                             padding: "12px 18px",
-                            background: "transparent",
-                            color: "#000",
+                            background: "#dc2f02",
+                            color: "#fff",
                             border: "1px solid #000",
                             marginTop: "4px",
                           }}
                         >
                           <i className="icofont-users"></i> <span>SIGN UP</span>{" "}
-                        </Button>
+                        </button>
                         <Modal
                           title="Sign Up"
                           open={isModalOpen}
