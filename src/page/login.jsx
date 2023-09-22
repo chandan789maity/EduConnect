@@ -38,13 +38,16 @@ const LoginPage = () => {
     }
     try {
       setIsLoading(true);
-      const res = await axios.post(`${server}auth/login`, userData, {
+      const res = await axios.post(`${server}auth/login`, {
+        ...userData,
+        Type:type,
+      }, {
         withCredentials: true,
       });
       // console.log(res);
       if (res.status === 202) {
         if (type === "college") {
-          toast(`Welcome ${res?.data?.user?.Name}`, { type: "success" });
+          toast(`Welcome ${res?.data?.user?.CollegeName}`, { type: "success" });
           setIsLoading(false);
           navigate("/admin");
         } else {
@@ -71,7 +74,7 @@ const LoginPage = () => {
                 <input
                   type="text"
                   name="UserName"
-                  placeholder="User Name *"
+                  placeholder={`${type ==='student'?"User Name":"College Email"}`}
                   onChange={handleChange}
                 />
               </div>
@@ -87,10 +90,10 @@ const LoginPage = () => {
                 <button className="d-block lab-btn" type="submit">
                   {isLoading ? (
                     <span>
-                      <Spin /> Uploading...
+                      <Spin /> Logging in...
                     </span>
                   ) : (
-                    <span>Upload Now</span>
+                    <span>Login</span>
                   )}
                 </button>
               </div>
