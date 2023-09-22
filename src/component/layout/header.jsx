@@ -16,11 +16,8 @@ import { Button, Modal } from "antd";
 import studentImage from "./student.png";
 import universityImage from "./university.png";
 
-
 const phoneNumber = "+800-123-4567 6587";
 const address = "Beverley, New York 224 USA";
-
-
 
 let socialList = [
   {
@@ -55,15 +52,15 @@ const Header = () => {
   const { authenticated, user } = auth;
 
   const [isModalOpen, setIsModalOpen] = useState(false);
-const showModal = () => {
-  setIsModalOpen(true);
-};
-const handleOk = () => {
-  setIsModalOpen(false);
-};
-const handleCancel = () => {
-  setIsModalOpen(false);
-};
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+  const handleOk = () => {
+    setIsModalOpen(false);
+  };
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
 
   window.addEventListener("scroll", () => {
     if (window.scrollY > 200) {
@@ -242,8 +239,7 @@ const handleCancel = () => {
                             display: "flex",
                             alignItems: "center",
                             marginLeft: "20px",
-                            backgroundColor:"#f16126"
-
+                            backgroundColor: "#f16126",
                           }}
                         >
                           <span className="flex items-center ">
@@ -252,7 +248,7 @@ const handleCancel = () => {
                               style={{
                                 fontSize: "1.2rem",
                                 marginTop: "2px",
-                                marginRight:"4px"
+                                marginRight: "4px",
                               }}
                             />{" "}
                             ADD PROJECT
@@ -260,19 +256,27 @@ const handleCancel = () => {
                         </Link>
                       </li>
                       <li>
-                       {/*  <button className="logout-btn" onClick={logout}>
+                        {/*  <button className="logout-btn" onClick={logout}>
                           <MdLogout />
                           Logout
                         </button> */}
-                        <Button className="logout-btn" type="primary" onClick={showModal}>
-                        <MdLogout />
+                        <Button
+                          className="logout-btn"
+                          type="primary"
+                          onClick={showModal}
+                        >
+                          <MdLogout />
                           Log Out
                         </Button>
-                        <Modal style={{ top: 300 }} title="Confirm Logout" open={isModalOpen} onOk={logout} onCancel={handleCancel}>
+                        <Modal
+                          style={{ top: 300 }}
+                          title="Confirm Logout"
+                          open={isModalOpen}
+                          onOk={logout}
+                          onCancel={handleCancel}
+                        >
                           <p>Are you sure, you want to log out?</p>
-                          
                         </Modal>
-
                       </li>
                     </>
                   ) : (
@@ -296,7 +300,7 @@ const handleCancel = () => {
                         </Link>
                       </li>
                       <li>
-                        <Button
+                        <button
                           to="/signUpas"
                           className="signup"
                           onClick={showModal}
@@ -313,7 +317,7 @@ const handleCancel = () => {
                           }}
                         >
                           <i className="icofont-users"></i> <span>SIGN UP</span>{" "}
-                        </Button>
+                        </button>
                         <Modal
                           title="Sign Up"
                           open={isModalOpen}
