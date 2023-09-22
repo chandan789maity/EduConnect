@@ -55,16 +55,19 @@ const Header = () => {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModalOpen2, setIsModalOpen2] = useState(false);
+
   const showModal = () => {
     setIsModalOpen(true);
   };
   const handleOk = () => {
+
    
     navigate(option,  {
       state: {
         type,
       }
     });
+
   };
   const handleCancel = () => {
     setIsModalOpen(false);
@@ -239,6 +242,10 @@ const Header = () => {
                     <NavLink to="/contact">Contact</NavLink>
                   </li>
 
+                  <li>
+                    <NavLink to="/aboutUs">About</NavLink>
+                  </li>
+
                   {authenticated ? (
                     <>
                       <li>
@@ -251,7 +258,6 @@ const Header = () => {
                             display: "flex",
                             alignItems: "center",
                             marginLeft: "20px",
-                           
                           }}
                         >
                           <span className="flex items-center ">
@@ -272,6 +278,7 @@ const Header = () => {
                           <MdLogout />
                           Logout
                         </button> */}
+
                         <Button className="logout-btn" onClick={()=>setIsModalOpen2(true)}>
                           <MdLogout />
                           Log Out
@@ -279,9 +286,11 @@ const Header = () => {
                         <Modal
                           style={{ top: 300 }}
                           title="Confirm Logout"
+
                           open={isModalOpen2}
                           onOk={logout}
                           onCancel={()=>setIsModalOpen2(false)}
+
                         >
                           <p>Are you sure, you want to log out?</p>
                         </Modal>
@@ -310,6 +319,7 @@ const Header = () => {
                       </li>
                       <li>
                         <button
+
                           className="signup"
                           onClick={() => {
                             setOption("/signup");
@@ -325,12 +335,14 @@ const Header = () => {
                             height:"47px",
                           }}
                         >
+
                           <i
                             className="icofont-users"
                             style={{ fontSize: "1rem", margin: "0 10px" }}
                           ></i>
                           <span>SIGN UP</span>        
                         </button>
+
                       </li>
                     </>
                   )}
