@@ -48,12 +48,16 @@ const CourseSingle = () => {
           <div className="row justify-content-center justify-content-lg-between align-items-center flex-row-reverse">
             <div className="col-lg-6 col-12">
               <div className="pageheader-thumb" style={{width:"100%"}}>
-                <img src={project?.CoverPic} alt={project?.Title} className="w-100" />
+                <img src={project?.CoverPic} alt={project?.Title} className="w-100 flex justify-center items-center" />
                 <a
                   href={project?.DownloadLink}
-                  className="video-button popup"
+                  className="video-button popup flex justify-center items-center"
                 >
-                  <BsDownload />
+                  <BsDownload style={{
+                    position:'absolute',
+                    top:"50%",
+                    left:"50%",
+                    transform:'translate(-50%, -50%)'}}/>
                 </a>
               </div>
             </div>
