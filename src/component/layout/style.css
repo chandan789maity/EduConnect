@@ -19,6 +19,17 @@
 .logout-btn svg{
     margin-right: .4rem;
 }
+
+.signup{
+  background-color: transparent;
+}
+
+.modal_popUP{
+  position: relative;
+  display: flex;
+  flex-flow: wrap;
+}
+
 @media only screen and (max-width: 600px) {
 .addproject {
   margin: 0 !important;
