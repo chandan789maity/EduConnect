@@ -186,13 +186,13 @@ const Header = () => {
 
                           }}
                         >
-                          <i className=""></i>{" "}
-                          <span>
+                          <span className="flex items-center ">
                             {" "}
                             <AiOutlinePlus
                               style={{
                                 fontSize: "1.2rem",
-                                marginBottom: "4px",
+                                marginTop: "2px",
+                                marginRight:"4px"
                               }}
                             />{" "}
                             ADD PROJECT
@@ -211,7 +211,7 @@ const Header = () => {
                       <li>
                         {" "}
                         <Link
-                          to="/login"
+                          to="/loginas"
                           className="login"
                           style={{
                             borderRadius: "10px",
