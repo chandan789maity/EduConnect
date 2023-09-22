@@ -2,6 +2,7 @@ import React from "react";
 import logo from "../assets/images/logo/logo.png";
 import { AiFillHome, AiOutlinePlus } from "react-icons/ai";
 import { CiSettings } from "react-icons/ci";
+import { LuExternalLink } from "react-icons/lu";
 import { PiStudentDuotone } from "react-icons/pi";
 import { useContext } from "react";
 import AuthContext from "../context/authContext";
@@ -11,16 +12,19 @@ import { server } from "../App";
 
 const Admin = () => {
   const [auth, refetch, isLoading] = useContext(AuthContext);
-  const { authenticated, user:college } = auth;
+  const { authenticated, user: college } = auth;
   const { data: projects, isLoading: isLoading2 } = useQuery(
     ["projects", college?.CollegeEmail],
     async () => {
       try {
-        const res = await axios.get(`${server}project/college/${college.CollegeEmail}`, {
-          withCredentials: true,
-        });
+        const res = await axios.get(
+          `${server}project/college/${college.CollegeEmail}`,
+          {
+            withCredentials: true,
+          }
+        );
         if (res.status === 200) {
-          return res?.data?.projects;
+          return res?.data?.data;
         } else {
           return [];
         }
@@ -32,16 +36,65 @@ const Admin = () => {
       enabled: college?.CollegeEmail !== undefined,
     }
   );
-  if (isLoading || isLoading2) {
+  const { data: students, isLoading: isLoading3 } = useQuery(
+    ["students", college?.CollegeEmail],
+    async () => {
+      try {
+        const res = await axios.get(
+          `${server}user/college/${college.CollegeEmail}`,
+          {
+            withCredentials: true,
+          }
+        );
+        if (res.status === 200) {
+          return res?.data?.data;
+        } else {
+          return [];
+        }
+      } catch (err) {
+        return [];
+      }
+    },
+    {
+      enabled: college?.CollegeEmail !== undefined,
+    }
+  );
+  function getTimeDifference(timestamp) {
+    const now = new Date().getTime();
+    const time = new Date(timestamp).getTime();
+    const diff = now - time;
+    const seconds = Math.floor(diff / 1000);
+    const minutes = Math.floor(seconds / 60);
+    const hours = Math.floor(minutes / 60);
+    const days = Math.floor(hours / 24);
+    const weeks = Math.floor(days / 7);
+  
+    if (weeks > 0) {
+      return `${weeks}w`;
+    } else if (days > 0) {
+      return `${days}d`;
+    } else if (hours > 0) {
+      return `${hours}h`;
+    } else if (minutes > 0) {
+      return `${minutes}m`;
+    } else {
+      return `${seconds}s`;
+    }
+  }
+  
+  
+  if (isLoading || isLoading2 || isLoading3) {
     return <p>Loading...</p>;
   }
   return (
     <>
       <div>
         <header className="fixed right-0 top-0 left-60 bg-white py-3 px-4 h-16">
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-6xl mx-auto">
             <div className="flex items-center justify-between">
-              <div className="text-lg">HERITAGE INSTITUTE OF TECHNOLOGY</div>
+              <div className="text-lg">
+                {college?.CollegeName.toUpperCase()}
+              </div>
               <div>
                 <button
                   type="button"
@@ -56,7 +109,7 @@ const Admin = () => {
             </div>
           </div>
         </header>
-        <aside className="fixed inset-y-0 left-0 bg-white shadow-md max-h-screen w-70">
+        <aside className="fixed inset-y-0 left-0 bg-white shadow-md max-h-screen w-60">
           <div className="flex flex-col justify-between h-full">
             <div className="flex-grow">
               <div className="px-4 py-6 text-center border-b">
@@ -66,7 +119,7 @@ const Admin = () => {
                       src={logo}
                       alt="logo"
                       style={{
-                        width: "300px",
+                        width: "200px",
                       }}
                     />
                   </div>
@@ -142,13 +195,12 @@ const Admin = () => {
             </div>
           </div>
         </aside>
-        <main className="ml-60 pt-16 max-h-screen overflow-auto">
+        <main className="ml-30 pt-16 max-h-screen overflow-auto">
           <div className="px-6 py-8">
             <div className="max-w-4xl mx-auto">
               <div className="bg-white rounded-3xl p-8 mb-5">
                 <h1 className="text-3xl font-bold mb-10">
-                  Utilize and Manage Your Students and Their Projects by
-                  Clicking Manage
+                  Manage Your Students and Their Projects by Clicking Manage
                 </h1>
                 <div className="flex items-center justify-between">
                   <div className="flex items-stretch">
@@ -159,18 +211,16 @@ const Admin = () => {
                     </div>
                     <div className="h-100 border-l mx-4" />
                     <div className="flex flex-nowrap -space-x-3">
-                      <div className="h-9 w-9">
-                        <img
-                          className="object-cover w-full h-full rounded-full"
-                          src="https://ui-avatars.com/api/?background=random"
-                        />
-                      </div>
-                      <div className="h-9 w-9">
-                        <img
-                          className="object-cover w-full h-full rounded-full"
-                          src="https://ui-avatars.com/api/?background=random"
-                        />
-                      </div>
+                      {students?.map((student) => {
+                        return (
+                          <div className="h-9 w-9" key={student?._id}>
+                            <img
+                              className="object-cover w-full h-full rounded-full"
+                              src={student?.Pic}
+                            />
+                          </div>
+                        );
+                      })}
                     </div>
                   </div>
                   <div className="flex items-center gap-x-2">
@@ -191,7 +241,7 @@ const Admin = () => {
                         <div className="p-4 bg-green-100 rounded-xl">
                           <div className="font-bold text-xl text-gray-800 leading-none">
                             Good day, <br />
-                            Kristin
+                            <p className="mt-1">{college?.CollegeName}</p>
                           </div>
                           <div className="mt-5">
                             <button
@@ -205,13 +255,13 @@ const Admin = () => {
                       </div>
                       <div className="p-4 bg-yellow-100 rounded-xl text-gray-800">
                         <div className="font-bold text-2xl leading-none">
-                          20
+                          {students?.length}
                         </div>
                         <div className="mt-2">Students joined</div>
                       </div>
                       <div className="p-4 bg-yellow-100 rounded-xl text-gray-800">
                         <div className="font-bold text-2xl leading-none">
-                          5,5
+                          {projects?.length}
                         </div>
                         <div className="mt-2">Uploaded projects</div>
                       </div>
@@ -226,74 +276,46 @@ const Admin = () => {
                     </div>
                   </div>
                   <div>
+                  
                     <h2 className="text-2xl font-bold mb-4">
-                      Your tasks today
+                      Recently added projects
                     </h2>
                     <div className="space-y-4">
-                      <div className="p-4 bg-white border rounded-xl text-gray-800 space-y-2">
-                        <div className="flex justify-between">
-                          <div className="text-gray-400 text-xs">Number 10</div>
-                          <div className="text-gray-400 text-xs">4h</div>
-                        </div>
-                        <a
-                          href="javascript:void(0)"
-                          className="font-bold hover:text-yellow-800 hover:underline"
-                        >
-                          Blog and social posts
-                        </a>
-                        <div className="text-sm text-gray-600">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="1em"
-                            height="1em"
-                            fill="currentColor"
-                            className="text-gray-800 inline align-middle mr-1"
-                            viewBox="0 0 16 16"
-                          >
-                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z" />
-                          </svg>
-                          Deadline is today
-                        </div>
-                      </div>
-                      <div className="p-4 bg-white border rounded-xl text-gray-800 space-y-2">
-                        <div className="flex justify-between">
-                          <div className="text-gray-400 text-xs">
-                            Grace Aroma
+                      {projects?.slice(0,5)?.map((project) => {
+                        return (
+                          <div className="p-4 bg-white border rounded-xl text-gray-800 space-y-2">
+                            <div className="flex justify-between">
+                              <div className="text-gray-400 text-xs">
+                                {project?.Category}
+                              </div>
+                              <div className="text-gray-400 text-xs">{getTimeDifference(project?.createdAt) !=='NaNs'  ? getTimeDifference(project?.createdAt) :''}</div>
+                            </div>
+                            <a
+                              href="javascript:void(0)"
+                              className="font-bold hover:text-yellow-800 hover:underline"
+                            >
+                              {project?.Title}
+                            </a>
+                            <div className="text-sm text-gray-600">
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="1em"
+                                height="1em"
+                                fill="currentColor"
+                                className="text-gray-800 inline align-middle mr-1"
+                                viewBox="0 0 16 16"
+                              >
+                                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z" />
+                              </svg>
+                             {project?.Description.substring(0,200)}
+                            </div>
+                            <div className="w-full flex justify-end ">
+                            <LuExternalLink/>
+                            
+                            </div>
                           </div>
-                          <div className="text-gray-400 text-xs">7d</div>
-                        </div>
-                        <a
-                          href="javascript:void(0)"
-                          className="font-bold hover:text-yellow-800 hover:underline"
-                        >
-                          New campaign review
-                        </a>
-                        <div className="text-sm text-gray-600">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="1em"
-                            height="1em"
-                            fill="currentColor"
-                            className="text-gray-800 inline align-middle mr-1"
-                            viewBox="0 0 16 16"
-                          >
-                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z" />
-                          </svg>
-                          New feedback
-                        </div>
-                      </div>
-                      <div className="p-4 bg-white border rounded-xl text-gray-800 space-y-2">
-                        <div className="flex justify-between">
-                          <div className="text-gray-400 text-xs">Petz App</div>
-                          <div className="text-gray-400 text-xs">2h</div>
-                        </div>
-                        <a
-                          href="javascript:void(0)"
-                          className="font-bold hover:text-yellow-800 hover:underline"
-                        >
-                          Cross-platform and browser QA
-                        </a>
-                      </div>
+                        );
+                      })}
                     </div>
                   </div>
                 </div>
