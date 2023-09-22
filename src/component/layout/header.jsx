@@ -227,6 +227,9 @@ const Header = () => {
                   <li>
                     <NavLink to="/contact">Contact</NavLink>
                   </li>
+                  <li>
+                    <NavLink to="/aboutUs">About Us</NavLink>
+                  </li>
                   {authenticated ? (
                     <>
                       <li>
