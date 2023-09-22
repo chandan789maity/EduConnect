@@ -8,7 +8,7 @@
 }
 .logout-btn {
   padding: 0.6rem 0.7rem;
-  background-color: transparent;
+  background-color: #fff !important;
   color: #000;
   border-radius: 8px;
   display: flex;
@@ -18,6 +18,10 @@
 .logout-btn svg {
   margin-right: 0.4rem;
 }
+.ant-btn-primary{
+  background-color:rgb(241, 97, 38) !important;
+}
+
 @media only screen and (max-width: 600px) {
   .addproject {
     margin: 0 !important;
@@ -27,9 +31,6 @@
   .logout-btn {
     color: #fff !important;
   }
-}
-.ant-btn-primary{
-  background-color:rgb(241, 97, 38);
 }
 
 .logout-btn{
