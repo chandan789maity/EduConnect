@@ -7,14 +7,14 @@ import { server } from "../App";
 import { toast } from "react-toastify";
 import { Spin } from 'antd'
 import { BsUpload } from "react-icons/bs";
+
 const title = "Register Now";
 const btnText = "Get Started Now";
 
 const SignupPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const [type,setType]=useState("student")
-  const { type:type2 } = location?.state;
+  const { type } = location?.state;
   const [userData, setUserData] = useState({
     Name: "",
     UserName: "",
@@ -25,7 +25,9 @@ const SignupPage = () => {
   });
   const [cPassword, setCPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+
   function handleChange(e) {
+    // alert(e.target.value);
     let name = e.target.name;
     let value = e.target.value;
     setUserData((old) => {
@@ -35,9 +37,7 @@ const SignupPage = () => {
       };
     });
   }
-useEffect(()=>{
-  setType(type2)
-},[type2])
+
 
 
   async function handleSignUp(e) {
@@ -59,6 +59,7 @@ useEffect(()=>{
         return;
     }
   }
+
     if (Password.length < 6) {
       alert("Password must be atleast 6 characters");
       return;
@@ -78,10 +79,18 @@ useEffect(()=>{
       );
       console.log(res);
       if (res.status === 201) {
+        if (type === "college") {
+          toast(`Welcome ${res.data.user.Name || res.data.user.CollegeName}`, { type: "success" });
+          setIsLoading(false);
+          navigate("/admin");
+        } else {
+          toast(`Welcome ${res.data.user.Name || res.data.user.CollegeName}`, { type: "success" });
+          setIsLoading(false);
+          navigate("/");
+        }
         // alert("Welcome ",res.data.user.UserName);
-        toast(`Welcome ${res.data.user.Name || res.data.user.CollegeName}`, { type: "success" });
-        setIsLoading(false);
-        navigate("/");
+        
+       
       }
     } catch (err) {
       console.log(err);
@@ -195,6 +204,7 @@ useEffect(()=>{
                   {
                     isLoading ? <span><Spin /> Signing up...</span> : <span>Sign up</span>
                   }
+
                 </button>
               </div>
             </form>

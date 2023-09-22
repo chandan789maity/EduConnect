@@ -4,11 +4,12 @@
   /* font-size: 1rem; */
   font-weight: 600;
   color: white !important;
+ display: flex;
 }
 .logout-btn {
   padding: 0.6rem 0.7rem;
   background-color: transparent;
-  color: #f16126;
+  color: #000;
   border-radius: 8px;
   display: flex;
   justify-content: center;
