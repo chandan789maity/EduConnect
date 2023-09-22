@@ -8,8 +8,12 @@ import AuthContext from "../../context/authContext";
 import { useQueryClient } from "react-query";
 import axios from "axios";
 import { server } from "../../App";
+import { Button, Modal } from 'antd';
+
 const phoneNumber = "+800-123-4567 6587";
 const address = "Beverley, New York 224 USA";
+
+
 
 let socialList = [
   {
@@ -42,6 +46,17 @@ const Header = () => {
   const [headerFiexd, setHeaderFiexd] = useState(false);
   const [auth, refetch, isLoading] = useContext(AuthContext);
   const { authenticated, user } = auth;
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+const showModal = () => {
+  setIsModalOpen(true);
+};
+const handleOk = () => {
+  setIsModalOpen(false);
+};
+const handleCancel = () => {
+  setIsModalOpen(false);
+};
 
   window.addEventListener("scroll", () => {
     if (window.scrollY > 200) {
@@ -200,10 +215,19 @@ const Header = () => {
                         </Link>
                       </li>
                       <li>
-                        <button className="logout-btn" onClick={logout}>
+                       {/*  <button className="logout-btn" onClick={logout}>
                           <MdLogout />
                           Logout
-                        </button>
+                        </button> */}
+                        <Button className="logout-btn" type="primary" onClick={showModal}>
+                        <MdLogout />
+                          Log Out
+                        </Button>
+                        <Modal style={{ top: 300 }} title="Confirm Logout" open={isModalOpen} onOk={logout} onCancel={handleCancel}>
+                          <p>Are you sure, you want to log out?</p>
+                          
+                        </Modal>
+
                       </li>
                     </>
                   ) : (
