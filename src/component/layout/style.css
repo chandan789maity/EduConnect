@@ -7,7 +7,7 @@
  display: flex;
 }
 .logout-btn {
-  padding: 0.6rem 0.7rem;
+  padding: 0.6rem 0.5rem;
   background-color: #fff !important;
   color: #000;
   border-radius: 8px;
@@ -21,7 +21,13 @@
 
 
 .signup{
+  padding: 0 !important;
+  width: 120px !important;
   background-color: transparent;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+
 }
 
 .modal_popUP{
@@ -29,7 +35,9 @@
   display: flex;
   flex-flow: wrap;
 }
-
+.ant-btn-primary{
+  background-color: #f16126 !important;
+}
 @media only screen and (max-width: 600px) {
   .addproject {
     margin: 0 !important;
