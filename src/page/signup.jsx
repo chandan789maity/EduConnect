@@ -5,7 +5,7 @@ import Header from "../component/layout/header";
 import axios from "axios";
 import { server } from "../App";
 import { toast } from "react-toastify";
-import {Spin} from 'antd'
+import { Spin } from "antd";
 const title = "Register Now";
 const btnText = "Get Started Now";
 
@@ -21,6 +21,7 @@ const SignupPage = () => {
   });
   const [cPassword, setCPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+
   function handleChange(e) {
     let name = e.target.name;
     let value = e.target.value;
@@ -42,6 +43,14 @@ const SignupPage = () => {
       toast("Please fill out your details", { type: "warning" });
       return;
     }
+    if (UserName.length < 3) {
+      alert("Please enter atleast 3 characters");
+      return;
+    }
+    if (Password.length < 6) {
+      alert("Password must be atleast 6 characters");
+      return;
+    }
     if (Password !== cPassword) {
       toast("Password does't match!", { type: "warning" });
       return;
@@ -57,10 +66,16 @@ const SignupPage = () => {
       );
       console.log(res);
       if (res.status === 201) {
+        if (type === "college") {
+          toast(`Welcome ${res.data.user.Name}`, { type: "success" });
+          setIsLoading(false);
+          navigate("/admin");
+        } else {
+          toast(`Welcome ${res.data.user.Name}`, { type: "success" });
+          setIsLoading(false);
+          navigate("/");
+        }
         // alert("Welcome ",res.data.user.UserName);
-        toast(`Welcome ${res.data.user.Name}`, { type: "success" });
-        setIsLoading(false);
-        navigate("/");
       }
     } catch (err) {
       console.log(err);
@@ -119,12 +134,16 @@ const SignupPage = () => {
                   onChange={(e) => setCPassword(e.target.value)}
                 />
               </div>
-              
+
               <div className="form-group">
                 <button className="lab-btn">
-                {
-                  isLoading ? <span><Spin/> Signing up...</span>:<span>Sign up</span>
-                }
+                  {isLoading ? (
+                    <span>
+                      <Spin /> Signing up...
+                    </span>
+                  ) : (
+                    <span>Sign up</span>
+                  )}
                 </button>
               </div>
             </form>

@@ -5,12 +5,19 @@ import Header from "../component/layout/header";
 import PageHeader from "../component/layout/pageheader";
 import Progress from "../component/sidebar/progress";
 import Rating from "../component/sidebar/rating";
+import { useQuery } from "react-query";
+import axios from "axios";
+import { server } from "../App";
+import { AiFillEdit } from "react-icons/ai";
+import { useNavigate } from "react-router-dom";
 
 const name = "Emilee Logan";
 const degi = "Master of Education Degree";
 const desc =
   "Infrastruct ntrinsicl grow optimal talers rather than efectve nformaon Collabora optimize partnersh and frictionles deliverables";
-const subTitle = "Personal Statement";
+
+const subTitle = "Bio";
+
 const infoDetails =
   "Enthusa expedte clent focused growth strateg wherea clent centered infrastruct ntrinsicl grow optimal talers rather than efectve nformaon Collabora optimize partnersh and frictionles deliverables infrastructs ntrinsicl grow optimal talers rather efectve";
 const skillTitle = "Personal Language Skill";
@@ -106,10 +113,27 @@ const awardList = [
 ];
 
 const TeamSingle = () => {
+
+  const navigate=useNavigate()
+  const { data: profile, isLoading } = useQuery(["profile"], async () => {
+    try {
+      const res = await axios.get(`${server}auth/isauth`, {
+        withCredentials: true,
+      });
+      if (res.status === 200) {
+        console.log(res.data.user);
+        return res.data.user;
+      }
+      return {};
+    } catch (err) {
+      return {};
+    }
+  });
+  if (isLoading) return <p>Loading...</p>;
   return (
     <Fragment>
       <Header />
-      <PageHeader title={"Sir Emilee Logan"} curPage={"Emilee Logan"} />
+      <PageHeader title={profile?.Name} curPage={""} />
       <section className="instructor-single-section padding-tb section-bg">
         <div className="container">
           <div className="instructor-wrapper">
@@ -117,27 +141,45 @@ const TeamSingle = () => {
               <div className="instructor-single-item d-flex flex-wrap justify-content-between">
                 <div className="instructor-single-thumb">
                   <img
-                    src="assets/images/instructor/single/01.jpg"
+
+                    src={profile?.Pic}
+
                     alt="instructor"
                   />
                 </div>
                 <div className="instructor-single-content">
-                  <h4 className="title">{name}</h4>
-                  <p className="ins-dege">{degi}</p>
+
+                  <div style={{
+                    display:"flex"
+                  }}>
+                  <h4 className="title">{profile?.Name}</h4>
+                    <span style={{marginLeft:".4rem",fontSize:"1.2rem",cursor:'pointer',color:"red"}} onClick={()=>{
+                      navigate('/editProfile')
+                    }}>
+                      <AiFillEdit />edit
+                    </span>
+                  </div>
+
+                  <p className="ins-dege">{profile?.CollegeName}</p>
                   <Rating />
-                  <p className="ins-desc">{desc}</p>
                   <h6 className="subtitle">{subTitle}</h6>
-                  <p className="ins-desc">{infoDetails}</p>
+                  <p className="ins-desc">{profile?.Bio}</p>
                   <ul className="lab-ul">
-                    {memInfoLisst.map((val, i) => (
+                   
                       <li
                         className="d-flex flex-wrap justify-content-start"
-                        key={i}
+                      
                       >
-                        <span className="list-name">{val.leftText}</span>
-                        <span className="list-attr">{val.rightText}</span>
+                        <span className="list-name">{"Address"}</span>
+                        <span className="list-attr">{profile?.Address}</span>
                       </li>
-                    ))}
+                      <li
+                        className="d-flex flex-wrap justify-content-start"
+                      
+                      >
+                        <span className="list-name">{"Email"}</span>
+                        <span className="list-attr">{profile?.Email}</span>
+                      </li>
                     <li className="d-flex flex-wrap justify-content-start">
                       <span className="list-name">Follow Us</span>
                       <ul className="lab-ul list-attr d-flex flex-wrap justify-content-start">
