@@ -257,7 +257,7 @@ const AddProject = () => {
                   accept="image/*"
                   onChange={handleCoverPic}
                 />
-                <label for="cover" className="upploadLabel">
+                <label htmlFor="cover" className="upploadLabel">
                   <BsUpload /> {CoverPic ? "Uploaded" : btnText3}
                 </label>
 
