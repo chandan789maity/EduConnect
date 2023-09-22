@@ -66,12 +66,7 @@
   }
 } */
 
-.logout-btn{
-  background-color:white;
-  border:solid 1px #f16126;
-  height:3.5rem;
-  width: 10rem; 
-}
+
 .ant-btn-primary{
   border:solid;
 }
@@ -84,4 +79,5 @@
 }
 .ant-modal{
   align-content: space-around;
+  
 }

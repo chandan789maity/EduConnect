@@ -5,14 +5,15 @@ import { MdLogout } from "react-icons/md";
 import { AiOutlinePlus } from "react-icons/ai";
 import "./style.css";
 import AuthContext from "../../context/authContext";
-import { useQueryClient } from "react-query";
+import { useQuery, useQueryClient } from "react-query";
 import axios from "axios";
 import { server } from "../../App";
 import { PiStudentDuotone } from "react-icons/pi";
-
-import { UserOutlined } from '@ant-design/icons';
+import { AntDesignOutlined } from '@ant-design/icons';
 import React from 'react';
-import { Avatar, Drawer } from 'antd';
+import { Avatar } from 'antd';
+import { Popover } from 'antd';
+
 
 // import React, { useState } from "react";
 import { Button, Modal } from "antd";
@@ -60,12 +61,30 @@ const Header = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModalOpen2, setIsModalOpen2] = useState(false);
   const [open, setOpen] = useState(false);
-  const showDrawer = () => {
+  const { data: profile, isLoading: isLoading2 } = useQuery(["profile"], async () => {
+    try {
+      const res = await axios.get(`${server}auth/isauth`, {
+        withCredentials: true,
+      });
+      if (res.status === 200) {
+        console.log(res.data.user);
+        return res.data.user;
+      }
+      return {};
+    } catch (err) {
+      return {};
+    }
+  });
+  if (isLoading) return <p>Loading...</p>;
+
+
+
+  /* const showDrawer = () => {
     setOpen(true);
   };
   const onClose = () => {
     setOpen(false);
-  };
+  }; */
 
   const showModal = () => {
     setIsModalOpen(true);
@@ -78,6 +97,35 @@ const Header = () => {
       }
     });
   };
+
+  const content = (
+    <div>
+      <p>
+        <button>
+          <NavLink to="/editProfile">Edit Profile</NavLink>
+        </button>
+
+      </p>
+      <p>
+        <li>
+
+          <button className="logout-btn" onClick={() => setIsModalOpen2(true)}>
+            <MdLogout />
+            Log Out
+          </button>
+          <Modal
+            style={{ top: 300 }}
+            title="Confirm Logout"
+            open={isModalOpen2}
+            onOk={logout}
+            onCancel={() => setIsModalOpen2(false)}
+          >
+            <p>Are you sure, you want to log out?</p>
+          </Modal>
+        </li>
+      </p>
+    </div>
+  );
   const handleCancel = () => {
     setIsModalOpen(false);
   };
@@ -258,10 +306,8 @@ const Header = () => {
                   <li>
                     <NavLink to="/contact">Contact</NavLink>
                   </li>
-                  <li>
-                  <NavLink to="/team-single">Profile</NavLink><br/>
-                  </li>
-                 
+
+
 
                   {authenticated ? (
                     <div style={{ display: 'flex', alignItems: "center" }}>
@@ -292,29 +338,21 @@ const Header = () => {
                           </span>{" "}
                         </Link>
                       </li>
-                      <li>
-                        {/*  <button className="logout-btn" onClick={logout}>
-                          <MdLogout />
-                          Logout
-                        </button> */}
-                        <Button className="logout-btn" onClick={() => setIsModalOpen2(true)}>
-                          <MdLogout />
-                          Log Out
-                        </Button>
-                        <Modal
-                          style={{ top: 500 }}
-                          title="Confirm Logout"
-                          open={isModalOpen2}
-                          onOk={logout}
-                          onCancel={() => setIsModalOpen2(false)}
-                        >
-                          <p>Are you sure, you want to log out?</p>
-                        </Modal>
-                      </li>
-                      <li onClick={showDrawer}>
+
+                      <li >
+                      <Popover content={content}>
+                        <NavLink to="/team-single">
+                          
+                            {
+                              profile?.Pic ? <Avatar style={{ marginLeft: "1.2rem", width: "3.5rem", height: "3.5rem" }} src={profile?.Pic} /> : <Avatar style={{ marginLeft: "1.2rem" }} icon={<AntDesignOutlined />} />
+                            }
+                         
+
+                        </NavLink>
+                        </Popover>
 
 
-                        <Avatar style={{ marginLeft: "1.2rem" }} icon={<UserOutlined />} />
+
 
                       </li>
                     </div>
@@ -444,13 +482,13 @@ const Header = () => {
                     </div>
                   </div>
                 </Modal>
-                <Drawer title="" placement="right" onClose={onClose} open={open}>
+                {/*    <Drawer title="" placement="right" onClose={onClose} open={open}>
                 <NavLink to="/team-single">Profile</NavLink><br/>
                 <NavLink to="/editProfile">Edit Profile</NavLink><br/>
                 <NavLink to="/">Home</NavLink>
                   <p>Some contents...</p>
                   <p>Some contents...</p>
-                </Drawer>
+                </Drawer> */}
               </div>
               <div
                 className={`header-bar d-lg-none ${menuToggle ? "active" : ""}`}

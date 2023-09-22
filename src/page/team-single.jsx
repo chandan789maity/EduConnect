@@ -141,7 +141,7 @@ const TeamSingle = () => {
               <div className="instructor-single-item d-flex flex-wrap justify-content-between">
                 <div className="instructor-single-thumb">
                   {
-                    profile?.Pic ? <img
+                    profile.Pic ? <img
 
                       src={profile?.Pic}
 
@@ -161,10 +161,13 @@ const TeamSingle = () => {
                     display: "flex"
                   }}>
                     <h4 className="title">{profile?.Name}</h4>
-                    <span style={{ marginLeft: ".4rem", fontSize: "1.2rem", cursor: 'pointer', color: "red" }} onClick={() => {
+                    {/* <span style={{ marginLeft: "20rem", fontSize: "1rem", cursor: 'pointer', color: "black", border:"solid orange 2px", borderRadius:"5px" }} onClick={() => {
                       navigate('/editProfile')
                     }}>
-                      <AiFillEdit />edit
+                      <AiFillEdit />EDIT PROFILE
+                    </span> */}
+                    <span>
+                      <a  style={{ marginLeft: "15rem", display: "flex",alignItems:"center",justifyContent:"space-around",backgroundColor:"orangered"}} href="/editProfile" class="btn btn-primary" role="button"><AiFillEdit />EDIT PROFILE</a>
                     </span>
                   </div>
 
