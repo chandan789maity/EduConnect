@@ -76,12 +76,14 @@ const SignupPage = () => {
           toast(`Welcome ${res.data.user.Name || res.data.user.CollegeName}`, {
             type: "success",
           });
+          localStorage.setItem('user',JSON.stringify(res?.data?.user))
           setIsLoading(false);
           navigate("/admin");
         } else {
           toast(`Welcome ${res.data.user.Name || res.data.user.CollegeName}`, {
             type: "success",
           });
+          localStorage.setItem('user',JSON.stringify(res?.data?.user))
           setIsLoading(false);
           navigate("/");
         }

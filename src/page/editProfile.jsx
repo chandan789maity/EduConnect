@@ -14,8 +14,23 @@ const title = "Edit Profile";
 const btnText = "Submit";
 const btnText2 = "Profile Photo (JPG,PNG)";
 
+async function getAllColleges() {
+  try {
+    const res = await axios.get(`${server}college`, {
+      withCredentials: true,
+    });
+    console.log(res);
+    if (res.status === 200) {
+      return res.data.data;
+    }
+  } catch (err) {
+    console.log(err);
+    return null;
+  }
+}
+
 const Edit = () => {
-    const [isLoading2,setIsLoading2]=useState(false)
+  const [isLoading2, setIsLoading2] = useState(false);
   const [userData, setUserData] = useState({
     Pic: "",
     Name: "",
@@ -24,8 +39,12 @@ const Edit = () => {
     CollegeName: "",
     CollegeEmail: "",
     Bio: "",
-    CollegeEmail:"",
+    CollegeEmail: "",
   });
+  const { data: colleges, isLoading: isLoading3 } = useQuery(
+    ["colleges"],
+    getAllColleges
+  );
   function handleChange(e) {
     const value = e.target.value;
     const name = e.target.name;
@@ -42,7 +61,6 @@ const Edit = () => {
     data.append("upload_preset", "educonnect");
     data.append("cloud_name", "basustudent");
     try {
-
       const res = await axios.post(
         "https://api.cloudinary.com/v1_1/basustudent/image/upload",
         data
@@ -84,7 +102,7 @@ const Edit = () => {
         CollegeName: profile?.CollegeName,
         CollegeEmail: profile?.CollegeEmail,
         Bio: profile?.Bio,
-        CollegeEmail:profile?.CollegeEmail
+        CollegeEmail: profile?.CollegeEmail,
       });
     }
   }, [profile]);
@@ -92,20 +110,20 @@ const Edit = () => {
   async function handleSubmit(e) {
     e.preventDefault();
     try {
-        setIsLoading2(true)
+      setIsLoading2(true);
       const res = await axios.post(`${server}user/edit`, userData, {
         withCredentials: true,
       });
-      if(res.status===200){
-        setIsLoading2(false)
-        toast(res?.data?.message,{type: 'success'})
-        navigate('/team-single')
+      if (res.status === 200) {
+        setIsLoading2(false);
+        toast(res?.data?.message, { type: "success" });
+        navigate("/team-single");
       }
-      setIsLoading2(false)
+      setIsLoading2(false);
     } catch (err) {
-        console.log(err);
-        setIsLoading2(false)
-        toast('profile update failed',{type: 'error'})
+      console.log(err);
+      setIsLoading2(false);
+      toast("profile update failed", { type: "error" });
     }
   }
 
@@ -161,22 +179,32 @@ const Edit = () => {
                   placeholder="Address"
                 />
               </div>
+
               <div className="form-group">
-                <input
-                  type="text"
-                  name="CollegeName"
-                  placeholder="College Name"
-                  onChange={handleChange}
-                />
+                <Form.Select
+                  name="Colleges"
+                  aria-label="Select College Name"
+                  onChange={(e) => {
+                    console.log(e.target.value);
+                    setUserData({
+                      ...userData,
+                      CollegeName: e.target.value.split("#")[0],
+                      CollegeEmail: e.target.value.split("#")[1],
+                    });
+                  }}
+                >
+                  <option>Select College Name</option>
+                  {colleges?.map((college, index) => (
+                    <option
+                      key={index}
+                      value={`${college?.CollegeName}#${college?.CollegeEmail}`}
+                    >
+                      {college?.CollegeName}
+                    </option>
+                  ))}
+                </Form.Select>
               </div>
-              <div className="form-group">
-                <input
-                  type="text"
-                  name="CollegeEmail"
-                  placeholder="College Email"
-                  onChange={handleChange}
-                />
-              </div>
+             
               <div className="form-group">
                 <textarea
                   type="text"

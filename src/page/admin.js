@@ -356,16 +356,33 @@ const Project = ({ project, projects, setProject, setPage, refetch }) => {
 
 const Admin = () => {
   const navigate = useNavigate();
-  const [auth, refetch, isLoading] = useContext(AuthContext);
-  const { authenticated, user: college } = auth;
+  // const [auth, refetch, isLoading] = useContext(AuthContext);
+  // const { authenticated, user: college } = auth;
   const [page, setPage] = useState("home");
   const [project, setProject] = useState(null);
   const [logoutModal, setLogoutModal] = useState(false);
+  const id = JSON.parse(localStorage.getItem("user"))._id;
+  const { data :college, isLoading,refetch } = useQuery(
+    ["college", id],
+    async () => {
+      try {
+        const res = await axios.get(`${server}auth/isauth/college`, {
+          withCredentials: true,
+        });
+        if (res.status === 200) {
+          return res.data.user;
+        }
+        return null;
+      } catch (err) {
+        console.log(err);
+        return null;
+      }
+    },
+    {
+      enabled: id !== undefined,
+    }
+  );
 
-  useEffect(()=>{
-    refetch();
-    refetch();
-  },[])
   async function logout() {
     try {
       const res = await axios.get(`${server}auth/logout`, {
@@ -596,6 +613,7 @@ const Admin = () => {
                     </div>
                     <div className="flex items-center gap-x-2">
                       <button
+                        onClick={() => setPage("students")}
                         type="button"
                         className="inline-flex items-center justify-center h-9 px-5 rounded-xl bg-gray-900 text-gray-300 hover:text-white text-sm font-semibold transition"
                       >
@@ -616,6 +634,7 @@ const Admin = () => {
                             </div>
                             <div className="mt-5">
                               <button
+                                onClick={() => setPage("projects")}
                                 type="button"
                                 className="inline-flex items-center justify-center py-2 px-3 rounded-xl bg-white text-gray-800 hover:text-green-500 text-sm font-semibold transition"
                               >

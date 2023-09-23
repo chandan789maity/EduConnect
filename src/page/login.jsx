@@ -48,10 +48,12 @@ const LoginPage = () => {
       if (res.status === 202) {
         if (type === "college") {
           toast(`Welcome ${res?.data?.user?.CollegeName}`, { type: "success" });
+          localStorage.setItem('user',JSON.stringify(res?.data?.user))
           setIsLoading(false);
           navigate("/admin");
         } else {
           toast(`Welcome ${res?.data?.user?.Name}`, { type: "success" });
+          localStorage.setItem('user',JSON.stringify(res?.data?.user))
           setIsLoading(false);
           navigate("/");
         }
