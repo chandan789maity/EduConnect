@@ -17,6 +17,7 @@ import axios from "axios";
 import { server } from "../App";
 import { useQuery } from "react-query";
 import { useState } from "react";
+import { Empty } from "antd";
 
 const courseList = [
   {
@@ -173,7 +174,11 @@ const CoursePage = () => {
               </div>
             </div>
             <div className="row g-4 justify-content-center row-cols-xl-3 row-cols-md-2 row-cols-1">
-              {projects?.map((val, i) => (
+            {
+              projects
+                ?.filter((project)=>project?.Status === 'public')?.length===0 ?<Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />:null
+            }
+              {projects?.filter((project)=>project?.Status === 'public')?.map((val, i) => (
                 <div className="col" key={i}>
                   <div className="course-item">
                     <div className="course-inner" style={{ height: "550px" }}>
