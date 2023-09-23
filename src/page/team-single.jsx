@@ -159,8 +159,9 @@ const TeamSingle = () => {
                       <AiFillEdit />edit
                     </span>
                   </div>
-
-                  <p className="ins-dege">{profile?.CollegeName}</p>
+                    
+                  <p className="ins-dege">Username : {profile?.UserName}</p>
+                  <p className="ins-dege">College name : {profile?.CollegeName}</p>
                   <Rating />
                   <h6 className="subtitle">{subTitle}</h6>
                   <p className="ins-desc">{profile?.Bio}</p>

@@ -114,7 +114,7 @@ const Banner = () => {
                 </h6>
                 {title}
                 <p className="desc">{desc}</p>
-                <form
+                <form className="rounded"
                   action="/"
                   onSubmit={(e) => {
                     e.preventDefault();
