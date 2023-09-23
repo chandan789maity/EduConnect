@@ -23,6 +23,7 @@ const Edit = () => {
     Address: "",
     CollegeName: "",
     Bio: "",
+    CollegeEmail:"",
   });
   function handleChange(e) {
     const value = e.target.value;
@@ -81,6 +82,7 @@ const Edit = () => {
         Address: profile?.Address,
         CollegeName: profile?.CollegeName,
         Bio: profile?.Bio,
+        CollegeEmail:profile?.CollegeEmail
       });
     }
   }, [profile]);
@@ -162,6 +164,14 @@ const Edit = () => {
                   type="text"
                   name="CollegeName"
                   placeholder="College Name"
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="form-group">
+                <input
+                  type="text"
+                  name="CollegeEmail"
+                  placeholder="College Email"
                   onChange={handleChange}
                 />
               </div>

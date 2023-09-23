@@ -9,7 +9,7 @@ import BlogSingle from "./page/blog-single";
 import CartPage from "./page/cart-page";
 import ContactPage from "./page/contact";
 import CoursePage from "./page/course";
-import ProjectSingle from "./page/project-single"
+import ProjectSingle from "./page/project-single";
 import ForgetPass from "./page/forgetpass";
 import Home from "./page/home";
 import InstructorPage from "./page/instructor";
@@ -29,14 +29,15 @@ import College from "./page/college";
 import Uploaded from "./page/uploaded";
 import { AuthProvider } from "./context/authContext";
 import { QueryClient, QueryClientProvider } from "react-query";
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Admin from "./page/admin";
+import AboutUs from "./page/aboutUs";
 // import ProtectedRoute from "./page/protected";
 const queryClient = new QueryClient();
 
-export const server = "https://educonnect-server.onrender.com/api/v1/";  //Hosted server
-// export const server = "http://localhost:4000/api/v1/";
+// export const server = "https://educonnect-server.onrender.com/api/v1/";  //Hosted server
+export const server = "http://localhost:4000/api/v1/";
 
 function App() {
   return (
@@ -60,6 +61,7 @@ function App() {
             <Route path="blog-single" element={<BlogSingle />} />
             <Route path="/uploaded" element={<Uploaded />} />
             {/* <Route path="about" element={<AboutPage />} /> */}
+            <Route path="aboutUs" element={<AboutUs />}/>
             <Route path="team" element={<TeamPage />} />
             <Route path="team-single" element={<TeamSingle />} />
             <Route path="instructor" element={<InstructorPage />} />
@@ -80,7 +82,7 @@ function App() {
             <Route path="forgetpass" element={<ForgetPass />} />
             <Route path="*" element={<ErrorPage />} />
           </Routes>
-          <ToastContainer/>
+          <ToastContainer />
         </BrowserRouter>
       </AuthProvider>
     </QueryClientProvider>

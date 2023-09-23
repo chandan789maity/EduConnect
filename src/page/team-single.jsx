@@ -113,8 +113,8 @@ const awardList = [
 ];
 
 const TeamSingle = () => {
-
   const navigate = useNavigate()
+
   const { data: profile, isLoading } = useQuery(["profile"], async () => {
     try {
       const res = await axios.get(`${server}auth/isauth`, {
@@ -138,6 +138,7 @@ const TeamSingle = () => {
         <div className="container">
           <div className="instructor-wrapper">
             <div className="instructor-single-top">
+
               <div className="instructor-single-item d-flex flex-wrap justify-content-between">
                 <div className="instructor-single-thumb">
                   {
@@ -168,6 +169,7 @@ const TeamSingle = () => {
                     </span> */}
                     <span>
                       <a  style={{ marginLeft: "15rem", display: "flex",alignItems:"center",justifyContent:"space-around",backgroundColor:"orangered"}} href="/editProfile" class="btn btn-primary" role="button"><AiFillEdit />EDIT PROFILE</a>
+
                     </span>
                   </div>
 
@@ -176,6 +178,7 @@ const TeamSingle = () => {
                   <h6 className="subtitle">{subTitle}</h6>
                   <p className="ins-desc">{profile?.Bio}</p>
                   <ul className="lab-ul">
+
 
                     <li
                       className="d-flex flex-wrap justify-content-start"
@@ -188,6 +191,7 @@ const TeamSingle = () => {
                       className="d-flex flex-wrap justify-content-start"
 
                     >
+
                       <span className="list-name">{"Email"}</span>
                       <span className="list-attr">{profile?.Email}</span>
                     </li>
