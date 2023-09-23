@@ -11,6 +11,7 @@ import Rating from "../sidebar/rating";
 import { useQuery } from "react-query";
 import { server } from "../../App";
 import axios from "axios";
+import { Empty } from "antd";
 
 const subTitle = "Project Details";
 const title = "Build  Projects For Head Start";
@@ -133,7 +134,14 @@ const Course = () => {
         </div>
         <div className="section-wrapper">
           <div className="row g-4 justify-content-center row-cols-xl-3 row-cols-md-2 row-cols-1">
-            {projects?.map((val, i) => (
+          {
+            projects
+              ?.filter((project)=>project?.Status === 'public')?.length===0 ?<Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />:null
+          }
+          
+            {projects
+              ?.filter((project)=>project?.Status === 'public')
+              ?.map((val, i) => (
               <motion.div
                 initial={{
                   y: 100,

@@ -89,4 +89,18 @@
     flex-flow: wrap; 
     font-size: 30px;
 }
+.instructor-single-section .instructor-wrapper .instructor-single-top {
+ width: 100% !important;
+ overflow: hidden;
+}
 
+
+.college-list{
+  cursor: pointer;
+  transition: all .7s ease;
+  padding: .7rem .6rem;
+  text-align: left;
+}
+.college-list:hover{
+  background: #f0f0f0;
+}

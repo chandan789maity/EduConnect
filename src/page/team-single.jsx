@@ -113,8 +113,8 @@ const awardList = [
 ];
 
 const TeamSingle = () => {
+  const navigate = useNavigate()
 
-  const navigate=useNavigate()
   const { data: profile, isLoading } = useQuery(["profile"], async () => {
     try {
       const res = await axios.get(`${server}auth/isauth`, {
@@ -138,48 +138,64 @@ const TeamSingle = () => {
         <div className="container">
           <div className="instructor-wrapper">
             <div className="instructor-single-top">
+
               <div className="instructor-single-item d-flex flex-wrap justify-content-between">
                 <div className="instructor-single-thumb">
-                  <img
+                  {
+                    profile.Pic ? <img
 
-                    src={profile?.Pic}
+                      src={profile?.Pic}
 
-                    alt="instructor"
-                  />
+                      alt="instructor"
+                    /> : <img
+
+                      src={"https://www.pngkey.com/png/full/115-1150152_default-profile-picture-avatar-png-green.png"}
+
+                      alt="instructor"
+                    />
+                  }
+
                 </div>
                 <div className="instructor-single-content">
 
                   <div style={{
-                    display:"flex"
+                    display: "flex"
                   }}>
-                  <h4 className="title">{profile?.Name}</h4>
-                    <span style={{marginLeft:".4rem",fontSize:"1.2rem",cursor:'pointer',color:"red"}} onClick={()=>{
+                    <h4 className="title">{profile?.Name}</h4>
+                    {/* <span style={{ marginLeft: "20rem", fontSize: "1rem", cursor: 'pointer', color: "black", border:"solid orange 2px", borderRadius:"5px" }} onClick={() => {
                       navigate('/editProfile')
                     }}>
-                      <AiFillEdit />edit
+                      <AiFillEdit />EDIT PROFILE
+                    </span> */}
+                    <span>
+                      <a  style={{ marginLeft: "15rem", display: "flex",alignItems:"center",borderRadius:"15px",justifyContent:"space-around",backgroundColor:"#fff",color:"black"}} href="/editProfile" class="btn btn-primary" role="button"><AiFillEdit />Edit</a>
+
                     </span>
                   </div>
-
-                  <p className="ins-dege">{profile?.CollegeName}</p>
+                    
+                  <p className="ins-dege">Username : {profile?.UserName}</p>
+                  <p className="ins-dege">College name : {profile?.CollegeName}</p>
                   <Rating />
                   <h6 className="subtitle">{subTitle}</h6>
                   <p className="ins-desc">{profile?.Bio}</p>
                   <ul className="lab-ul">
-                   
-                      <li
-                        className="d-flex flex-wrap justify-content-start"
-                      
-                      >
-                        <span className="list-name">{"Address"}</span>
-                        <span className="list-attr">{profile?.Address}</span>
-                      </li>
-                      <li
-                        className="d-flex flex-wrap justify-content-start"
-                      
-                      >
-                        <span className="list-name">{"Email"}</span>
-                        <span className="list-attr">{profile?.Email}</span>
-                      </li>
+
+
+                    <li
+                      className="d-flex flex-wrap justify-content-start"
+
+                    >
+                      <span className="list-name">{"Address"}</span>
+                      <span className="list-attr">{profile?.Address}</span>
+                    </li>
+                    <li
+                      className="d-flex flex-wrap justify-content-start"
+
+                    >
+
+                      <span className="list-name">{"Email"}</span>
+                      <span className="list-attr">{profile?.Email}</span>
+                    </li>
                     <li className="d-flex flex-wrap justify-content-start">
                       <span className="list-name">Follow Us</span>
                       <ul className="lab-ul list-attr d-flex flex-wrap justify-content-start">

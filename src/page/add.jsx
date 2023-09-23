@@ -98,6 +98,37 @@ const AddProject = () => {
     "CryptoCurrency",
     "Others",
   ];
+  const colleges = [
+    "Heritage Institute of Technology",
+    "IIT Bombay",
+    "IIT Delhi",
+   " IIT Kanpur",
+   " IIT Kharagpur",
+   " IIT Madras",
+    "IIT Roorkee",
+   "IIM Ahmedabad",
+   "IIM Bangalore",
+   " IIM Calcutta",
+   " IIM Lucknow",
+   "IIM Kozhikode",
+    "AIIMS Delhi",
+    "CMC Vellore",
+    "MAMC Delhi",
+    "AFMC Pune",
+    "KGMU Lucknow",
+    "IISER Pune",
+   "IISER Kolkata",
+    "IISER Mohali",
+    "ISI  Kolkata",
+    "ISI Delhi",
+   " ISI Bangalore",
+    "University of Mumbai",
+    "JNU Delhi",
+   " BHU",
+    "Anna University, Chennai",
+    "Jadavpur University, Kolkata",
+
+  ]
 
   function handleChange(e) {
     let name = e.target.name;
@@ -214,13 +245,18 @@ const AddProject = () => {
                   </Form.Select>
                 </div>
                 <div className="form-group">
-                  <input
-                    type="text"
-                    name="CollegeName"
-                    placeholder="College Name"
-                    required
-                    onChange={handleChange}
-                  />
+                <Form.Select
+                    name="Colleges"
+                    aria-label="Select College Name"
+                    onChange={(e)=>setProjectData({...projectData,CollegeName:e.target.value})}
+                  >
+                    <option>Select College Name</option>
+                    {colleges?.map((college, index) => (
+                      <option key={index} value={college}>
+                        {college}
+                      </option>
+                    ))}
+                  </Form.Select>
                 </div>
                 <div className="form-group">
                   <input

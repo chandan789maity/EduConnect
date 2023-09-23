@@ -1,14 +1,22 @@
 import logo from "../../assets/images/logo/logo.png";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { MdLogout } from "react-icons/md";
 import { AiOutlinePlus } from "react-icons/ai";
+import { LuSchool } from "react-icons/lu";
 import "./style.css";
 import AuthContext from "../../context/authContext";
-import { useQueryClient } from "react-query";
+import { useQuery, useQueryClient } from "react-query";
 import axios from "axios";
 import { server } from "../../App";
 import { PiStudentDuotone } from "react-icons/pi";
+import { AntDesignOutlined } from '@ant-design/icons';
+import React from 'react';
+import { Avatar } from 'antd';
+import { Popover } from 'antd';
+import { AiFillEdit } from "react-icons/ai";
+import { CgProfile } from "react-icons/cg";
+
 
 // import React, { useState } from "react";
 import { Button, Modal } from "antd";
@@ -55,20 +63,88 @@ const Header = () => {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModalOpen2, setIsModalOpen2] = useState(false);
+  const [open, setOpen] = useState(false);
+    useEffect(()=>{
+      refetch();
+      refetch()
+    },[])
+
+
+  const { data: profile, isLoading: isLoading2 } = useQuery(["profile"], async () => {
+    try {
+      const res = await axios.get(`${server}auth/isauth`, {
+        withCredentials: true,
+      });
+      if (res.status === 200) {
+        console.log(res.data.user);
+        return res.data.user;
+      }
+      return {};
+    } catch (err) {
+      return {};
+    }
+  });
+  if (isLoading) return <p>Loading...</p>;
+
+
+
+  /* const showDrawer = () => {
+    setOpen(true);
+  };
+  const onClose = () => {
+    setOpen(false);
+  }; */
+
 
   const showModal = () => {
     setIsModalOpen(true);
   };
   const handleOk = () => {
 
-   
-    navigate(option,  {
+
+    navigate(option, {
       state: {
         type,
       }
     });
 
   };
+
+  const content = (
+    <div>
+      <p>
+        <button className="logout-btn" style={{ display: "flex" }}>
+          <CgProfile />
+          <NavLink to="/team-single">View Profile</NavLink>
+        </button>
+      </p>
+      <p>
+        <button className="logout-btn" style={{ display: "flex", aligText: "center" }}>
+          <AiFillEdit />
+          <NavLink to="/editProfile">Edit Profile</NavLink>
+        </button>
+
+      </p>
+      <p>
+        <li>
+
+          <button className="logout-btn" onClick={() => setIsModalOpen2(true)}>
+            <MdLogout />
+            Log Out
+          </button>
+          <Modal
+            style={{ top: 300 }}
+            title="Confirm Logout"
+            open={isModalOpen2}
+            onOk={logout}
+            onCancel={() => setIsModalOpen2(false)}
+          >
+            <p>Are you sure, you want to log out?</p>
+          </Modal>
+        </li>
+      </p>
+    </div>
+  );
   const handleCancel = () => {
     setIsModalOpen(false);
   };
@@ -106,7 +182,7 @@ const Header = () => {
   //   setIsModalOpen(false);
   // };
 
-  // const handleCancel = () => {
+  // const handleCancel = () => 
   //   setIsModalOpen(false);
   // };
 
@@ -135,58 +211,45 @@ const Header = () => {
 
   return (
     <header
-      className={`header-section ${headerFiexd ? "header-fixed fadeInUp" : ""}`}
-      style={{ marginTop: "-10px" }}
+      className={`header-section header-mt ${headerFiexd ? "header-fixed fadeInUp" : ""}`}
+
     >
-      <div
-        className={`header-top ${socialToggle ? "open" : ""}`}
-        style={{ visibility: "hidden" }}
-      >
-        <div className="container">
-          <div className="header-top-area">
-            <ul className="lab-ul left">
-              <li>
-                <i className="icofont-ui-call"></i> <span>{phoneNumber}</span>
-              </li>
-              <li>
-                <i className="icofont-location-pin"></i> {address}
-              </li>
-            </ul>
-            <ul className="lab-ul social-icons d-flex align-items-center">
-              <li>
-                <p>Find us on : </p>
-              </li>
-              {socialList.map((val, i) => (
-                <li key={i}>
-                  <a href={val.siteLink}>
-                    <i className={val.iconName}></i>
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div className="header-bottom">
-        <div className="container">
-          <div className="header-wrapper">
-            <div className="logo">
+
+      <div className="header-bottom" >
+        <div className="container" style={{
+          maxWidth: '100%',
+          width: "100%",
+          margin: '0',
+          display: 'flex',
+
+        }}>
+          <div className="header-wrapper" style={{
+            width: "100%",
+            display: 'flex',
+            justifyContent: "space-between",
+            alignItems: 'center',
+
+          }}>
+            <div className="logo" style={{
+              marginLeft: "4rem"
+            }} >
               <Link to="/">
                 <img
                   src={logo}
                   alt="logo"
                   style={{
                     width: "300px",
+
                   }}
                 />
               </Link>
             </div>
-            <div className="menu-area">
-              <div className="menu">
+            <div className="menu-area" >
+              <div className="menu" >
                 <ul className={`lab-ul ${menuToggle ? "active" : ""}`}>
                   <li className="home">
                     <NavLink to="/">Home</NavLink>
-                    
+
                     {/* role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-bs-offset="0,0" */}
                     {/* <ul className="lab-ul dropdown-menu">
                                             <li><NavLink to="/">Home One</NavLink></li>
@@ -202,11 +265,7 @@ const Header = () => {
                   <li className="home">
                     <NavLink to="/course">Projects</NavLink>
                   </li>
-                  {authenticated ? (
-                    <li>
-                      <NavLink to="/team-single">Profile</NavLink>
-                    </li>
-                  ) : null}
+
 
                   {/* <li className="menu-item-has-children">
                                         <a href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-bs-offset="0,0">Blog</a>
@@ -242,12 +301,14 @@ const Header = () => {
                     <NavLink to="/contact">Contact</NavLink>
                   </li>
 
+
                   <li>
                     <NavLink to="/aboutUs">About</NavLink>
                   </li>
 
+
                   {authenticated ? (
-                    <>
+                    <div style={{ display: 'flex', alignItems: "center" }}>
                       <li>
                         <Link
                           to="/addproject"
@@ -258,6 +319,9 @@ const Header = () => {
                             display: "flex",
                             alignItems: "center",
                             marginLeft: "20px",
+                            padding: '17px 16px'
+
+
                           }}
                         >
                           <span className="flex items-center ">
@@ -273,29 +337,26 @@ const Header = () => {
                           </span>{" "}
                         </Link>
                       </li>
-                      <li>
-                        {/*  <button className="logout-btn" onClick={logout}>
-                          <MdLogout />
-                          Logout
-                        </button> */}
 
-                        <Button className="logout-btn" onClick={()=>setIsModalOpen2(true)}>
-                          <MdLogout />
-                          Log Out
-                        </Button>
-                        <Modal
-                          style={{ top: 300 }}
-                          title="Confirm Logout"
 
-                          open={isModalOpen2}
-                          onOk={logout}
-                          onCancel={()=>setIsModalOpen2(false)}
+                      <li >
+                        <Popover className="xyz" content={content} trigger="hover">
 
-                        >
-                          <p>Are you sure, you want to log out?</p>
-                        </Modal>
+
+                          {
+                            profile?.Pic ? <Avatar style={{ marginLeft: "1.2rem", width: "3.5rem", height: "3.5rem" }} src={profile?.Pic} /> : <Avatar style={{ marginLeft: "1.2rem" }} icon={<AntDesignOutlined />} />
+                          }
+
+
+
+                        </Popover>
+
+
+
+
+
                       </li>
-                    </>
+                    </div>
                   ) : (
                     <>
                       <li>
@@ -330,18 +391,93 @@ const Header = () => {
                             color: "black",
                             border: "1px solid black",
                             borderRadius: "10px",
+
+
                             padding:"12px 18px",
+
+
                             marginTop: "4px",
-                            height:"47px",
+                            height: "47px",
                           }}
                         >
 
-                          <i
-                            className="icofont-users"
-                            style={{ fontSize: "1rem", margin: "0 10px" }}
-                          ></i>
-                          <span>SIGN UP</span>        
+
+                          <i className="icofont-users"></i> <span>SIGN UP</span>{" "}
                         </button>
+                        <Modal
+                          title="Sign Up"
+                          open={isModalOpen}
+                          onOk={handleOk}
+                          onCancel={handleCancel}
+                        >
+                          <div>
+                            <div
+                              className="modal_popUP"
+                              style={{
+                                // paddingTop: "20px",
+                                border: "1px solid grey",
+                                borderRadius: "5px",
+                                paddingTop: "10px",
+                                paddingBottom: "10px",
+                                paddingLeft: "10px",
+                              }}
+                            >
+                              {/* PiStudentDuotone */}
+                              <PiStudentDuotone
+                                // src={studentImage}
+                                style={{
+                                  width: "50px",
+                                  height: "50px",
+                                  borderRadius: "50%",
+                                  color: "orangered",
+                                  // borderRadius: "50%",
+                                  border: "1px solid orange",
+                                }}
+                              ></PiStudentDuotone>
+                              <div
+                                style={{
+                                  fontSize: "20px",
+                                  paddingLeft: "30px",
+                                  paddingTop: "10px",
+                                }}
+                              >
+                                Student
+                              </div>
+                            </div>
+
+                            <div
+                              className="modal_popUP"
+                              style={{
+                                paddingTop: "10px",
+                                paddingBottom: "10px",
+                                paddingLeft: "10px",
+                                marginTop: "10px",
+                                border: "1px solid grey",
+                                borderRadius: "5px",
+                              }}
+                            >
+                              <img
+                                src={universityImage}
+                                style={{
+                                  width: "50px",
+                                  height: "50px",
+                                  borderRadius: "50%",
+                                  border: "1px solid orange",
+                                }}
+                              ></img>
+                              <div
+                                style={{
+                                  fontSize: "20px",
+                                  paddingLeft: "30px",
+                                  paddingTop: "10px",
+                                }}
+                              >
+                                College
+                              </div>
+                            </div>
+                          </div>
+                        </Modal>
+
 
                       </li>
                     </>
@@ -353,39 +489,47 @@ const Header = () => {
                   onOk={handleOk}
                   onCancel={handleCancel}
                 >
-                  <div>
+                  <div className="flex justify-center w-full items-center" style={{
+                    
+                  }}>
                     <div
-                      onClick={() =>{
+                      onClick={() => {
                         setType("student")
-                      } }
-                      className="modal_popUP bg-lime-500"
+                      }}
+                      className="modal_popUP  "
                       style={{
                         // paddingTop: "20px",
-                        border: `${type==='student'? "1px solid grey":""}`,
-                        borderRadius: "5px",
-                        paddingTop: "10px",
-                        paddingBottom: "10px",
-                        paddingLeft: "10px",
-                        cursor:"pointer"
+                        border: `${type === 'student' ? "4px solid black" : ""}`,
+                        borderRadius: "50%",
+                        width: '200px',
+                        height: '200px',
+                        cursor: "pointer",
+                        marginRight: "1.5rem",
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'center',
+                        alignItems: "center",
+                        filter:`${type==='college' ? 'blur(4px)':'blur(0px)'}`
+
                       }}
                     >
                       {/* PiStudentDuotone */}
                       <PiStudentDuotone
                         // src={studentImage}
                         style={{
-                          width: "50px",
-                          height: "50px",
+                          width: "100px",
+                          height: "100px",
                           borderRadius: "50%",
                           color: "orangered",
                           // borderRadius: "50%",
                           border: "1px solid orange",
                         }}
                       ></PiStudentDuotone>
-                      <div
+                       <div
                         style={{
                           fontSize: "20px",
-                          paddingLeft: "30px",
-                          paddingTop: "10px",
+
+                          textAlign: "center"
                         }}
                       >
                         Student
@@ -393,31 +537,37 @@ const Header = () => {
                     </div>
 
                     <div
-                    className={`modal_popUP `}
+                      className={`modal_popUP flex flex-col items-center justify-center`}
                       onClick={() => setType("college")}
                       style={{
-                        paddingTop: "10px",
-                        paddingBottom: "10px",
-                        paddingLeft: "10px",
-                        marginTop: "10px",
-                        border: `${type==='college'? "1px solid grey":""}`,
-                        borderRadius: "5px",
+                        width: '200px',
+                        height: '200px',
+                        border: `${type === 'college' ? "4px solid black" : ""}`,
+                        borderRadius: "50%",
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'center',
+                        alignItems: "center",
+                        filter:`${type==='student' ? 'blur(4px)':'blur(0px)'}`
+
                       }}
                     >
-                      <img
-                        src={universityImage}
+                      <LuSchool
+
                         style={{
-                          width: "50px",
-                          height: "50px",
+                          width: "100px",
+                          height: "100px",
                           borderRadius: "50%",
+                          color: "orangered",
+                          // borderRadius: "50%",
                           border: "1px solid orange",
                         }}
-                      ></img>
+                      ></LuSchool>
                       <div
                         style={{
                           fontSize: "20px",
-                          paddingLeft: "30px",
-                          paddingTop: "10px",
+
+                          textAlign: "center"
                         }}
                       >
                         College
@@ -425,6 +575,13 @@ const Header = () => {
                     </div>
                   </div>
                 </Modal>
+                {/*    <Drawer title="" placement="right" onClose={onClose} open={open}>
+                <NavLink to="/team-single">Profile</NavLink><br/>
+                <NavLink to="/editProfile">Edit Profile</NavLink><br/>
+                <NavLink to="/">Home</NavLink>
+                  <p>Some contents...</p>
+                  <p>Some contents...</p>
+                </Drawer> */}
               </div>
               <div
                 className={`header-bar d-lg-none ${menuToggle ? "active" : ""}`}
@@ -438,7 +595,7 @@ const Header = () => {
                 className="ellepsis-bar d-lg-none"
                 onClick={() => setSocialToggle(!socialToggle)}
               >
-                <i className="icofont-info-square"></i>
+
               </div>
             </div>
           </div>

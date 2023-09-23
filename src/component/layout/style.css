@@ -70,6 +70,11 @@
 .ant-btn-primary{
   background-color: #f16126 !important;
 }
+.header-mt{
+  position: fixed !important;
+  top: 0px !important;
+
+}
 @media only screen and (max-width: 600px) {
   .addproject {
     margin: 0 !important;
@@ -79,13 +84,31 @@
   .logout-btn {
     color: #fff !important;
   }
-}
+  .signup{
+    display: flex;
+    background-color: white;
+  }
+  .login{
+    display: flex;
+  }
 
-.logout-btn{
-  background-color:white;
-  border:solid 1px #f16126;
-  height:3.5rem;
-  width: 10rem; 
+}
+/* @media only Button and(max-width:600px) {
+  .ant-btn{
+    display: flex;
+    background-color: white;
+  }
+  .login{
+    display: flex;
+  }
+} */
+
+
+.ant-btn-primary{
+  border:solid;
+}
+.ant-btn-primary:hover{
+  background-color: #f16126 !important;
 }
 .logout-btn:hover{
   background-color: white !important;
@@ -93,4 +116,8 @@
 }
 .ant-modal{
   align-content: space-around;
+  
+}
+.xyz:hover{
+  cursor: pointer;
 }
