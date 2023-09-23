@@ -168,12 +168,13 @@ const TeamSingle = () => {
                       <AiFillEdit />EDIT PROFILE
                     </span> */}
                     <span>
-                      <a  style={{ marginLeft: "15rem", display: "flex",alignItems:"center",justifyContent:"space-around",backgroundColor:"orangered"}} href="/editProfile" class="btn btn-primary" role="button"><AiFillEdit />EDIT PROFILE</a>
+                      <a  style={{ marginLeft: "15rem", display: "flex",alignItems:"center",borderRadius:"15px",justifyContent:"space-around",backgroundColor:"#fff",color:"black"}} href="/editProfile" class="btn btn-primary" role="button"><AiFillEdit />Edit</a>
 
                     </span>
                   </div>
-
-                  <p className="ins-dege">{profile?.CollegeName}</p>
+                    
+                  <p className="ins-dege">Username : {profile?.UserName}</p>
+                  <p className="ins-dege">College name : {profile?.CollegeName}</p>
                   <Rating />
                   <h6 className="subtitle">{subTitle}</h6>
                   <p className="ins-desc">{profile?.Bio}</p>

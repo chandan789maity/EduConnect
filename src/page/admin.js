@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import logo from "../assets/images/logo/logo.png";
 import { UserOutlined } from "@ant-design/icons";
 import { AiFillHome, AiOutlinePlus, AiOutlineDownload } from "react-icons/ai";
@@ -46,7 +46,7 @@ async function reject(id) {
 
 const Projects = ({ projects, setPage, setProject }) => {
   return (
-    <main className="ml-30 pt-16 max-h-screen overflow-auto">
+    <main className="ml-28 pt-16 max-h-screen overflow-auto">
       <div className="px-6 py-8">
         <div className="max-w-4xl mx-auto">
           <div className="bg-white rounded-3xl p-8 mb-5">
@@ -131,7 +131,7 @@ const Projects = ({ projects, setPage, setProject }) => {
 };
 const Students = ({ students }) => {
   return (
-    <main className="ml-30 pt-16 max-h-screen overflow-auto">
+    <main className="ml-28 pt-16 max-h-screen overflow-auto">
       <div className="px-6 py-8">
         <div className="max-w-4xl mx-auto">
           <div className="bg-white rounded-3xl p-8 mb-5">
@@ -199,7 +199,7 @@ const Project = ({ project, projects, setProject, setPage, refetch }) => {
   const [openApproved, setOpenApproved] = useState(false);
   const [openReject, setOpenReject] = useState(false);
   return (
-    <main className="ml-30 pt-16 max-h-screen overflow-auto">
+    <main className="ml-28 pt-16 max-h-screen overflow-auto">
       <Modal
         open={openApproved}
         title="Confirmation !"
@@ -361,6 +361,11 @@ const Admin = () => {
   const [page, setPage] = useState("home");
   const [project, setProject] = useState(null);
   const [logoutModal, setLogoutModal] = useState(false);
+
+  useEffect(()=>{
+    refetch();
+    refetch();
+  },[])
   async function logout() {
     try {
       const res = await axios.get(`${server}auth/logout`, {
@@ -561,7 +566,7 @@ const Admin = () => {
           </div>
         </aside>
         {page === "home" ? (
-          <main className="ml-30 pt-16 max-h-screen overflow-auto">
+          <main className="ml-28 pt-16 max-h-screen overflow-auto">
             <div className="px-6 py-8">
               <div className="max-w-4xl mx-auto">
                 <div className="bg-white rounded-3xl p-8 mb-5">

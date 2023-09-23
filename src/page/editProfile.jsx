@@ -22,6 +22,7 @@ const Edit = () => {
     UserName: "",
     Address: "",
     CollegeName: "",
+    CollegeEmail: "",
     Bio: "",
     CollegeEmail:"",
   });
@@ -81,6 +82,7 @@ const Edit = () => {
         UserName: profile?.UserName,
         Address: profile?.Address,
         CollegeName: profile?.CollegeName,
+        CollegeEmail: profile?.CollegeEmail,
         Bio: profile?.Bio,
         CollegeEmail:profile?.CollegeEmail
       });

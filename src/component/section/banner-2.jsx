@@ -37,7 +37,7 @@ const BannerTwo = () => {
                                 <h6 className="subtitle text-uppercase fw-medium">{subTitle}</h6>
                                 {title}
                                 <p className="desc">{desc}</p>
-                                <form>
+                                <form  className="rounded w-full">
                                     <div className="banner-icon">
                                         <i className="icofont-search"></i>
                                     </div>
