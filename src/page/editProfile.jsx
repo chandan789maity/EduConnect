@@ -24,6 +24,7 @@ const Edit = () => {
     CollegeName: "",
     CollegeEmail: "",
     Bio: "",
+    CollegeEmail:"",
   });
   function handleChange(e) {
     const value = e.target.value;
@@ -83,6 +84,7 @@ const Edit = () => {
         CollegeName: profile?.CollegeName,
         CollegeEmail: profile?.CollegeEmail,
         Bio: profile?.Bio,
+        CollegeEmail:profile?.CollegeEmail
       });
     }
   }, [profile]);
