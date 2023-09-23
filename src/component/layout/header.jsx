@@ -307,10 +307,7 @@ const Header = () => {
                       </li>
                       <li>
                         <button
-<<<<<<< HEAD
-                          to="/signUpas"
-=======
->>>>>>> e64e53df0771f5c5d07c78765682e1a1691a3db0
+
                           className="signup"
                           onClick={() => {
                             setOption("/signup");
@@ -321,19 +318,14 @@ const Header = () => {
                             color: "black",
                             border: "1px solid black",
                             borderRadius: "10px",
-<<<<<<< HEAD
-                            padding: "12px 18px",
-                            background: "#dc2f02",
-                            color: "#fff",
-                            border: "1px solid #000",
-=======
+
                             padding:"12px 18px",
->>>>>>> e64e53df0771f5c5d07c78765682e1a1691a3db0
+
                             marginTop: "4px",
                             height:"47px",
                           }}
                         >
-<<<<<<< HEAD
+
                           <i className="icofont-users"></i> <span>SIGN UP</span>{" "}
                         </button>
                         <Modal
@@ -409,14 +401,7 @@ const Header = () => {
                             </div>
                           </div>
                         </Modal>
-=======
-                          <i
-                            className="icofont-users"
-                            style={{ fontSize: "1rem", margin: "0 10px" }}
-                          ></i>
-                          <span>SIGN UP</span>        
-                        </button>
->>>>>>> e64e53df0771f5c5d07c78765682e1a1691a3db0
+
                       </li>
                     </>
                   )}
