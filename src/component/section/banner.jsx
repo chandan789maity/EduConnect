@@ -94,6 +94,7 @@ const Banner = () => {
     setProjects((old) => {
       let newArray = data?.filter((val) => {
         return (
+          val.Status === "public" &&
           filter !== "" &&
           val?.Title?.toLowerCase()?.includes(filter?.toLowerCase())
         );
@@ -114,25 +115,23 @@ const Banner = () => {
                 </h6>
                 {title}
                 <p className="desc">{desc}</p>
-                <div style={{
-                  borderRadius:"12px",
-                  overflow:"hidden"
-                }}>
-
+                <div
+                  style={{
+                    borderRadius: "12px",
+                    overflow: "hidden",
+                  }}
+                >
                   <form
                     style={{
                       borderRadius: "12px !important",
                       zIndex: "1000",
-                      width:'100%'
+                      width: "100%",
                     }}
-
                     action="/"
                     onSubmit={(e) => {
                       e.preventDefault();
                     }}
-
                   >
-
                     <div className="banner-icon">
                       <i className="icofont-search"></i>
                     </div>
@@ -145,14 +144,14 @@ const Banner = () => {
                       <AiOutlineSearch style={{ fontSize: "30px" }} />
                     </button>
                   </form>
-
                 </div>
 
                 <div
                   className="suggest"
                   style={{
-                    display: `${filter === "" || projects?.length === 0 ? "none" : "block"
-                      }`,
+                    display: `${
+                      filter === "" || projects?.length === 0 ? "none" : "block"
+                    }`,
                   }}
                 >
                   {projects?.map((project, i) => {

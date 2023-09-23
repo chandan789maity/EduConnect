@@ -31,12 +31,32 @@ const modules = {
     matchVisual: false,
   },
 };
+
+async function getAllColleges() {
+  try {
+    const res = await axios.get(`${server}college`, {
+      withCredentials: true,
+    });
+    console.log(res);
+    if (res.status === 200) {
+      return res.data.data;
+    }
+  } catch (err) {
+    console.log(err);
+    return null;
+  }
+}
+
 const AddProject = () => {
   const navigate = useNavigate();
   const [CoverPic, setCoverPic] = useState(null);
   const [file, setFile] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [info, setInfo] = useState(null);
+  const { data: colleges, isLoading: isLoading2 } = useQuery(
+    ["colleges"],
+    getAllColleges
+  );
   const [projectData, setProjectData] = useState({
     Title: "",
     Description: "",
@@ -98,37 +118,7 @@ const AddProject = () => {
     "CryptoCurrency",
     "Others",
   ];
-  const colleges = [
-    "Heritage Institute of Technology",
-    "IIT Bombay",
-    "IIT Delhi",
-   " IIT Kanpur",
-   " IIT Kharagpur",
-   " IIT Madras",
-    "IIT Roorkee",
-   "IIM Ahmedabad",
-   "IIM Bangalore",
-   " IIM Calcutta",
-   " IIM Lucknow",
-   "IIM Kozhikode",
-    "AIIMS Delhi",
-    "CMC Vellore",
-    "MAMC Delhi",
-    "AFMC Pune",
-    "KGMU Lucknow",
-    "IISER Pune",
-   "IISER Kolkata",
-    "IISER Mohali",
-    "ISI  Kolkata",
-    "ISI Delhi",
-   " ISI Bangalore",
-    "University of Mumbai",
-    "JNU Delhi",
-   " BHU",
-    "Anna University, Chennai",
-    "Jadavpur University, Kolkata",
-
-  ]
+  
 
   function handleChange(e) {
     let name = e.target.name;
@@ -200,6 +190,10 @@ const AddProject = () => {
       console.log(err);
     }
   };
+  if (isLoading2) {
+    return <p>Loading ....</p>;
+  }
+
 
   return (
     <Suspense fallback={<p>Loading...</p>}>
@@ -245,28 +239,31 @@ const AddProject = () => {
                   </Form.Select>
                 </div>
                 <div className="form-group">
-                <Form.Select
+                  <Form.Select
                     name="Colleges"
                     aria-label="Select College Name"
-                    onChange={(e)=>setProjectData({...projectData,CollegeName:e.target.value})}
+                    onChange={(e) =>
+                      {
+                        console.log(e.target.value)
+                        setProjectData({
+                          ...projectData,
+                          CollegeName: e.target.value.split('#')[0],
+                          CollegeEmail: e.target.value.split('#')[1],
+                        })
+                        
+                      }
+                     
+                    }
                   >
                     <option>Select College Name</option>
                     {colleges?.map((college, index) => (
-                      <option key={index} value={college}>
-                        {college}
+                      <option key={index} value={`${college?.CollegeName}#${college?.CollegeEmail}`}>
+                        {college?.CollegeName}
                       </option>
                     ))}
                   </Form.Select>
                 </div>
-                <div className="form-group">
-                  <input
-                    type="email"
-                    name="CollegeEmail"
-                    placeholder="College Email Id"
-                    required
-                    onChange={handleChange}
-                  />
-                </div>
+                
                 <div className="form-group">
                   <Form.Select
                     name="State"

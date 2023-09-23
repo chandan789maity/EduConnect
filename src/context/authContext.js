@@ -9,56 +9,84 @@ export const AuthProvider = ({ children }) => {
     data: auth,
     isLoading,
     refetch,
-  } = useQuery(["auth"], async () => {
-    try {
-      const res = await axios.get(`${server}auth/isauth`, {
-        withCredentials: true,
-      });
-      if (res.status === 200) {
+  } = useQuery(
+    ["auth"],
+    async () => {
+      try {
+        const res = await axios.get(`${server}auth/isauth`, {
+          withCredentials: true,
+        });
+        if (res.status === 200) {
+          return {
+            authenticated: true,
+            user: res.data.user,
+          };
+        }
+      } catch (err) {
         return {
-          authenticated: true,
-          user: res.data.user,
+          authenticated: false,
+          user: null,
         };
       }
-    } catch (err) {
-      return {
-        authenticated: false,
-        user: null,
-      };
+    },
+    {
+      retry: 15,
+      initialData: {
+        authenticated: JSON.parse(localStorage.getItem("user")) !== undefined,
+        user: JSON.parse(localStorage.getItem("user")) || null,
+      },
     }
-  });
+  );
   const {
     data: auth2,
     isLoading: isLoading2,
     refetch: refetch2,
-  } = useQuery(["auth2"], async () => {
-    try {
-      const res = await axios.get(`${server}auth/isauth/college`, {
-        withCredentials: true,
-      });
-      if (res.status === 200) {
+  } = useQuery(
+    ["auth2"],
+    async () => {
+      try {
+        const res = await axios.get(`${server}auth/isauth/college`, {
+          withCredentials: true,
+        });
+        if (res.status === 200) {
+          return {
+            authenticated: true,
+            user: res.data.user,
+          };
+        }
+      } catch (err) {
         return {
-          authenticated: true,
-          user: res.data.user,
+          authenticated: false,
+          user: null,
         };
       }
-    } catch (err) {
-      return {
-        authenticated: false,
-        user: null,
-      };
+    },
+    {
+      retry: 15,
+      initialData: {
+        authenticated: JSON.parse(localStorage.getItem("user")) !== undefined,
+        user: JSON.parse(localStorage.getItem("user")) || null,
+      },
     }
-  });
+  );
   if (isLoading || isLoading2) {
     return (
       <AuthContext.Provider
-        value={[{ authenticated: false, user: null }, refetch, isLoading]}
+        value={[
+          {
+            authenticated:
+              JSON.parse(localStorage.getItem("user")) !== undefined,
+            user: JSON.parse(localStorage.getItem("user")) || null,
+          },
+          refetch,
+          isLoading,
+        ]}
       >
         {children}
       </AuthContext.Provider>
     );
   }
-  if (auth.authenticated) {
+  if (auth?.authenticated) {
     return (
       <AuthContext.Provider value={[auth, refetch, isLoading]}>
         {children}
