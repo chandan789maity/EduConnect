@@ -125,10 +125,12 @@ const Banner = () => {
                       zIndex: "1000",
                       width:'100%'
                     }}
+
                     action="/"
                     onSubmit={(e) => {
                       e.preventDefault();
                     }}
+
                   >
 
                     <div className="banner-icon">
