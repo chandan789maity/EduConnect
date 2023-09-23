@@ -1,8 +1,9 @@
 import logo from "../../assets/images/logo/logo.png";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { MdLogout } from "react-icons/md";
 import { AiOutlinePlus } from "react-icons/ai";
+import { LuSchool } from "react-icons/lu";
 import "./style.css";
 import AuthContext from "../../context/authContext";
 import { useQuery, useQueryClient } from "react-query";
@@ -63,6 +64,12 @@ const Header = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModalOpen2, setIsModalOpen2] = useState(false);
   const [open, setOpen] = useState(false);
+    useEffect(()=>{
+      refetch();
+      refetch()
+    },[])
+
+
   const { data: profile, isLoading: isLoading2 } = useQuery(["profile"], async () => {
     try {
       const res = await axios.get(`${server}auth/isauth`, {
@@ -105,14 +112,14 @@ const Header = () => {
 
   const content = (
     <div>
-    <p>
-      <button className="logout-btn" style={{display:"flex"}}>
-      <CgProfile/>
-      <NavLink to="/team-single">View Profile</NavLink>
-      </button>
-    </p>
       <p>
-        <button className="logout-btn" style={{display:"flex",aligText:"center"}}>
+        <button className="logout-btn" style={{ display: "flex" }}>
+          <CgProfile />
+          <NavLink to="/team-single">View Profile</NavLink>
+        </button>
+      </p>
+      <p>
+        <button className="logout-btn" style={{ display: "flex", aligText: "center" }}>
           <AiFillEdit />
           <NavLink to="/editProfile">Edit Profile</NavLink>
         </button>
@@ -204,38 +211,10 @@ const Header = () => {
 
   return (
     <header
-      className={`header-section ${headerFiexd ? "header-fixed fadeInUp" : ""}`}
-      style={{ marginTop: "-10px" }}
+      className={`header-section header-mt ${headerFiexd ? "header-fixed fadeInUp" : ""}`}
+
     >
-      <div
-        className={`header-top ${socialToggle ? "open" : ""}`}
-        style={{ visibility: "hidden" }}
-      >
-        <div className="container" >
-          <div className="header-top-area">
-            <ul className="lab-ul left">
-              <li>
-                <i className="icofont-ui-call"></i> <span>{phoneNumber}</span>
-              </li>
-              <li>
-                <i className="icofont-location-pin"></i> {address}
-              </li>
-            </ul>
-            <ul className="lab-ul social-icons d-flex align-items-center">
-              <li>
-                <p>Find us on : </p>
-              </li>
-              {socialList.map((val, i) => (
-                <li key={i}>
-                  <a href={val.siteLink}>
-                    <i className={val.iconName}></i>
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </div>
+
       <div className="header-bottom" >
         <div className="container" style={{
           maxWidth: '100%',
@@ -270,7 +249,7 @@ const Header = () => {
                 <ul className={`lab-ul ${menuToggle ? "active" : ""}`}>
                   <li className="home">
                     <NavLink to="/">Home</NavLink>
-                    
+
                     {/* role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-bs-offset="0,0" */}
                     {/* <ul className="lab-ul dropdown-menu">
                                             <li><NavLink to="/">Home One</NavLink></li>
@@ -361,15 +340,15 @@ const Header = () => {
 
 
                       <li >
-                      <Popover className="xyz" content={content} trigger="hover">
-                        
-                          
-                            {
-                              profile?.Pic ? <Avatar style={{ marginLeft: "1.2rem", width: "3.5rem", height: "3.5rem" }} src={profile?.Pic} /> : <Avatar style={{ marginLeft: "1.2rem" }} icon={<AntDesignOutlined />} />
-                            }
-                         
+                        <Popover className="xyz" content={content} trigger="hover">
 
-                        
+
+                          {
+                            profile?.Pic ? <Avatar style={{ marginLeft: "1.2rem", width: "3.5rem", height: "3.5rem" }} src={profile?.Pic} /> : <Avatar style={{ marginLeft: "1.2rem" }} icon={<AntDesignOutlined />} />
+                          }
+
+
+
                         </Popover>
 
 
@@ -435,39 +414,47 @@ const Header = () => {
                   onOk={handleOk}
                   onCancel={handleCancel}
                 >
-                  <div>
+                  <div className="flex justify-center w-full items-center" style={{
+                    
+                  }}>
                     <div
                       onClick={() => {
                         setType("student")
                       }}
-                      className="modal_popUP bg-lime-500"
+                      className="modal_popUP  "
                       style={{
                         // paddingTop: "20px",
-                        border: `${type === 'student' ? "1px solid grey" : ""}`,
-                        borderRadius: "5px",
-                        paddingTop: "10px",
-                        paddingBottom: "10px",
-                        paddingLeft: "10px",
-                        cursor: "pointer"
+                        border: `${type === 'student' ? "4px solid black" : ""}`,
+                        borderRadius: "50%",
+                        width: '200px',
+                        height: '200px',
+                        cursor: "pointer",
+                        marginRight: "1.5rem",
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'center',
+                        alignItems: "center",
+                        filter:`${type==='college' ? 'blur(4px)':'blur(0px)'}`
+
                       }}
                     >
                       {/* PiStudentDuotone */}
                       <PiStudentDuotone
                         // src={studentImage}
                         style={{
-                          width: "50px",
-                          height: "50px",
+                          width: "100px",
+                          height: "100px",
                           borderRadius: "50%",
                           color: "orangered",
                           // borderRadius: "50%",
                           border: "1px solid orange",
                         }}
                       ></PiStudentDuotone>
-                      <div
+                       <div
                         style={{
                           fontSize: "20px",
-                          paddingLeft: "30px",
-                          paddingTop: "10px",
+
+                          textAlign: "center"
                         }}
                       >
                         Student
@@ -475,31 +462,37 @@ const Header = () => {
                     </div>
 
                     <div
-                      className={`modal_popUP `}
+                      className={`modal_popUP flex flex-col items-center justify-center`}
                       onClick={() => setType("college")}
                       style={{
-                        paddingTop: "10px",
-                        paddingBottom: "10px",
-                        paddingLeft: "10px",
-                        marginTop: "10px",
-                        border: `${type === 'college' ? "1px solid grey" : ""}`,
-                        borderRadius: "5px",
+                        width: '200px',
+                        height: '200px',
+                        border: `${type === 'college' ? "4px solid black" : ""}`,
+                        borderRadius: "50%",
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'center',
+                        alignItems: "center",
+                        filter:`${type==='student' ? 'blur(4px)':'blur(0px)'}`
+
                       }}
                     >
-                      <img
-                        src={universityImage}
+                      <LuSchool
+
                         style={{
-                          width: "50px",
-                          height: "50px",
+                          width: "100px",
+                          height: "100px",
                           borderRadius: "50%",
+                          color: "orangered",
+                          // borderRadius: "50%",
                           border: "1px solid orange",
                         }}
-                      ></img>
+                      ></LuSchool>
                       <div
                         style={{
                           fontSize: "20px",
-                          paddingLeft: "30px",
-                          paddingTop: "10px",
+
+                          textAlign: "center"
                         }}
                       >
                         College
