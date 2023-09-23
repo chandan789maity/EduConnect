@@ -98,3 +98,12 @@
 
 }
 
+.college-list{
+  cursor: pointer;
+  transition: all .7s ease;
+  padding: .7rem .6rem;
+  text-align: left;
+}
+.college-list:hover{
+  background: #f0f0f0;
+}
