@@ -11,8 +11,10 @@ import axios from "axios";
 import { useQuery } from "react-query";
 import { server } from "../App";
 import { toast } from "react-toastify";
-import { Avatar } from "antd";
+import { Avatar, Modal } from "antd";
 import { MdLogout } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
+
 async function approve(id) {
   try {
     const res = await axios.get(`${server}project/approve/${id}`, {
@@ -42,7 +44,7 @@ async function reject(id) {
   }
 }
 
-const Projects = ({ projects,setPage,setProject }) => {
+const Projects = ({ projects, setPage, setProject }) => {
   return (
     <main className="ml-30 pt-16 max-h-screen overflow-auto">
       <div className="px-6 py-8">
@@ -194,21 +196,44 @@ const Students = ({ students }) => {
 };
 
 const Project = ({ project, projects, setProject, setPage, refetch }) => {
+  const [openApproved, setOpenApproved] = useState(false);
+  const [openReject, setOpenReject] = useState(false);
   return (
     <main className="ml-30 pt-16 max-h-screen overflow-auto">
+      <Modal
+        open={openApproved}
+        title="Confirmation !"
+        onOk={async () => {
+          await approve(project?._id);
+          refetch();
+          setPage("home");
+        }}
+        onCancel={() => setOpenApproved(false)}
+      >
+        <p>Click Ok to proceed</p>
+      </Modal>
+      <Modal
+        open={openReject}
+        title="Confirmation !"
+        onOk={async () => {
+          await reject(project?._id);
+          refetch();
+          setPage("home");
+        }}
+        onCancel={() => setOpenReject(false)}
+      >
+        <p>Click Ok to proceed</p>
+      </Modal>
       <div className="px-6 py-8">
         <div className="max-w-4xl mx-auto">
-      
           <div className="bg-white rounded-3xl p-8 mb-5">
-          <span
-          className={`-ml-1 block py-1 px-2 text-black font-bold mt-1 rounded-lg text-center w-16 ${
-            project.Status === "pending"
-              ? "bg-orange-400"
-              : "bg-green-400"
-          }`}
-        >
-          {project.Status}
-        </span>
+            <span
+              className={`-ml-1 block py-1 px-2 text-black font-bold mt-1 rounded-lg text-center w-16 ${
+                project.Status === "pending" ? "bg-orange-400" : "bg-green-400"
+              }`}
+            >
+              {project.Status}
+            </span>
             <h1 className="text-3xl font-bold mb-10">{project?.Title}</h1>
             <div className="flex items-center justify-between">
               <div className="flex items-stretch">
@@ -241,11 +266,7 @@ const Project = ({ project, projects, setProject, setPage, refetch }) => {
                       <div className="mt-5">
                         {project?.Status === "pending" ? (
                           <button
-                            onClick={async () => {
-                              await approve(project?._id);
-                              refetch();
-                              setPage("home");
-                            }}
+                            onClick={() => setOpenApproved(true)}
                             type="button"
                             className="inline-flex items-center justify-center py-2 px-3 rounded-xl bg-white text-gray-800 hover:text-green-500 text-sm font-semibold transition"
                           >
@@ -255,11 +276,7 @@ const Project = ({ project, projects, setProject, setPage, refetch }) => {
 
                         <button
                           type="button"
-                          onClick={async () => {
-                            await reject(project?._id);
-                            refetch();
-                            setPage("home");
-                          }}
+                          onClick={() => setOpenReject(true)}
                           className="inline-flex items-center justify-center py-2 px-3 rounded-xl bg-red-400 text-white ml-3 text-sm font-semibold transition"
                         >
                           {project?.Status === "public" ? "Delete" : "Reject"}
@@ -270,9 +287,7 @@ const Project = ({ project, projects, setProject, setPage, refetch }) => {
                 </div>
               </div>
               <div className="col-span-4">
-                <h2 className="text-2xl font-bold mb-4">
-                  More like this
-                </h2>
+                <h2 className="text-2xl font-bold mb-4">More like this</h2>
                 <div className="space-y-4">
                   {projects
                     ?.slice(0, 3)
@@ -340,10 +355,26 @@ const Project = ({ project, projects, setProject, setPage, refetch }) => {
 };
 
 const Admin = () => {
+  const navigate = useNavigate();
   const [auth, refetch, isLoading] = useContext(AuthContext);
   const { authenticated, user: college } = auth;
   const [page, setPage] = useState("home");
   const [project, setProject] = useState(null);
+  const [logoutModal, setLogoutModal] = useState(false);
+  async function logout() {
+    try {
+      const res = await axios.get(`${server}auth/logout`, {
+        withCredentials: true,
+      });
+      console.log(res);
+      if (res.status === 204) {
+        refetch();
+        navigate("/");
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  }
   const {
     data: projects,
     isLoading: isLoading2,
@@ -423,6 +454,15 @@ const Admin = () => {
           </div>
         </header>
         <aside className="fixed inset-y-0 left-0 bg-white shadow-md max-h-screen w-60">
+          <Modal
+            style={{ top: 300 }}
+            title="Confirm Logout"
+            open={logoutModal}
+            onOk={logout}
+            onCancel={() => setLogoutModal(false)}
+          >
+            <p>Are you sure, you want to log out?</p>
+          </Modal>
           <div className="flex flex-col justify-between h-full">
             <div className="flex-grow">
               <div className="px-4 py-6 text-center border-b">
@@ -510,11 +550,13 @@ const Admin = () => {
             <div className="p-4">
               <button
                 type="button"
+                onClick={() => {
+                  setLogoutModal(true);
+                }}
                 className="inline-flex items-center justify-center h-9 px-4 rounded-xl bg-gray-900 text-gray-300 hover:text-white text-sm font-semibold transition"
               >
-                <MdLogout className="mr-2"/> Logout
+                <MdLogout className="mr-2" /> Logout
               </button>{" "}
-            
             </div>
           </div>
         </aside>
@@ -592,7 +634,11 @@ const Admin = () => {
                         <div className="col-span-2">
                           <div className="p-4 bg-orange-300 rounded-xl text-gray-800">
                             <div className=" font-bold text-2xl leading-none">
-                              5
+                              {
+                                projects?.filter(
+                                  (project) => project?.Status === "pending"
+                                )?.length
+                              }
                             </div>
                             <div className="mt-2 leading-none">
                               Pending projects
@@ -603,7 +649,9 @@ const Admin = () => {
                     </div>
                     <div>
                       <h2 className="text-2xl font-bold mb-4">
-                        Recently added projects
+                        {projects || projects?.length > 0
+                          ? "Recent uploaded projects"
+                          : null}
                       </h2>
                       <div className="space-y-4">
                         {projects?.slice(0, 3)?.map((project) => {
